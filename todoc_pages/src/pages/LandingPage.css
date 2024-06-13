@@ -1,0 +1,87 @@
+.landing-page {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+.landing-header {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+}
+
+.landing-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background-color: #ff5252;
+}
+
+.intro-section {
+    padding: 50px 0;
+}
+
+.intro-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.feature-item {
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+}
+
+.testimonials-section {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+}
+
+.testimonials {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.testimonial {
+    background-color: white;
+    border: 1px solid #e9ecef;
+    padding: 20px;
+    border-radius: 10px;
+    width: 45%;
+}
+
+.blog-section {
+    padding: 50px 0;
+}
+
+.blog-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.landing-footer {
+    padding: 20px 0;
+    background-color: #e9ecef;
+}
+
+.landing-footer p {
+    margin: 5px 0;
+}

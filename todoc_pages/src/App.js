@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import WritingPage from './pages/WritingPage';
 import MainPage from './pages/MainPage';
 import SearchPage from './pages/SearchPage';
@@ -20,24 +20,24 @@ import LandingPage from './pages/LandingPage';
 function App() {
   return (
       <Router>
-        <Switch>
-          <Route path="/writing" component={WritingPage} />
-          <Route path="/main" component={MainPage} />
-          <Route path="/search" component={SearchPage} />
-          <Route path="/signup" component={SignUpPage} />
-          <Route path="/mypage" component={MyPage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/payment" component={PaymentPage} />
-          <Route exact path="/" component={LandingPage} />
+        <Routes>
+          <Route path="/writing" element={<WritingPage/>} />
+          <Route path="/main" element={<MainPage/>} />
+          <Route path="/search" element={<SearchPage/>} />
+          <Route path="/signup" element={<SignUpPage/>} />
+          <Route path="/mypage" element={<MyPage/>} />
+          <Route path="/login" element={<LoginPage/>} />
+          <Route path="/payment" element={<PaymentPage/>} />
+          <Route exact path="/" element={<LandingPage/>} />
           {/* Sub Pages */}
-          <Route path="/mypage/update-info" component={UpdateInfoPage} />
-          <Route path="/mypage/payment-info" component={PaymentInfoPage} />
-          <Route path="/mypage/payment-history" component={PaymentHistoryPage} />
-          <Route path="/mypage/payment-method" component={PaymentMethodPage} />
-          <Route path="/mypage/membership-cancel" component={MembershipCancelPage} />
-          <Route path="/forgot-password" component={ForgotPasswordPage} />
-          <Route path="/change-password" component={ChangePasswordPage} />
-        </Switch>
+          <Route path="/mypage/update-info" element={<UpdateInfoPage/>} />
+          <Route path="/mypage/payment-info" element={<PaymentInfoPage/>} />
+          <Route path="/mypage/payment-history" element={<PaymentHistoryPage/>} />
+          <Route path="/mypage/payment-method" element={<PaymentMethodPage/>} />
+          <Route path="/mypage/membership-cancel" element={<MembershipCancelPage/>} />
+          <Route path="/forgot-password" element={<ForgotPasswordPage/>} />
+          <Route path="/change-password" element={<ChangePasswordPage/>} />
+        </Routes>
       </Router>
   );
 }

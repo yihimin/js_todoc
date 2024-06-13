@@ -5,22 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37e85f13-3adc-4fce-b090-281f7cd48627" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/LandingPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/LoginPages/ChangePasswordPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/LoginPages/ForgotPasswordPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/LoginPages/LoginPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/MainPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/MyPages/MyPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/MyPages/PaymentInfoPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/MyPages/UpdateInfoPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/PaymentPages/MembershipCancelPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/PaymentPages/PaymentHistoryPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/PaymentPages/PaymentMethodPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/PaymentPages/PaymentPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/SearchPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/SignUpPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/WritingPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/LandingPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/LandingPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LandingPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +81,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1718254376241</updated>
-      <workItem from="1718254377195" duration="2452000" />
+      <workItem from="1718254377195" duration="3766000" />
     </task>
     <servers />
   </component>
