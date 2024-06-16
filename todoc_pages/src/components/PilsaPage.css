@@ -156,22 +156,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border-radius: 50%;
     cursor: pointer;
     opacity: 0;
     transition: opacity 0.3s ease;
-    font-size: 24px;
     z-index: 10;
 }
 
 .left-arrow {
     left: -80px;
+    background: url('/arrow-right.png') no-repeat center center;
+    background-size: contain;
+    transform: rotate(180deg); /* 이미지 회전 */
 }
 
 .right-arrow {
     right: -80px;
+    background: url('/arrow-right.png') no-repeat center center;
+    background-size: contain;
 }
 
 .text-container:hover .left-arrow {
