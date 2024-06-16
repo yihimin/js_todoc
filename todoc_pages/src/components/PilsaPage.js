@@ -94,7 +94,7 @@ const PilsaPage = () => {
     return (
         <div className="PilsaPage">
             <div className="header">
-                <div className="logo">LOGO</div>
+                <div className="logo">Todoc</div>
                 <div className="search-bar">
                     <input type="text" placeholder="검색하기" />
                 </div>
@@ -103,7 +103,9 @@ const PilsaPage = () => {
             <div className="container">
                 <div className="text-container">
                     {currentTextIndex > 0 && (
-                        <div className="arrow-container left-arrow" onClick={handlePrevious}></div>
+                        <div className="arrow-container left-arrow" onClick={handlePrevious}>
+                            &lt;
+                        </div>
                     )}
                     <div className="sample-container">
                         <div id="sampleText"></div>
@@ -112,7 +114,9 @@ const PilsaPage = () => {
                         <textarea id="userInput" rows="10" value={userInputs[currentTextIndex]} onChange={checkTextMatch}></textarea>
                     </div>
                     {currentTextIndex < sampleTexts.length - 1 && (
-                        <div className="arrow-container right-arrow" onClick={handleNext}></div>
+                        <div className="arrow-container right-arrow" onClick={handleNext}>
+                            &gt;
+                        </div>
                     )}
                 </div>
                 <div className="progress-container">
