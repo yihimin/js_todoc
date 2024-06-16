@@ -1,0 +1,201 @@
+/* PilsaPage.css */
+
+.PilsaPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.search-bar {
+    flex-grow: 1;
+    margin: 0 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    outline: none;
+}
+
+.user-icon {
+    font-size: 24px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 20px;
+}
+
+.text-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.sample-container, .input-container {
+    width: 45%;
+}
+
+.sample-container {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#sampleText {
+    flex: 1;
+    color: grey;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+#userInput {
+    width: 100%;
+    height: 250px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    resize: vertical;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.progress-container {
+    width: 100%;
+    background-color: #eee;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 30px;
+    background-color: #ff6b6b;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    transition: width 0.5s ease;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#saveButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#saveButton:hover {
+    background-color: #ff4c4c;
+}
+
+.book-info {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.book-cover {
+    width: 100px;
+    height: 150px;
+    background-color: #ccc;
+    margin-right: 20px;
+}
+
+.book-details {
+    flex: 1;
+}
+
+.book-details h2 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.arrow-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 24px;
+    z-index: 10;
+}
+
+.left-arrow {
+    left: -80px;
+}
+
+.right-arrow {
+    right: -80px;
+}
+
+.text-container:hover .left-arrow {
+    opacity: 1;
+}
+
+.text-container:hover .right-arrow {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .text-container {
+        flex-direction: column;
+    }
+
+    .sample-container, .input-container {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .left-arrow, .right-arrow {
+        left: 10px;
+        right: 10px;
+        top: 100%;
+        transform: translateX(0) translateY(20px);
+    }
+}
