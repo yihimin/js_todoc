@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './PilsaPage.css';
+import TodocLogo from '../assets/todoc_logo.svg';
+import SearchIcon from '../assets/search_icon.svg';
+import ProfileIcon from '../assets/profile_icon.svg';
 
 const sampleTexts = [
     "이것은 샘플 텍스트입니다. 첫 번째 텍스트입니다.",
@@ -21,7 +24,7 @@ const PilsaPage = () => {
         const progressBar = document.getElementById('progressBar');
         const progressPercent = Math.floor((currentChars / totalChars) * 100);
         progressBar.style.width = progressPercent + '%';
-        progressBar.textContent = progressPercent + '%';
+        // progressBar.textContent = progressPercent + '%';
     };
 
     const checkTextMatch = (e) => {
@@ -91,14 +94,27 @@ const PilsaPage = () => {
         }
     };
 
+    const handleCompositionStart = (e) => {
+        e.target.classList.add('ime-mode-on');
+    };
+
+    const handleCompositionEnd = (e) => {
+        e.target.classList.remove('ime-mode-on');
+    };
+
     return (
         <div className="PilsaPage">
             <div className="header">
-                <div className="logo">Todoc</div>
-                <div className="search-bar">
-                    <input type="text" placeholder="검색하기" />
+                <div className="logo">
+                    <img src={TodocLogo} alt="Todoc Logo"/>
                 </div>
-                <div className="user-icon">👤</div>
+                <div className="search-container">
+                    <div className="search-bar">
+                        <input type="text" className="search-input" placeholder="검색어를 입력하세요"/>
+                        <span className="search-icon"><img src={SearchIcon} alt="Search"/></span>
+                    </div>
+                </div>
+                <div className="user-icon"><img src={ProfileIcon} alt="Profile"/></div>
             </div>
             <div className="container">
                 <div className="text-container">
@@ -110,8 +126,12 @@ const PilsaPage = () => {
                     <div className="sample-container">
                         <div id="sampleText"></div>
                     </div>
+                    <div className="separator"></div>
                     <div className="input-container">
-                        <textarea id="userInput" rows="10" value={userInputs[currentTextIndex]} onChange={checkTextMatch}></textarea>
+                        <textarea id="userInput" rows="10" value={userInputs[currentTextIndex]}
+                                  onChange={checkTextMatch}
+                                  onCompositionStart={handleCompositionStart}
+                                  onCompositionEnd={handleCompositionEnd}></textarea>
                     </div>
                     {currentTextIndex < sampleTexts.length - 1 && (
                         <div className="arrow-container right-arrow" onClick={handleNext}>
@@ -120,7 +140,7 @@ const PilsaPage = () => {
                     )}
                 </div>
                 <div className="progress-container">
-                    <div id="progressBar" className="progress-bar">0%</div>
+                    <div id="progressBar" className="progress-bar"></div>
                 </div>
                 <div className="button-container">
                     <button id="saveButton" onClick={handleSave}>저장하기</button>

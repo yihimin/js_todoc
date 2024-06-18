@@ -10,42 +10,67 @@
 
 .header {
     width: 100%;
+    height: 72px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-around;
     padding: 10px 20px;
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #dee2e6;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 6px 0px rgba(13, 26, 38, 0.16);
 }
 
 .logo {
     font-size: 24px;
     font-weight: bold;
+    margin-left: 15px;
+    margin-right: 15px;
+    justify-content: flex-start;
 }
 
+.search-container{
+    width: 100%;
+}
 .search-bar {
-    flex-grow: 1;
-    margin: 0 20px;
+    margin-left: auto;
+    max-width: 600px;
+    justify-content: flex-end;
+    display: flex;
+    background-color: #e0e0e0;
+    border-radius: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 .search-bar input {
+    display: flex;
+    align-items: flex-end;
+    background-color: #e0e0e0;
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #dee2e6;
-    border-radius: 5px;
+    margin-left: 15px;
     outline: none;
+    border: none !important;
+    min-width: 100px;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    color: #8A8A8A;
+}
+
+.search-icon img{
+    display: block;
 }
 
 .user-icon {
     font-size: 24px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 900px;
+    max-width: 85%;
     margin-top: 20px;
 }
 
@@ -54,18 +79,25 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 .sample-container, .input-container {
-    width: 45%;
+    height: 420px;
+    width: 48%;
+    padding: 16px;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
 }
 
 .sample-container {
-    background-color: #f5f5f5;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    box-sizing: border-box;
 }
 
 #sampleText {
@@ -73,18 +105,37 @@
     color: grey;
     white-space: pre-wrap;
     word-wrap: break-word;
+    height: 100%;
 }
 
 #userInput {
     width: 100%;
-    height: 250px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    height: 100%;
     white-space: pre-wrap;
     word-wrap: break-word;
-    resize: vertical;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    resize: none;
+    border: none;
+    box-sizing: border-box;
+    outline: none;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+#userInput.ime-mode-on {
+    text-decoration: none;
+    background: none;
+}
+
+.separator {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background-color: #D9D9D9;
 }
 
 .progress-container {
@@ -92,11 +143,11 @@
     background-color: #eee;
     border-radius: 5px;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .progress-bar {
-    height: 30px;
+    height: 10px;
     background-color: #ff6b6b;
     text-align: center;
     line-height: 30px;
@@ -106,19 +157,21 @@
 
 .button-container {
     display: flex;
-    justify-content: center;
+    justify-content: right;
     margin-bottom: 20px;
 }
 
 #saveButton {
-    padding: 10px 20px;
+    padding: 12px 28px;
+    border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
     background-color: #ff6b6b;
     color: white;
     border: none;
-    border-radius: 5px;
     transition: background-color 0.3s ease;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
 }
 
 #saveButton:hover {

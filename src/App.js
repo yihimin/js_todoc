@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import PilsaPage from './components/PilsaPage';
 import WritingPage from './pages/WritingPage';
 import MainPage from './pages/MainPage';
 import SearchPage from './pages/SearchPage';
@@ -21,7 +22,7 @@ function App() {
   return (
       <Router>
         <Routes>
-          <Route path="/writing" element={<WritingPage/>} />
+          <Route path="/pilsa" element={<PilsaPage/>} />
           <Route path="/main" element={<MainPage/>} />
           <Route path="/search" element={<SearchPage/>} />
           <Route path="/signup" element={<SignUpPage/>} />
