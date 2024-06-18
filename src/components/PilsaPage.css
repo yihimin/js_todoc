@@ -193,11 +193,13 @@
 
 .book-details {
     flex: 1;
+    font-family: "Noto Sans KR";
 }
 
 .book-details h2 {
     margin: 0;
     margin-bottom: 10px;
+    font-family: "Noto Sans KR";
 }
 
 .arrow-container {
@@ -209,7 +211,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.5);
     color: white;
     border-radius: 50%;
     cursor: pointer;

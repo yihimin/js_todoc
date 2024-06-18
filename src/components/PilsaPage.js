@@ -3,6 +3,8 @@ import './PilsaPage.css';
 import TodocLogo from '../assets/todoc_logo.svg';
 import SearchIcon from '../assets/search_icon.svg';
 import ProfileIcon from '../assets/profile_icon.svg';
+import RightArrow from '../assets/right_arrow.svg';
+import LeftArrow from '../assets/left_arrow.svg';
 
 const sampleTexts = [
     "이것은 샘플 텍스트입니다. 첫 번째 텍스트입니다.",
@@ -120,7 +122,7 @@ const PilsaPage = () => {
                 <div className="text-container">
                     {currentTextIndex > 0 && (
                         <div className="arrow-container left-arrow" onClick={handlePrevious}>
-                            &lt;
+                            <img src={LeftArrow} alt="Left Arrow"/>
                         </div>
                     )}
                     <div className="sample-container">
@@ -135,7 +137,7 @@ const PilsaPage = () => {
                     </div>
                     {currentTextIndex < sampleTexts.length - 1 && (
                         <div className="arrow-container right-arrow" onClick={handleNext}>
-                            &gt;
+                            <img src={RightArrow} alt="Right Arrow"/>
                         </div>
                     )}
                 </div>
