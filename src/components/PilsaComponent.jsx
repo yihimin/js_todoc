@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './PilsaPage.css';
-import TodocLogo from '../assets/todoc_logo.svg';
-import SearchIcon from '../assets/search_icon.svg';
-import ProfileIcon from '../assets/profile_icon.svg';
-import RightArrow from '../assets/right_arrow.svg';
-import LeftArrow from '../assets/left_arrow.svg';
+import '../pages/PilsaPage.css';
+import LeftArrow from '../assets/left_arrow.svg'; 
+import RightArrow from '../assets/right_arrow.svg'; 
 
 const sampleTexts = [
     "이것은 샘플 텍스트입니다. 첫 번째 텍스트입니다.",
@@ -12,7 +9,7 @@ const sampleTexts = [
     "이 텍스트는 세 번째 샘플 텍스트입니다."
 ];
 
-const PilsaPage = () => {
+const PilsaComponent = () => {
     const [currentTextIndex, setCurrentTextIndex] = useState(0);
     const [currentChars, setCurrentChars] = useState(0);
     const [userInputs, setUserInputs] = useState(Array(sampleTexts.length).fill(""));
@@ -26,7 +23,6 @@ const PilsaPage = () => {
         const progressBar = document.getElementById('progressBar');
         const progressPercent = Math.floor((currentChars / totalChars) * 100);
         progressBar.style.width = progressPercent + '%';
-        // progressBar.textContent = progressPercent + '%';
     };
 
     const checkTextMatch = (e) => {
@@ -105,62 +101,37 @@ const PilsaPage = () => {
     };
 
     return (
-        <div className="PilsaPage">
-            <div className="header">
-                <div className="logo">
-                    <img src={TodocLogo} alt="Todoc Logo"/>
-                </div>
-                <div className="search-container">
-                    <div className="search-bar">
-                        <input type="text" className="search-input" placeholder="검색어를 입력하세요"/>
-                        <span className="search-icon"><img src={SearchIcon} alt="Search"/></span>
+        <div className="PilsaComponent">
+            <div className="text-container">
+                {currentTextIndex > 0 && (
+                    <div className="arrow-container left-arrow" onClick={handlePrevious}>
+                        <img src={LeftArrow} alt="Left Arrow"/>
                     </div>
+                )}
+                <div className="sample-container">
+                    <div id="sampleText"></div>
                 </div>
-                <div className="user-icon"><img src={ProfileIcon} alt="Profile"/></div>
+                <div className="separator"></div>
+                <div className="input-container">
+                    <textarea id="userInput" rows="10" value={userInputs[currentTextIndex]}
+                              onChange={checkTextMatch}
+                              onCompositionStart={handleCompositionStart}
+                              onCompositionEnd={handleCompositionEnd}></textarea>
+                </div>
+                {currentTextIndex < sampleTexts.length - 1 && (
+                    <div className="arrow-container right-arrow" onClick={handleNext}>
+                        <img src={RightArrow} alt="Right Arrow"/>
+                    </div>
+                )}
             </div>
-            <div className="container">
-                <div className="text-container">
-                    {currentTextIndex > 0 && (
-                        <div className="arrow-container left-arrow" onClick={handlePrevious}>
-                            <img src={LeftArrow} alt="Left Arrow"/>
-                        </div>
-                    )}
-                    <div className="sample-container">
-                        <div id="sampleText"></div>
-                    </div>
-                    <div className="separator"></div>
-                    <div className="input-container">
-                        <textarea id="userInput" rows="10" value={userInputs[currentTextIndex]}
-                                  onChange={checkTextMatch}
-                                  onCompositionStart={handleCompositionStart}
-                                  onCompositionEnd={handleCompositionEnd}></textarea>
-                    </div>
-                    {currentTextIndex < sampleTexts.length - 1 && (
-                        <div className="arrow-container right-arrow" onClick={handleNext}>
-                            <img src={RightArrow} alt="Right Arrow"/>
-                        </div>
-                    )}
-                </div>
-                <div className="progress-container">
-                    <div id="progressBar" className="progress-bar"></div>
-                </div>
-                <div className="button-container">
-                    <button id="saveButton" onClick={handleSave}>저장하기</button>
-                </div>
-                <div className="book-info">
-                    <div className="book-cover"></div>
-                    <div className="book-details">
-                        <h2>책 정보</h2>
-                        <p>“이러이러한 상황에서 위로가 되는 책 그런데 무엇무엇을 걸들인.”</p>
-                        <p>저자: 피터 피팅</p>
-                        <p>장르: 정서적 소설</p>
-                        <p>길이: 3장</p>
-                        <p>❤ 100</p>
-                    </div>
-                </div>
+            <div className="progress-container">
+                <div id="progressBar" className="progress-bar"></div>
+            </div>
+            <div className="button-container">
+                <button id="saveButton" onClick={handleSave}>저장하기</button>
             </div>
         </div>
     );
 };
 
-export default PilsaPage;
+export default PilsaComponent;

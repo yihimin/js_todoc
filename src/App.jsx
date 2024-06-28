@@ -1,8 +1,7 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import PilsaPage from './components/PilsaPage';
-import WritingPage from './pages/WritingPage';
+import PilsaPage from './pages/PilsaPage';
 import MainPage from './pages/MainPage';
 import SearchPage from './pages/SearchPage';
 import SignUpPage from './pages/SignUpPage';

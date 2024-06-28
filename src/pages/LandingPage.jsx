@@ -1,12 +1,13 @@
 import React from 'react';
 import './LandingPage.css';
+import PilsaComponent from '../components/PilsaComponent';
 
 const LandingPage = () => {
     return (
         <div className="landing-page">
             <header className="landing-header">
                 <h1>토독, 좋은 글을 만나는 새로운 방법</h1>
-                <button className="cta-button">가입하고 시작하기</button>
+                <button className="cta-button" onclick="location.href='/signup'">가입하고 시작하기</button>
             </header>
 
             <section className="intro-section">
@@ -20,16 +21,7 @@ const LandingPage = () => {
 
             <section className="testimonials-section">
                 <h2>써보고 결정하세요</h2>
-                <div className="testimonials">
-                    <div className="testimonial">
-                        <p>송수정</p>
-                        <p>어쩌구 저쩌구</p>
-                    </div>
-                    <div className="testimonial">
-                        <p>송수정</p>
-                        <p>토독 덕분에 좋은 글을 많이 접할 수 있게 되었어요. 너무 좋아요!</p>
-                    </div>
-                </div>
+                <PilsaComponent />
             </section>
         </div>
     );
