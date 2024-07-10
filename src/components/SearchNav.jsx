@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import TodocLogo from '../assets/todoc_logo.svg';
 import SearchIcon from '../assets/search_icon.svg';
 import ProfileIcon from '../assets/profile_icon.svg';
@@ -12,7 +13,7 @@ const SearchNav = () => {
 
   return (
     <div className="PilsaPage">
-      <div className="header">
+      <div className="header fixed top-0 left-0 w-full bg-white shadow-md z-50 flex justify-between items-center p-4 h-16">
         <div className="logo">
           <img src={TodocLogo} alt="Todoc Logo"/>
         </div>
@@ -36,6 +37,8 @@ const SearchNav = () => {
             </div>
           )}
         </div>
+      </div>
+      <div className="mt-16">
       </div>
     </div>
   );
