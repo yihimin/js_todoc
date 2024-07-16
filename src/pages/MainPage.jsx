@@ -1,6 +1,8 @@
 import React from 'react';
+import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import './MainPage.css';
 import SearchNav from '../components/SearchNav';
+import 'react-horizontal-scrolling-menu/dist/styles.css';
 
 const MainPage = () => {
     const articles = [
@@ -31,6 +33,24 @@ const MainPage = () => {
             author: "정세랑",
             img: ""
         },
+        {
+            category: "소설",
+            title: "피프티 피플",
+            author: "정세랑",
+            img: ""
+        },
+        {
+            category: "소설",
+            title: "피프티 피플",
+            author: "정세랑",
+            img: ""
+        },
+        {
+            category: "소설",
+            title: "피프티 피플",
+            author: "정세랑",
+            img: ""
+        },
     ];
 
     return (
@@ -39,26 +59,26 @@ const MainPage = () => {
             <div className="main-page">
                 <section className="recommended-articles">
                     <div className="text-stone-950 text-[32px] font-bold">이런 글은 어때요?</div>
-                        <div className="article-list">
-                            {articles.map((article, index) => (
-                                <div className="article-item" key={index}>
-                                    <span className="category">{article.category}</span>
-                                    <h3 className="title">{article.title}</h3>
-                                    <p className="content">{article.content}</p>
-                                    <div className="likes">❤ {article.likes}</div>
-                                </div>
-                            ))}
-                        </div>
+                    <div className="article-list">
+                        {articles.map((article, index) => (
+                            <div className="article-item" key={index}>
+                                <span className="category">{article.category}</span>
+                                <h3 className="title">{article.title}</h3>
+                                <p className="content">{article.content}</p>
+                                <div className="likes">❤ {article.likes}</div>
+                            </div>
+                        ))}
+                    </div>
                 </section>
                 <section className="current-writing">
                     <div className="text-stone-950 text-[32px] font-bold">지금 이런 글을 필사하고 있어요</div>
-                    <div className="writing-list flex gap-4">
+                    <div className="writing-list flex gap-4" style={{ display: 'flex', flexDirection: 'row' }}>
                         {writings.map((writing, index) => (
-                            <div className="w-[212.74px] h-[386.87px] flex flex-col justify-start items-start gap-[5px] key={index}"
+                            <div className="w-[212.74px] h-[386.87px] flex flex-col justify-start items-start gap-[5px]"
                                  key={index}>
                                 <div className="w-[212.74px] h-[386.87px] relative">
                                     <div
-                                        className={`w-[211.74px] h-[309.87px] left-[1px] top-0 absolute bg-rose-300 rounded-[10px]`}/>
+                                        className={`w-[212.74px] h-[309.87px] left-[1px] top-0 absolute bg-rose-300 rounded-[10px]`}/>
                                     <div
                                         className="left-0 top-[325.37px] absolute text-stone-950 text-[22px] font-semibold">
                                         {writing.title}

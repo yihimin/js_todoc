@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37e85f13-3adc-4fce-b090-281f7cd48627" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SearchNav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchNav.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/MainPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MainPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/PilsaPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PilsaPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +98,7 @@
       <workItem from="1720595095021" duration="1141000" />
       <workItem from="1720596677699" duration="2206000" />
       <workItem from="1720598937668" duration="4030000" />
+      <workItem from="1721153625320" duration="9257000" />
     </task>
     <servers />
   </component>
