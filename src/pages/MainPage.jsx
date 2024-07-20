@@ -1,8 +1,8 @@
 import React from 'react';
-import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
+// import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import './MainPage.css';
 import SearchNav from '../components/SearchNav';
-import 'react-horizontal-scrolling-menu/dist/styles.css';
+// import 'react-horizontal-scrolling-menu/dist/styles.css';
 
 const MainPage = () => {
     const articles = [
@@ -56,31 +56,44 @@ const MainPage = () => {
     return (
         <div>
             <SearchNav/>
-            <div className="main-page">
-                <section className="recommended-articles">
-                    <div className="text-stone-950 text-[32px] font-bold">이런 글은 어때요?</div>
-                    <div className="article-list">
+            <div className="main-page w-4/5 mx-auto">
+                <section className="recommended-articles flex flex-col space-y-9">
+                    <div className="text-[32px] font-bold mt-20">이런 글은 어때요?</div>
+                    <div className="article-list flex flex-col space-y-7">
                         {articles.map((article, index) => (
-                            <div className="article-item" key={index}>
-                                <span className="category">{article.category}</span>
-                                <h3 className="title">{article.title}</h3>
-                                <p className="content">{article.content}</p>
-                                <div className="likes">❤ {article.likes}</div>
+                            <div className="h-[132px] relative bg-stone-50 rounded-[10px] border border-zinc-500" key={index}>
+                                <div className="pl-12 pt-4">
+                                <div
+                                    className="px-[13px] py-px bg-zinc-500 rounded-[45px] justify-start items-center gap-2.5 inline-flex">
+                                    <div className="text-stone-50 text-[15px] font-normal">{article.category}
+                                    </div>
+                                </div>
+                                <div
+                                    className="text-stone-950 text-xl font-semibold">{article.title}
+                                </div>
+                                <div
+                                    className="text-zinc-500 text-[15px]">{article.content}
+                                </div>
+                                </div>
+                                <div
+                                    className="top-0 absolute text-right text-zinc-500 text-xl font-medium">❤ {article.likes}
+                                    </div>
+
                             </div>
                         ))}
                     </div>
                 </section>
-                <section className="current-writing">
-                    <div className="text-stone-950 text-[32px] font-bold">지금 이런 글을 필사하고 있어요</div>
-                    <div className="writing-list flex gap-4" style={{ display: 'flex', flexDirection: 'row' }}>
+                <section className="current-writing flex flex-col space-y-9">
+                    <div className="text-[32px] font-bold mt-20">지금 이런 글을 필사하고 있어요</div>
+                    <div className="flex gap-4 flex-row justify-between">
                         {writings.map((writing, index) => (
-                            <div className="w-[212.74px] h-[386.87px] flex flex-col justify-start items-start gap-[5px]"
+                            <div className="flex flex-col justify-start items-start gap-[5px]"
                                  key={index}>
                                 <div className="w-[212.74px] h-[386.87px] relative">
                                     <div
                                         className={`w-[212.74px] h-[309.87px] left-[1px] top-0 absolute bg-rose-300 rounded-[10px]`}/>
                                     <div
-                                        className="left-0 top-[325.37px] absolute text-stone-950 text-[22px] font-semibold">
+                                        className="left-0 top-[325.37px] absolute text-[22px] font-semibold">
                                         {writing.title}
                                     </div>
                                     <div
@@ -93,8 +106,8 @@ const MainPage = () => {
                     </div>
                 </section>
 
-                <section className="editors-pick">
-                    <div className="text-stone-950 text-[32px] font-bold">에디터의 PICK</div>
+                <section className="editors-pick flex flex-col space-y-9">
+                    <div className="text-[32px] font-bold mt-20">에디터의 PICK</div>
                     <div className="pick-list">
                         <div className="pick-item">
                             <p>“어쩌구저쩌구해서저쩌구저쩌구 하면 대단듯이 올라갑니다. 저쩌구저쩌구저쩌구”</p>
