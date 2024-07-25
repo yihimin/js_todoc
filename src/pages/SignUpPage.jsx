@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // useNavigate 훅을 import
 import SignUpNav from "../components/SignupNav";
 
 const SignUpPage = () => {
@@ -11,18 +12,38 @@ const SignUpPage = () => {
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [newsletterAccepted, setNewsletterAccepted] = useState(false);
   const [error, setError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [nicknameMessage, setNicknameMessage] = useState("");
+  const [passwordMessage, setPasswordMessage] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const navigate = useNavigate(); // useNavigate 훅을 사용하여 navigate 함수 생성
 
   const handleSignUp = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email) {
-      setError("이메일을 입력하세요.");
+      setEmailError("이메일을 입력하세요.");
       return;
+    }
+    if (!emailRegex.test(email)) {
+      setEmailError("유효한 이메일 주소를 입력하세요.");
+      return;
+    } else {
+      setEmailError("");
     }
     if (!nickname || nickname.length < 2) {
       setError("닉네임은 2자 이상이어야 합니다.");
       return;
     }
-    if (!password || password.length < 8) {
-      setError("비밀번호는 8자 이상이어야 합니다.");
+    if (
+      !password ||
+      !/^(?=.*[A-Za-z])(?=.*\d|.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(
+        password
+      )
+    ) {
+      setError(
+        "비밀번호는 영문, 숫자, 특수문자 중 2개 조합 8자 이상이어야 합니다."
+      );
       return;
     }
     if (password !== passwordConfirm) {
@@ -42,7 +63,50 @@ const SignUpPage = () => {
       return;
     }
 
+    setError(""); // Clear any previous errors
     alert("가입이 완료되었습니다.");
+    navigate("/login"); // 회원가입이 완료되면 로그인 페이지로 리디렉션
+  };
+
+  const handleNicknameCheck = () => {
+    // Simulate checking nickname in database
+    const existingNicknames = ["user1", "user2"]; // Example existing nicknames
+    if (existingNicknames.includes(nickname)) {
+      setNicknameMessage("중복된 닉네임이 존재합니다.");
+    } else {
+      setNicknameMessage("사용 가능한 닉네임입니다.");
+    }
+  };
+
+  const handlePasswordChange = (e) => {
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+    if (
+      !/^(?=.*[A-Za-z])(?=.*\d|.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(
+        newPassword
+      )
+    ) {
+      setPasswordError(
+        "비밀번호는 영문, 숫자, 특수문자 중 2개 조합 8자 이상이어야 합니다."
+      );
+    } else {
+      setPasswordError("");
+    }
+    if (newPassword === passwordConfirm) {
+      setPasswordMessage("비밀번호가 일치합니다.");
+    } else {
+      setPasswordMessage("비밀번호가 일치하지 않습니다.");
+    }
+  };
+
+  const handlePasswordConfirmChange = (e) => {
+    const newPasswordConfirm = e.target.value;
+    setPasswordConfirm(newPasswordConfirm);
+    if (newPasswordConfirm === password) {
+      setPasswordMessage("비밀번호가 일치합니다.");
+    } else {
+      setPasswordMessage("비밀번호가 일치하지 않습니다.");
+    }
   };
 
   return (
@@ -51,7 +115,6 @@ const SignUpPage = () => {
       <div className="flex justify-center items-center h-screen bg-gray-100">
         <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-md">
           <h2 className="text-2xl font-bold mb-6 text-center">회원가입</h2>
-          {error && <div className="text-red-500 text-sm mb-4">{error}</div>}
           <form onSubmit={(e) => e.preventDefault()}>
             <div className="mb-4">
               <label
@@ -68,6 +131,9 @@ const SignUpPage = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
+              {emailError && (
+                <p className="text-red-500 text-sm mt-1">{emailError}</p>
+              )}
             </div>
             <div className="mb-4 flex items-end">
               <div className="flex-1">
@@ -85,10 +151,14 @@ const SignUpPage = () => {
                   value={nickname}
                   onChange={(e) => setNickname(e.target.value)}
                 />
+                {nicknameMessage && (
+                  <p className="text-sm mt-1">{nicknameMessage}</p>
+                )}
               </div>
               <button
                 className="ml-4 bg-customGreen text-white font-bold px-4 rounded focus:outline-none focus:shadow-outline h-[40px] flex items-center"
                 type="button"
+                onClick={handleNicknameCheck}
               >
                 중복 확인
               </button>
@@ -106,8 +176,11 @@ const SignUpPage = () => {
                 type="password"
                 placeholder="비밀번호"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={handlePasswordChange}
               />
+              {passwordError && (
+                <p className="text-red-500 text-sm mt-1">{passwordError}</p>
+              )}
             </div>
             <div className="mb-4">
               <label
@@ -122,8 +195,11 @@ const SignUpPage = () => {
                 type="password"
                 placeholder="비밀번호 확인"
                 value={passwordConfirm}
-                onChange={(e) => setPasswordConfirm(e.target.value)}
+                onChange={handlePasswordConfirmChange}
               />
+              {passwordMessage && (
+                <p className="text-sm mt-1">{passwordMessage}</p>
+              )}
             </div>
             <div className="mb-4 flex items-end">
               <div className="flex-1">
@@ -193,6 +269,7 @@ const SignUpPage = () => {
                 <span className="text-sm">(선택) 뉴스레터 수신 동의</span>
               </label>
             </div>
+            {error && <div className="text-red-500 text-sm mb-4">{error}</div>}
             <div className="flex items-center justify-center">
               <button
                 className="bg-customGray hover:bg-customGreen text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
