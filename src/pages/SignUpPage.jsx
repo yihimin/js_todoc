@@ -1,5 +1,5 @@
-import React from 'react';
-import SignUpNav from '../components/SignupNav';
+import React from "react";
+import SignUpNav from "../components/SignupNav";
 
 const SignUpPage = () => {
   return (
@@ -10,7 +10,10 @@ const SignUpPage = () => {
           <h2 className="text-2xl font-bold mb-6 text-center">회원가입</h2>
           <form>
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="email"
+              >
                 이메일
               </label>
               <input
@@ -20,9 +23,12 @@ const SignUpPage = () => {
                 placeholder="이메일"
               />
             </div>
-            <div className="mb-4 flex">
+            <div className="mb-4 flex items-end">
               <div className="flex-1">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="nickname">
+                <label
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                  htmlFor="nickname"
+                >
                   닉네임(2자 이상)
                 </label>
                 <input
@@ -33,14 +39,17 @@ const SignUpPage = () => {
                 />
               </div>
               <button
-                className="ml-4 bg-customGreen text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="ml-4 bg-customGreen text-white font-bold px-4 rounded focus:outline-none focus:shadow-outline h-[40px] flex items-center"
                 type="button"
               >
                 중복 확인
               </button>
             </div>
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="password"
+              >
                 비밀번호
               </label>
               <input
@@ -51,7 +60,10 @@ const SignUpPage = () => {
               />
             </div>
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="passwordConfirm">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="passwordConfirm"
+              >
                 비밀번호 확인
               </label>
               <input
@@ -61,9 +73,12 @@ const SignUpPage = () => {
                 placeholder="비밀번호 확인"
               />
             </div>
-            <div className="mb-4 flex">
+            <div className="mb-4 flex items-end">
               <div className="flex-1">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">
+                <label
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                  htmlFor="phone"
+                >
                   휴대폰 번호
                 </label>
                 <input
@@ -80,9 +95,12 @@ const SignUpPage = () => {
                 인증 받기
               </button>
             </div>
-            <div className="mb-4 flex">
+            <div className="mb-4 flex items-end">
               <div className="flex-1">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="verificationCode">
+                <label
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                  htmlFor="verificationCode"
+                >
                   인증 번호
                 </label>
                 <input
@@ -101,17 +119,11 @@ const SignUpPage = () => {
             </div>
             <div className="mb-4">
               <label className="flex items-center">
-                <input
-                  className="mr-2 leading-tight"
-                  type="checkbox"
-                />
+                <input className="mr-2 leading-tight" type="checkbox" />
                 <span className="text-sm">(필수) 이용약관 동의</span>
               </label>
               <label className="flex items-center mt-2">
-                <input
-                  className="mr-2 leading-tight"
-                  type="checkbox"
-                />
+                <input className="mr-2 leading-tight" type="checkbox" />
                 <span className="text-sm">(선택) 뉴스레터 수신 동의</span>
               </label>
             </div>
@@ -128,6 +140,6 @@ const SignUpPage = () => {
       </div>
     </div>
   );
-}
+};
 
 export default SignUpPage;
