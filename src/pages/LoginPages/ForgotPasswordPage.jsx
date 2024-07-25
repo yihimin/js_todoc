@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SignUpNav from "../../components/SignupNav";
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
@@ -36,39 +37,46 @@ const ForgotPasswordPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">비밀번호 재설정</h2>
-        <p className="mb-4 text-center">
-          가입하신 이메일 주소를 입력해주세요. 이메일 주소로 비밀번호 재설정
-          메일이 전송됩니다.
-        </p>
-        <form onSubmit={handlePasswordReset}>
-          <div className="mb-4">
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="email"
-              type="email"
-              placeholder="이메일"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
-          </div>
-          <div className="flex items-center justify-center">
-            <button
-              className="bg-customGray hover:bg-customGreen text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="submit"
-            >
-              이메일 전송하기
-            </button>
-          </div>
-          {message && (
-            <p className="text-green-500 text-sm mt-4 text-center">{message}</p>
-          )}
-        </form>
+    <>
+      <SignUpNav />
+      <div className="flex justify-center items-center h-screen bg-gray-100">
+        <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-md">
+          <h2 className="text-2xl font-bold mb-6 text-center">
+            비밀번호 재설정
+          </h2>
+          <p className="mb-4 text-center">
+            가입하신 이메일 주소를 입력해주세요. 이메일 주소로 비밀번호 재설정
+            메일이 전송됩니다.
+          </p>
+          <form onSubmit={handlePasswordReset}>
+            <div className="mb-4">
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="email"
+                type="email"
+                placeholder="이메일"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+            </div>
+            <div className="flex items-center justify-center">
+              <button
+                className="bg-customGray hover:bg-customGreen text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="submit"
+              >
+                이메일 전송하기
+              </button>
+            </div>
+            {message && (
+              <p className="text-green-500 text-sm mt-4 text-center">
+                {message}
+              </p>
+            )}
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
