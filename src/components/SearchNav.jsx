@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import TodocLogo from "../assets/todoc_logo.svg";
 import SearchIcon from "../assets/search_icon.svg";
 import ProfileIcon from "../assets/profile_icon.svg";
@@ -11,10 +12,10 @@ const SearchNav = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full bg-white shadow-md z-50 flex justify-between items-center p-4 h-16">
-      <div className="logo">
-        <img src={TodocLogo} alt="Todoc Logo" />
-      </div>
+    <header className="w-full h-[72px] px-8 py-4 bg-stone-50 shadow flex justify-between items-center">
+      <Link to="/main" className="flex items-center">
+        <img src={TodocLogo} alt="Todoc Logo" className="h-8" />
+      </Link>
       <div className="relative flex-1 max-w-md mx-4">
         <input
           type="text"
@@ -52,7 +53,7 @@ const SearchNav = () => {
         )}
       </div>
       <div className="mt-16"></div>
-    </div>
+    </header>
   );
 };
 
