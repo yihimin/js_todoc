@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PilsaPage from "./pages/PilsaPage";
 import MainPage from "./pages/MainPage";
 import SearchPage from "./pages/SearchPage";
+import SignUpLayout from "./layouts/SignUpLayout";
 import SignUpPage from "./pages/SignUpPage";
 import MyPage from "./pages/MyPages/MyPage";
 import PaymentInfoPage from "./pages/MyPages/PaymentInfoPage";
@@ -23,9 +24,23 @@ function App() {
         <Route path="/pilsa" element={<PilsaPage />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/search" element={<SearchPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
+        <Route
+          path="/signup"
+          element={
+            <SignUpLayout>
+              <SignUpPage />
+            </SignUpLayout>
+          }
+        />
         <Route path="/mypage" element={<MyPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/login"
+          element={
+            <SignUpLayout>
+              <LoginPage />
+            </SignUpLayout>
+          }
+        />
         <Route path="/payment" element={<PaymentPage />} />
         <Route exact path="/" element={<LandingPage />} />
         {/* Sub Pages */}
@@ -40,7 +55,14 @@ function App() {
           path="/mypage/membership-cancel"
           element={<MembershipCancelPage />}
         />
-        <Route path="/password-reset" element={<ForgotPasswordPage />} />
+        <Route
+          path="/password-reset"
+          element={
+            <SignUpLayout>
+              <ForgotPasswordPage />
+            </SignUpLayout>
+          }
+        />
       </Routes>
     </Router>
   );

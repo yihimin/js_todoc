@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import SignUpNav from "../../components/SignupNav";
 import { useNavigate } from "react-router-dom";
+import users from "../../data/users.json"; // 사용자 데이터를 가져옵니다.
+import bcrypt from "bcryptjs"; // bcryptjs 라이브러리를 사용합니다.
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -11,16 +13,22 @@ const LoginPage = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // 예시 사용자 데이터
-    const userData = {
-      email: "test@example.com",
-      password: "password123",
-    };
+    // 사용자가 입력한 이메일과 일치하는 사용자 데이터 찾기
+    const user = users.find((user) => user.email === email);
 
-    // 이메일과 비밀번호 유효성 검사
-    if (email === userData.email && password === userData.password) {
-      alert("로그인 성공");
-      // 로그인 성공 후 리디렉션 등 원하는 동작을 추가할 수 있습니다.
+    if (user) {
+      // 비밀번호 비교
+      bcrypt.compare(password, user.password, (err, isMatch) => {
+        if (err) {
+          setError("로그인 중 오류가 발생했습니다.");
+        } else if (isMatch) {
+          alert("로그인 성공");
+          // 로그인 성공 후 리디렉션 등 원하는 동작을 추가할 수 있습니다.
+          navigate("/"); // 예시: 메인 페이지로 리디렉션
+        } else {
+          setError("이메일 또는 비밀번호가 잘못되었습니다.");
+        }
+      });
     } else {
       setError("이메일 또는 비밀번호가 잘못되었습니다.");
     }
@@ -28,7 +36,6 @@ const LoginPage = () => {
 
   return (
     <div>
-      <SignUpNav />
       <div className="flex justify-center items-center h-screen bg-gray-100">
         <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-md">
           <h2 className="text-2xl font-bold mb-6 text-center">로그인</h2>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SignUpNav from "../../components/SignupNav";
+import users from "../../data/users.json"; // 목데이터 파일을 가져옵니다.
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
@@ -21,7 +22,7 @@ const ForgotPasswordPage = () => {
     }
 
     // 예시 사용자 데이터
-    const existingEmails = ["test@example.com", "user@example.com"]; // Example existing emails
+    const existingEmails = users.map((user) => user.email); // Example existing emails
 
     if (!existingEmails.includes(email)) {
       setError("가입한 적 없는 이메일입니다.");
@@ -38,15 +39,13 @@ const ForgotPasswordPage = () => {
 
   return (
     <>
-      <SignUpNav />
       <div className="flex justify-center items-center h-screen bg-gray-100">
-        <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-md">
-          <h2 className="text-2xl font-bold mb-6 text-center">
-            비밀번호 재설정
-          </h2>
-          <p className="mb-4 text-center">
-            가입하신 이메일 주소를 입력해주세요. 이메일 주소로 비밀번호 재설정
-            메일이 전송됩니다.
+        <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-md text-center">
+          <h2 className="text-2xl font-bold mb-6">비밀번호 재설정</h2>
+          <p className="mb-4">
+            가입하신 이메일 주소를 입력해주세요.
+            <br />
+            이메일 주소로 비밀번호 재설정 메일이 발송됩니다.
           </p>
           <form onSubmit={handlePasswordReset}>
             <div className="mb-4">

@@ -1,0 +1,20 @@
+[
+  {
+    "email": "test@example.com",
+    "nickname": "dd",
+    "password": "$2b$10$YqJ0dR9V4GVaI/VtF2BFf.C8jh8ZWJ4QFfyk1eNf7/hc5rZP1A2yy",
+    "phone": "01012345678"
+  },
+  {
+    "email": "user1@example.com",
+    "nickname": "userone",
+    "password": "$2b$10$1aOvJfG6K9Uz8XfIvx.yTuIQD/TkGkG2gFe.2O2UPKBGG9ak5eQ3W",
+    "phone": "01098765432"
+  },
+  {
+    "email": "user2@example.com",
+    "nickname": "usertwo",
+    "password": "$2b$10$2Ux.DQG7k9IUFcW6v2NuVuIuSx5NUa/uQ2.Q5iHTPcv0g9iJINQCa",
+    "phone": "01056781234"
+  }
+]

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // useNavigate 훅을 import
+import { useNavigate } from "react-router-dom";
 import SignUpNav from "../components/SignupNav";
+import users from "../data/users.json"; // 사용자 데이터를 가져옵니다.
+import bcrypt from "bcryptjs";
 
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
@@ -17,7 +19,7 @@ const SignUpPage = () => {
   const [passwordMessage, setPasswordMessage] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  const navigate = useNavigate(); // useNavigate 훅을 사용하여 navigate 함수 생성
+  const navigate = useNavigate();
 
   const handleSignUp = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -63,16 +65,32 @@ const SignUpPage = () => {
       return;
     }
 
+    // 여기에서 목데이터를 사용하여 중복 이메일, 닉네임 등을 체크할 수 있습니다.
+    if (users.some((user) => user.email === email)) {
+      setError("이미 사용 중인 이메일입니다.");
+      return;
+    }
+    if (users.some((user) => user.nickname === nickname)) {
+      setError("이미 사용 중인 닉네임입니다.");
+      return;
+    }
+
+    // 사용자 데이터를 목데이터에 추가 (실제 구현에서는 서버로 전송)
+    users.push({
+      email,
+      nickname,
+      password: bcrypt.hashSync(password, 10),
+      phone,
+    });
+
     setError(""); // Clear any previous errors
     alert("가입이 완료되었습니다.");
-    navigate("/login"); // 회원가입이 완료되면 로그인 페이지로 리디렉션
+    navigate("/login");
   };
 
   const handleNicknameCheck = () => {
-    // Simulate checking nickname in database
-    const existingNicknames = ["user1", "user2"]; // Example existing nicknames
-    if (existingNicknames.includes(nickname)) {
-      setNicknameMessage("중복된 닉네임이 존재합니다.");
+    if (users.some((user) => user.nickname === nickname)) {
+      setNicknameMessage("이미 사용 중인 닉네임입니다.");
     } else {
       setNicknameMessage("사용 가능한 닉네임입니다.");
     }
@@ -111,7 +129,6 @@ const SignUpPage = () => {
 
   return (
     <div>
-      <SignUpNav />
       <div className="flex justify-center items-center h-screen bg-gray-100">
         <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-md">
           <h2 className="text-2xl font-bold mb-6 text-center">회원가입</h2>
@@ -152,7 +169,7 @@ const SignUpPage = () => {
                   onChange={(e) => setNickname(e.target.value)}
                 />
                 {nicknameMessage && (
-                  <p className="text-sm mt-1">{nicknameMessage}</p>
+                  <p className="text-red-500 text-sm mt-1">{nicknameMessage}</p>
                 )}
               </div>
               <button
@@ -174,7 +191,7 @@ const SignUpPage = () => {
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="password"
                 type="password"
-                placeholder="비밀번호"
+                placeholder="비밀번호 (영문, 숫자, 특수문자 중 2개 조합 8자 이상)"
                 value={password}
                 onChange={handlePasswordChange}
               />
@@ -198,7 +215,7 @@ const SignUpPage = () => {
                 onChange={handlePasswordConfirmChange}
               />
               {passwordMessage && (
-                <p className="text-sm mt-1">{passwordMessage}</p>
+                <p className="text-red-500 text-sm mt-1">{passwordMessage}</p>
               )}
             </div>
             <div className="mb-4 flex items-end">
@@ -269,7 +286,6 @@ const SignUpPage = () => {
                 <span className="text-sm">(선택) 뉴스레터 수신 동의</span>
               </label>
             </div>
-            {error && <div className="text-red-500 text-sm mb-4">{error}</div>}
             <div className="flex items-center justify-center">
               <button
                 className="bg-customGray hover:bg-customGreen text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
