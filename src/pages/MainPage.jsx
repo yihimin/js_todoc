@@ -78,11 +78,9 @@ const MainPage = () => {
                         {articles.map((article, index) => (
                             <div className="h-[132px] relative bg-stone-50 rounded-[10px] border border-zinc-500"
                                  key={index}>
-                                <div className="pl-12 pt-4">
+                                <div className="h-full pl-12 flex flex-col items-start justify-center">
                                     <div
-                                        className="px-[13px] py-px bg-zinc-500 rounded-[45px] justify-start items-center gap-2.5 inline-flex">
-                                        <div className="text-stone-50 text-[15px] font-normal">{article.category}
-                                        </div>
+                                        className="inline-block px-[13px] py-px bg-zinc-500 rounded-[45px] text-stone-50 text-[15px] font-normal">{article.category}
                                     </div>
                                     <div
                                         className="text-stone-950 text-xl font-semibold">{article.title}
@@ -90,20 +88,19 @@ const MainPage = () => {
                                     <div
                                         className="text-zinc-500 text-[15px]">{article.content}
                                     </div>
+                                    <div
+                                        className="absolute right-14 top-1/2 transform -translate-y-1/2 text-right text-zinc-500 text-xl font-medium">♡ {article.likes}
+                                    </div>
                                 </div>
-                                <div
-                                    className="absolute right-14 top-1/2 transform -translate-y-1/2 text-right text-zinc-500 text-xl font-medium">♡ {article.likes}
-                                </div>
-
                             </div>
                         ))}
                     </div>
                 </section>
                 <section className="current-writing flex flex-col space-y-9">
-                    <div className="text-[32px] font-bold mt-20">지금 이런 글을 필사하고 있어요</div>
-                    <div className="flex gap-4 flex-row justify-between">
+                <div className="text-[32px] font-bold mt-20">지금 이런 글을 필사하고 있어요</div>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-4 flex-row justify-between">
                         {writings.map((writing, index) => (
-                            <div className="flex flex-col justify-start items-start gap-[5px]"
+                            <div className="flex-col items-start gap-[5px]"
                                  key={index}>
                                 <div className="w-[212.74px] h-[386.87px] relative">
                                     <div

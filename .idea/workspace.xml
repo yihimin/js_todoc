@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="37e85f13-3adc-4fce-b090-281f7cd48627" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/MainPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MainPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +25,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -99,6 +100,8 @@
       <workItem from="1720598937668" duration="4030000" />
       <workItem from="1721153625320" duration="9950000" />
       <workItem from="1721596634523" duration="5195000" />
+      <workItem from="1721763053877" duration="1229000" />
+      <workItem from="1722347214302" duration="4387000" />
     </task>
     <servers />
   </component>
