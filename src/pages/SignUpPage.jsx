@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SignUpNav from "../components/SignupNav";
-import users from "../data/users.json"; // 사용자 데이터를 가져옵니다.
+import users from "../data/users.json";
 import bcrypt from "bcryptjs";
 
 const SignUpPage = () => {
@@ -13,7 +12,7 @@ const SignUpPage = () => {
   const [verificationCode, setVerificationCode] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [newsletterAccepted, setNewsletterAccepted] = useState(false);
-  const [error, setError] = useState("");
+  const [, setError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [nicknameMessage, setNicknameMessage] = useState("");
   const [passwordMessage, setPasswordMessage] = useState("");
