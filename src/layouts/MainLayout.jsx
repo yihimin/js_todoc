@@ -6,7 +6,6 @@ import SearchNav from "../components/SearchNav";
 const MainLayout = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      <SearchNav />
       <div className="flex-grow">
         <Outlet />
       </div>
