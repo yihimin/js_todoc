@@ -1,14 +1,15 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
+import SearchNav from "../components/SearchNav";
 
 const MainLayout = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="bg-white shadow"></header>
-      <main className="flex-grow">
+      <SearchNav />
+      <div className="flex-grow">
         <Outlet />
-      </main>
+      </div>
       <Footer />
     </div>
   );

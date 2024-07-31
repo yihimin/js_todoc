@@ -27,9 +27,23 @@ function App() {
           <Route path="pilsa" element={<PilsaPage />} />
           <Route path="main" element={<MainPage />} />
           <Route path="search" element={<SearchPage />} />
-          <Route path="signup" element={<SignUpPage />} />
+          <Route
+            path="signup"
+            element={
+              <SignUpLayout>
+                <SignUpPage />
+              </SignUpLayout>
+            }
+          />
           <Route path="mypage" element={<MyPage />} />
-          <Route path="login" element={<LoginPage />} />
+          <Route
+            path="login"
+            element={
+              <SignUpLayout>
+                <LoginPage />
+              </SignUpLayout>
+            }
+          />
           <Route path="payment" element={<PaymentPage />} />
           <Route path="mypage/update-info" element={<UpdateInfoPage />} />
           <Route path="mypage/payment-info" element={<PaymentInfoPage />} />
