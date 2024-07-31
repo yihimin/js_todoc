@@ -80,7 +80,7 @@ const MainPage = () => {
                                 <div className="h-full pl-12 flex flex-col items-start justify-center">
                                     <div className="pr-[140px]">
                                     <div
-                                        className="inline-block px-[13px] py-px bg-zinc-500 rounded-[45px] text-stone-50 text-[15px] font-normal">{article.category}
+                                        className="inline-block px-[13px] py-px bg-[#8A8A8A] rounded-[45px] text-stone-50 text-[15px] font-normal">{article.category}
                                     </div>
                                     <div
                                         className="text-stone-950 text-xl font-semibold">{article.title}
