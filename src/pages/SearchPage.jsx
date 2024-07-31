@@ -57,13 +57,13 @@ const SearchPage = () => {
                                 alt="DownIcon"
                                 onClick={handleDownClick}/>
                             {isDownClicked && (
-                                <ul className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
+                                <ul className="absolute bg-white border border-gray-200 rounded-md shadow-lg">
                                     {[
-                                        "마이페이지",
-                                        "진행중 필사",
-                                        "완료된 필사",
-                                        "스크랩",
-                                        "메모한 글",
+                                        "전체",
+                                        "소설",
+                                        "인문학",
+                                        "칼럼",
+                                        "시",
                                     ].map((item, index) => (
                                         <li
                                             key={index}
