@@ -35,8 +35,8 @@ const LoginPage = () => {
 
   return (
     <div>
-      <div className="flex justify-center items-center h-screen bg-gray-100">
-        <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-md">
+      <div className="flex justify-center items-center h-screen">
+        <div className="bg-white p-10 rounded-lg shadow w-full max-w-md">
           <h2 className="text-2xl font-bold mb-6 text-center">로그인</h2>
           <form onSubmit={handleLogin}>
             <div className="mb-4">

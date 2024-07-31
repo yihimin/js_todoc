@@ -20,8 +20,8 @@ const PaymentInfoPage = () => {
   return (
     <>
       <SearchNav />
-      <div className="flex justify-center items-center h-screen bg-gray-100">
-        <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-md text-center">
+      <div className="flex justify-center items-center h-screen">
+        <div className="bg-white p-10 rounded-lg shadow w-full max-w-md text-center">
           <h2 className="text-xl font-bold mb-6">
             다음 결제일은{" "}
             <span className="text-customGreen">2024년 03월 26일</span>이에요.

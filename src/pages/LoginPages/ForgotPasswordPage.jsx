@@ -38,8 +38,8 @@ const ForgotPasswordPage = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center h-screen bg-gray-100">
-        <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-md text-center">
+      <div className="flex justify-center items-center h-screen">
+        <div className="bg-white p-10 rounded-lg shadow w-full max-w-md text-center">
           <h2 className="text-2xl font-bold mb-6">비밀번호 재설정</h2>
           <p className="mb-4">
             가입하신 이메일 주소를 입력해주세요.
