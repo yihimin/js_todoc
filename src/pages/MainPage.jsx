@@ -1,6 +1,5 @@
 import React from 'react';
 // import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
-import './MainPage.css';
 import SearchNav from '../components/SearchNav';
 // import 'react-horizontal-scrolling-menu/dist/styles.css';
 
@@ -79,6 +78,7 @@ const MainPage = () => {
                             <div className="h-[132px] relative bg-stone-50 rounded-[10px] border border-zinc-500"
                                  key={index}>
                                 <div className="h-full pl-12 flex flex-col items-start justify-center">
+                                    <div className="pr-[140px]">
                                     <div
                                         className="inline-block px-[13px] py-px bg-zinc-500 rounded-[45px] text-stone-50 text-[15px] font-normal">{article.category}
                                     </div>
@@ -87,6 +87,7 @@ const MainPage = () => {
                                     </div>
                                     <div
                                         className="text-zinc-500 text-[15px]">{article.content}
+                                    </div>
                                     </div>
                                     <div
                                         className="absolute right-14 top-1/2 transform -translate-y-1/2 text-right text-zinc-500 text-xl font-medium">♡ {article.likes}
