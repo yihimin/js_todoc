@@ -16,53 +16,34 @@ import MembershipCancelPage from "./pages/PaymentPages/MembershipCancelPage";
 import PaymentHistoryPage from "./pages/PaymentPages/PaymentHistoryPage";
 import PaymentMethodPage from "./pages/PaymentPages/PaymentMethodPage";
 import LandingPage from "./pages/LandingPage";
+import MainLayout from "./layouts/MainLayout";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/pilsa" element={<PilsaPage />} />
-        <Route path="/main" element={<MainPage />} />
-        <Route path="/search" element={<SearchPage />} />
-        <Route
-          path="/signup"
-          element={
-            <SignUpLayout>
-              <SignUpPage />
-            </SignUpLayout>
-          }
-        />
-        <Route path="/mypage" element={<MyPage />} />
-        <Route
-          path="/login"
-          element={
-            <SignUpLayout>
-              <LoginPage />
-            </SignUpLayout>
-          }
-        />
-        <Route path="/payment" element={<PaymentPage />} />
-        <Route exact path="/" element={<LandingPage />} />
-        {/* Sub Pages */}
-        <Route path="/mypage/update-info" element={<UpdateInfoPage />} />
-        <Route path="/mypage/payment-info" element={<PaymentInfoPage />} />
-        <Route
-          path="/mypage/payment-history"
-          element={<PaymentHistoryPage />}
-        />
-        <Route path="/mypage/payment-method" element={<PaymentMethodPage />} />
-        <Route
-          path="/mypage/membership-cancel"
-          element={<MembershipCancelPage />}
-        />
-        <Route
-          path="/password-reset"
-          element={
-            <SignUpLayout>
-              <ForgotPasswordPage />
-            </SignUpLayout>
-          }
-        />
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<LandingPage />} />
+          <Route path="pilsa" element={<PilsaPage />} />
+          <Route path="main" element={<MainPage />} />
+          <Route path="search" element={<SearchPage />} />
+          <Route path="signup" element={<SignUpPage />} />
+          <Route path="mypage" element={<MyPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="payment" element={<PaymentPage />} />
+          <Route path="mypage/update-info" element={<UpdateInfoPage />} />
+          <Route path="mypage/payment-info" element={<PaymentInfoPage />} />
+          <Route
+            path="mypage/payment-history"
+            element={<PaymentHistoryPage />}
+          />
+          <Route path="mypage/payment-method" element={<PaymentMethodPage />} />
+          <Route
+            path="mypage/membership-cancel"
+            element={<MembershipCancelPage />}
+          />
+          <Route path="password-reset" element={<ForgotPasswordPage />} />
+        </Route>
       </Routes>
     </Router>
   );
