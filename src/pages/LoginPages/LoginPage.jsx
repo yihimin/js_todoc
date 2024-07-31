@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import SignUpNav from "../../components/SignupNav";
 import { useNavigate } from "react-router-dom";
 import users from "../../data/users.json"; // 사용자 데이터를 가져옵니다.
 import bcrypt from "bcryptjs"; // bcryptjs 라이브러리를 사용합니다.

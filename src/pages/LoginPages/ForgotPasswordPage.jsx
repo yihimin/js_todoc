@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import SignUpNav from "../../components/SignupNav";
 import users from "../../data/users.json"; // 목데이터 파일을 가져옵니다.
 
 const ForgotPasswordPage = () => {
