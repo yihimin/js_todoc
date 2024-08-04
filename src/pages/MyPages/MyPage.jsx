@@ -15,7 +15,7 @@ const MyPage = () => {
         <img src={ProfileImg} alt="ProfileImg" className="mt-[140.38px]" />
         <img
           src={SettingBG}
-          alt="ProfileImg"
+          alt="SettingImg"
           className="absolute mt-[266.87px] ml-[140.75px]"
         />
       </div>
