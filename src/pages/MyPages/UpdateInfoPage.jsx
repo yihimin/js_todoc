@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import SearchNav from '../../components/SearchNav';
 import ProfileImg from "../../assets/profile_img2.svg";
-import ChangeImg from "../../assets/setting_bg.svg";
+import ChangeImg from "../../assets/change_bg.svg";
 
 const UpdateInfoPage = () => {
 
@@ -13,13 +13,14 @@ const UpdateInfoPage = () => {
                     <div className="text-black text-lg font-bold">이메일</div>
                     <div className="text-black text-[15px] font-normal mt-[16px]">xxxxxx@gmail.com</div>
                     <div className="text-black text-lg font-bold mt-[36.21px]">프로필 이미지</div>
-                        <div className="flex flex-col justify-center items-start relative">
-                            <img src={ProfileImg} alt="ProfileImg" className="mt-[16px]"/>
+                        <button className="flex flex-col justify-center items-start relative mt-[16px]">
+                            <img src={ProfileImg} alt="ProfileImg"/>
                             <img
                                 src={ChangeImg}
                                 alt="ChangeImg"
-                                className="absolute mt-[266.87px] ml-[140.75px]"/>
-                        </div>
+                                className="absolute mt-[97.92px] ml-[107.93px]"/>
+                        </button>
+                    <button className="text-sm text-[#b0b0b0] underline mt-[2.47px] ml-[153.07px]">비밀번호 변경</button>
                     <div className="text-black text-lg font-bold mt-[13.74px]">닉네임</div>
                     <div className="flex flex-row space-x-4 mt-[16px]">
                         <textarea
@@ -39,7 +40,7 @@ const UpdateInfoPage = () => {
                         </button>
                     </div>
                     <button
-                        className="w-[374px] h-[55px] rounded-[10px] bg-[#b0b0b0] text-[#f9f9f9] text-xl font-bold mt-[24.34px]">저장하기
+                        className="w-[374px] h-[55px] rounded-[10px] bg-[#b0b0b0] hover:bg-[#869F58] text-[#f9f9f9] text-xl font-bold mt-[24.34px]">저장하기
                     </button>
                     <div className="flex justify-end">
                         <button className="text-sm text-[#b0b0b0] underline mt-[17.87px]">
