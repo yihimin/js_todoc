@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import SearchNav from "../../components/SearchNav";
 import CheckIcon from "../../assets/check_icon.svg";
 import HeartIcon from "../../assets/heart_icon.svg";
@@ -8,14 +9,23 @@ import ProfileImg from "../../assets/profile_img.svg";
 import SettingBG from "../../assets/setting_bg.svg";
 
 const MyPage = () => {
+  const navigate = useNavigate();
+
+  const handleUpdateInfo = () => {
+    navigate('/mypage/update-info');
+  }
+
   return (
     <div>
       <SearchNav />
+      <div className="h-screen">
       <div className="flex flex-col justify-center items-center relative">
         <img src={ProfileImg} alt="ProfileImg" className="mt-[140.38px]" />
         <img
           src={SettingBG}
           alt="SettingImg"
+          style={{ cursor: 'pointer' }}
+          onClick={handleUpdateInfo}
           className="absolute mt-[266.87px] ml-[140.75px]"
         />
       </div>
@@ -62,6 +72,7 @@ const MyPage = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

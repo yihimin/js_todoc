@@ -10,9 +10,15 @@ const UpdateInfoPage = () => {
             <SearchNav/>
             <div className="h-screen flex flex-col justify-center items-center">
                 <div className="w-[374px]">
-                    <div className="text-black text-lg font-bold">이메일</div>
-                    <div className="text-black text-[15px] font-normal mt-[16px]">xxxxxx@gmail.com</div>
-                    <div className="text-black text-lg font-bold mt-[36.21px]">프로필 이미지</div>
+                    <div className="text-black text-lg font-bold">
+                        <p>이메일</p>
+                    </div>
+                    <div className="text-black text-[15px] font-normal mt-[16px]">
+                        <p>xxxxxx@gmail.com</p>
+                    </div>
+                    <div className="text-black text-lg font-bold mt-[36.21px]">
+                        <p>프로필 이미지</p>
+                        </div>
                         <button className="flex flex-col justify-center items-start relative mt-[16px]">
                             <img src={ProfileImg} alt="ProfileImg"/>
                             <img
@@ -20,23 +26,32 @@ const UpdateInfoPage = () => {
                                 alt="ChangeImg"
                                 className="absolute mt-[97.92px] ml-[107.93px]"/>
                         </button>
-                    <button className="text-sm text-[#b0b0b0] underline mt-[2.47px] ml-[153.07px]">비밀번호 변경</button>
-                    <div className="text-black text-lg font-bold mt-[13.74px]">닉네임</div>
+                    <button className="text-sm text-[#b0b0b0] underline mt-[2.47px] ml-[153.07px]">
+                        <p>비밀번호 변경</p>
+                        </button>
+                    <div className="text-black text-lg font-bold mt-[13.74px]">
+                        <p>닉네임</p>
+                    </div>
                     <div className="flex flex-row space-x-4 mt-[16px]">
-                        <textarea
-                            className="w-[256px] h-[55px] rounded-[10px] border border-[#8a8a8a] text-[#8a8a8a] text-sm flex justify-between items-center p-[15px_16px]">
-                            닉네임(2자 이상)
-                        </textarea>
+                        <input
+                            id="nickname"
+                            type="text"
+                            className="w-[256px] h-[55px] rounded-[10px] border border-[#8a8a8a] text-[#8a8a8a] text-sm flex justify-between items-center p-[15px_16px]"
+                            placeholder="닉네임(2자 이상)">
+                        </input>
                         <button className="w-[102px] h-[55px] rounded-[10px] bg-[#869e57] text-white text-[15px]">
                             중복 확인
                         </button>
                     </div>
-                    <div className="text-sm text-[#16b94c] mt-[8px]">사용 가능한 닉네임입니다.</div> {/* 상황별 메세지 다르게 or hidden */}
+                    <div className="text-sm text-[#16b94c] mt-[8px]">
+                        <p>사용 가능한 닉네임입니다.</p>
+                    </div> {/* 상황별 메세지 다르게 or hidden */}
                     <div>
-                        <div className="text-black text-lg font-bold mt-[32.67px]">비밀번호</div>
+                        <div className="text-black text-lg font-bold mt-[32.67px]">
+                            <p>비밀번호</p>
+                        </div>
                         <button
-                            className="w-[102px] h-[55px] rounded-[10px] border border-[#8a8a8a] text-[#8a8a8a] text-[15px] mt-[16px]">변경
-                            하기
+                            className="w-[102px] h-[55px] rounded-[10px] border border-[#8a8a8a] text-[#8a8a8a] text-[15px] mt-[16px]">변경 하기
                         </button>
                     </div>
                     <button
