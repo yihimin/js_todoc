@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 // import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import SearchNav from '../components/SearchNav';
 // import 'react-horizontal-scrolling-menu/dist/styles.css';
@@ -63,6 +63,36 @@ const MainPage = () => {
             author: "정세랑",
             img: BookSign
         },
+        {
+            category: "소설",
+            title: "구의 증명",
+            author: "정세랑",
+            img: BookSign
+        },
+        {
+            category: "소설",
+            title: "구의 증명",
+            author: "정세랑",
+            img: BookSign
+        },
+        {
+            category: "소설",
+            title: "구의 증명",
+            author: "정세랑",
+            img: BookSign
+        },
+        {
+            category: "소설",
+            title: "구의 증명",
+            author: "정세랑",
+            img: BookSign
+        },
+        {
+            category: "소설",
+            title: "구의 증명",
+            author: "정세랑",
+            img: BookSign
+        },
     ];
 
     const picks = [
@@ -79,6 +109,30 @@ const MainPage = () => {
             img: EditorsPick
         },
     ];
+
+    const itemsPerPage = 5;
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = writings.slice(indexOfFirstItem, indexOfLastItem);
+
+    const totalPages = Math.ceil(writings.length / itemsPerPage);
+
+    const handleNextPage = () => {
+        if (currentPage < Math.ceil(writings.length / itemsPerPage)) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const handlePrevPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
+
+    const prevButtonDisabled = currentPage === 1;
+    const nextButtonDisabled = currentPage === totalPages;
 
     return (
     <div>
@@ -120,18 +174,24 @@ const MainPage = () => {
                         <div className="text-[32px] font-bold">지금 이런 글을 필사하고 있어요</div>
                         <div className="h-[46px] flex flex-row">
                             <img
-                                src={LeftButtonGray}
-                                alt="LeftButtonGray"
+                                src={prevButtonDisabled ? LeftButtonGray : LeftButtonGreen}
+                                alt="Previous"
+                                style={{ cursor: 'pointer' }}
+                                onClick={handlePrevPage}
+                                disabled={currentPage === 1}
                                 className="mr-[32px]"/>
                             <img
-                                src={RightButtonGreen}
-                                alt="RightButtonGreen"
+                                src={nextButtonDisabled ? RightButtonGray : RightButtonGreen}
+                                alt="Next"
+                                style={{ cursor: 'pointer' }}
+                                onClick={handleNextPage}
+                                disabled={currentPage === Math.ceil(writings.length / itemsPerPage)}
                                 className=""/>
                         </div>
                     </div>
                     <div
                         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 flex-row justify-between">
-                    {writings.map((writing, index) => (
+                    {currentItems.map((writing, index) => (
                             <div className="flex flex-col items-center gap-[5px]"
                                  key={index}>
                                 <div className="w-[212.74px] h-[386.87px] relative">

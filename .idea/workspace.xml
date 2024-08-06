@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="37e85f13-3adc-4fce-b090-281f7cd48627" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyPages/MyPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyPages/MyPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyPages/UpdateInfoPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyPages/UpdateInfoPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/SearchPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SearchPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/left_button_green.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/left_button_green.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/right_button_green.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/right_button_green.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MainPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MainPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +107,8 @@
       <workItem from="1722703355484" duration="4625000" />
       <workItem from="1722749751894" duration="6285000" />
       <workItem from="1722756534717" duration="10696000" />
-      <workItem from="1722836631318" duration="15176000" />
+      <workItem from="1722836631318" duration="15494000" />
+      <workItem from="1722951134899" duration="3497000" />
     </task>
     <servers />
   </component>
