@@ -17,6 +17,9 @@ import PaymentHistoryPage from "./pages/PaymentPages/PaymentHistoryPage";
 import PaymentMethodPage from "./pages/PaymentPages/PaymentMethodPage";
 import LandingPage from "./pages/LandingPage";
 import MainLayout from "./layouts/MainLayout";
+import MyWritting from "./pages/MyPages/MyWritting";
+import MyWritten from "./pages/MyPages/MyWritten";
+import Scrap from "./pages/MyPages/Scrap";
 
 function App() {
   return (
@@ -57,6 +60,9 @@ function App() {
             element={<MembershipCancelPage />}
           />
           <Route path="password-reset" element={<ForgotPasswordPage />} />
+          <Route path="mypage/writting" element={<MyWritting />} />
+          <Route path="mypage/written" element={<MyWritten />} />
+          <Route path="mypage/scrap" element={<Scrap />} />
         </Route>
       </Routes>
     </Router>
