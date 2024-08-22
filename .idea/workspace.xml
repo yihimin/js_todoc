@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="37e85f13-3adc-4fce-b090-281f7cd48627" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/LandingPage.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/landing_background.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/landing_background.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/pile_of_books.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/LandingPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LandingPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +19,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="JSX File" />
         <option value="CSS File" />
+        <option value="JSX File" />
       </list>
     </option>
   </component>
@@ -108,7 +109,7 @@
       <workItem from="1722756534717" duration="10696000" />
       <workItem from="1722836631318" duration="15494000" />
       <workItem from="1722951134899" duration="5946000" />
-      <workItem from="1724337250233" duration="6020000" />
+      <workItem from="1724337250233" duration="12193000" />
     </task>
     <servers />
   </component>
