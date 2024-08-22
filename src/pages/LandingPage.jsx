@@ -1,28 +1,29 @@
 import React from 'react';
-import './LandingPage.css';
+import SearchNav from '../components/SearchNav';
 import PilsaComponent from '../components/PilsaComponent';
+import LandingBackground from "../assets/landing_background.svg";
+import PileOfBooks from "../assets/pile_of_books.png";
 
 const LandingPage = () => {
     return (
-        <div className="landing-page">
-            <header className="landing-header">
-                <h1>토독, 좋은 글을 만나는 새로운 방법</h1>
-                <button className="cta-button" onclick="location.href='/signup'">가입하고 시작하기</button>
-            </header>
-
-            <section className="intro-section">
-                <h2>휴식은 편안해야하니까 ___를 골라드릴게요.</h2>
-                <div className="features">
-                    <div className="feature-item">엄선한 글 제공</div>
-                    <div className="feature-item">노트북만 있으면 언제나</div>
-                    <div className="feature-item">엑셀 모드로 어디서나</div>
+        <div>
+            <SearchNav/>
+            <div className="flex flex-col h-screen">
+                <div className="relative" style={{paddingTop: '64.24%'}}>
+                    <img
+                        src={LandingBackground}
+                        alt="LandingBackground"
+                        className="absolute z-20 mt-[30.12px] top-0 left-0 w-full h-full"
+                        style={{ right: 'calc(12.54% + 10px)' }}/>
+                    <img
+                        src={PileOfBooks}
+                        alt="PileOfBooks"
+                        className="absolute z-30"/>
                 </div>
-            </section>
-
-            <section className="testimonials-section">
-                <h2>써보고 결정하세요</h2>
-                <PilsaComponent />
-            </section>
+                <div className="mt-[1121px]">
+                    <PilsaComponent/>
+                </div>
+            </div>
         </div>
     );
 };
