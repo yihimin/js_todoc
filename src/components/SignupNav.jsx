@@ -2,6 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import TodocLogo from "../assets/todoc_logo.svg";
 
+// NavButton 컴포넌트: 네비게이션 버튼을 재사용 가능하게 분리
+const NavButton = ({ to, text, className }) => (
+  <Link to={to}>
+    <button className={className}>
+      {text}
+    </button>
+  </Link>
+);
+
 const SignUpNav = () => {
   return (
     <header className="w-full h-[72px] px-8 py-4 shadow flex justify-between items-center">
@@ -9,16 +18,17 @@ const SignUpNav = () => {
         <img src={TodocLogo} alt="Todoc Logo" className="h-8" />
       </Link>
       <nav className="flex items-center">
-        <Link to="/login" className="mr-2">
-          <button className="w-24 h-10 px-4 py-2 bg-white text-stone-500 border border-stone-500 rounded">
-            로그인
-          </button>
-        </Link>
-        <Link to="/signup">
-          <button className="w-24 h-10 px-4 py-2 bg-customGreen text-white rounded">
-            회원가입
-          </button>
-        </Link>
+        {/* NavButton 컴포넌트를 사용하여 버튼을 렌더링 */}
+        <NavButton
+          to="/login"
+          text="로그인"
+          className="w-24 h-10 px-4 py-2 bg-white text-stone-500 border border-stone-500 rounded mr-2"
+        />
+        <NavButton
+          to="/signup"
+          text="회원가입"
+          className="w-24 h-10 px-4 py-2 bg-customGreen text-white rounded"
+        />
       </nav>
     </header>
   );

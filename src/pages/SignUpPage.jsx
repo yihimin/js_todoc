@@ -17,6 +17,7 @@ const SignUpPage = () => {
   const [nicknameMessage, setNicknameMessage] = useState("");
   const [passwordMessage, setPasswordMessage] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [isNicknameAvailable, setIsNicknameAvailable] = useState(false); // 닉네임 사용 가능 여부
 
   const navigate = useNavigate();
 
@@ -64,7 +65,6 @@ const SignUpPage = () => {
       return;
     }
 
-    // 여기에서 목데이터를 사용하여 중복 이메일, 닉네임 등을 체크할 수 있습니다.
     if (users.some((user) => user.email === email)) {
       setError("이미 사용 중인 이메일입니다.");
       return;
@@ -74,7 +74,6 @@ const SignUpPage = () => {
       return;
     }
 
-    // 사용자 데이터를 목데이터에 추가 (실제 구현에서는 서버로 전송)
     users.push({
       email,
       nickname,
@@ -82,7 +81,7 @@ const SignUpPage = () => {
       phone,
     });
 
-    setError(""); // Clear any previous errors
+    setError("");
     alert("가입이 완료되었습니다.");
     navigate("/login");
   };
@@ -90,8 +89,10 @@ const SignUpPage = () => {
   const handleNicknameCheck = () => {
     if (users.some((user) => user.nickname === nickname)) {
       setNicknameMessage("이미 사용 중인 닉네임입니다.");
+      setIsNicknameAvailable(false);
     } else {
       setNicknameMessage("사용 가능한 닉네임입니다.");
+      setIsNicknameAvailable(true);
     }
   };
 
@@ -108,11 +109,6 @@ const SignUpPage = () => {
       );
     } else {
       setPasswordError("");
-    }
-    if (newPassword === passwordConfirm) {
-      setPasswordMessage("비밀번호가 일치합니다.");
-    } else {
-      setPasswordMessage("비밀번호가 일치하지 않습니다.");
     }
   };
 
@@ -168,7 +164,9 @@ const SignUpPage = () => {
                   onChange={(e) => setNickname(e.target.value)}
                 />
                 {nicknameMessage && (
-                  <p className="text-red-500 text-sm mt-1">{nicknameMessage}</p>
+                  <p className={`text-sm mt-1 ${isNicknameAvailable ? 'text-green-500' : 'text-red-500'}`}>
+                    {nicknameMessage}
+                  </p>
                 )}
               </div>
               <button
@@ -214,7 +212,9 @@ const SignUpPage = () => {
                 onChange={handlePasswordConfirmChange}
               />
               {passwordMessage && (
-                <p className="text-red-500 text-sm mt-1">{passwordMessage}</p>
+                <p className={`text-sm mt-1 ${passwordMessage === '비밀번호가 일치합니다.' ? 'text-green-500' : 'text-red-500'}`}>
+                  {passwordMessage}
+                </p>
               )}
             </div>
             <div className="mb-4 flex items-end">
