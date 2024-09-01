@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="37e85f13-3adc-4fce-b090-281f7cd48627" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/landing_background.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/landing_background.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/pile_of_books.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/LandingPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LandingPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,6 +108,8 @@
       <workItem from="1722836631318" duration="15494000" />
       <workItem from="1722951134899" duration="5946000" />
       <workItem from="1724337250233" duration="12193000" />
+      <workItem from="1724846683862" duration="1474000" />
+      <workItem from="1725176342255" duration="4509000" />
     </task>
     <servers />
   </component>
