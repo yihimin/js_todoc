@@ -13,7 +13,7 @@ const NavButton = ({ to, text, className }) => (
 
 const SignUpNav = () => {
   return (
-    <header className="w-full h-[72px] px-8 py-4 shadow flex justify-between items-center">
+    <header className="w-full h-[72px] px-8 py-4 shadow flex justify-between items-center fixed bg-white z-10"> {/* 수정: fixed와 z-index 추가 */}
       <Link to="/main" className="flex items-center">
         <img src={TodocLogo} alt="Todoc Logo" className="h-8" />
       </Link>
