@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="37e85f13-3adc-4fce-b090-281f7cd48627" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyPages/MyPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyPages/MyPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/LandingPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LandingPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyPages/UpdateInfoPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyPages/UpdateInfoPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +115,7 @@
       <workItem from="1724846683862" duration="1474000" />
       <workItem from="1725176342255" duration="4509000" />
       <workItem from="1725189316609" duration="1917000" />
-      <workItem from="1725347139920" duration="7454000" />
+      <workItem from="1725347139920" duration="14925000" />
     </task>
     <servers />
   </component>

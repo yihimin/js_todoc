@@ -8,7 +8,7 @@ const LandingPage = () => {
         <div className="h-screen overflow-scroll snap-y snap-mandatory">
                 <div className="flex flex-col">
                     <SignUpNav/>
-                    <div className="relative flex-grow snap-start" style={{paddingTop: '72.22%'}}>
+                    <div className="relative flex-grow snap-center" style={{paddingTop: '72.22%'}}>
                         <img
                             src={LandingBackground}
                             alt="LandingBackground"

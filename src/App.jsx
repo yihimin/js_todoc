@@ -1,6 +1,8 @@
 import "./App.css";
-import React from "react";
+import React, {useState} from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import { ToastContainer } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 import PilsaPage from "./pages/PilsaPage";
 import MainPage from "./pages/MainPage";
 import SearchPage from "./pages/SearchPage";
@@ -23,6 +25,7 @@ import Scrap from "./pages/MyPages/Scrap";
 import Note from "./pages/MyPages/Note";
 
 function App() {
+
   return (
     <Router>
       <Routes>
