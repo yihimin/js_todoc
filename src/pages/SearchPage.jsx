@@ -3,6 +3,8 @@ import SearchNav from '../components/SearchNav';
 import SearchIcon from "../assets/search_icon2.svg";
 import DownIcon from "../assets/down_icon.svg";
 import UpIcon from "../assets/up_icon.svg";
+import LikeIcon from "../assets/like_icon.svg";
+import LikeIconFull from "../assets/like_icon_full.svg";
 
 const SearchPage = () => {
     const [isDownClicked, setIsDownClicked] = useState(false);
@@ -88,6 +90,14 @@ const SearchPage = () => {
         categoryName: categoryMap[menuItem.categoryId]||null
     }));
 
+    const [currentLike, setCurrentLike] = useState(articles.map(() => false));
+
+    const handleLike = (index) => {
+        const currentLikes = [...currentLike];
+        currentLikes[index] = !currentLikes[index];
+        setCurrentLike(currentLikes);
+    }; //하트 개수 처리하는 api 보내기
+
     return (
         <div>
             <SearchNav/>
@@ -130,7 +140,7 @@ const SearchPage = () => {
                 </div>
             </div>
             <div className="mt-[86px] flex flex-col justify-center items-center">
-                {mergedMenu.map((article) => (
+                {mergedMenu.map((article, index) => (
                     <div className="w-[984px] h-[132px] mb-[30px] relative"
                              key={article.id}>
                             <div className="h-full pl-12 flex flex-col items-start justify-center">
@@ -146,12 +156,21 @@ const SearchPage = () => {
                                 </div>
                                 </div>
                                 <div
-                                    className="absolute right-14 top-1/2 transform -translate-y-1/2 text-right text-zinc-500 text-xl font-medium">♡ {article.likes}
+                                    className="flex flex-row absolute right-14 top-1/2 transform -translate-y-1/2 text-right text-zinc-500 text-xl font-medium">
+                                    <img
+                                        src={currentLike[index] ? LikeIconFull : LikeIcon}
+                                        alt="LikeIcon"
+                                        className="mr-[1px] mt-[5px]"
+                                        key={index}
+                                        onClick={() => handleLike(index)}
+                                        style={{ cursor: 'pointer' }}
+                                    />
+                                    <div className="text-[#8a8a8a] text-xl font-medium">{currentLike[index] ? article.likes + 1 : article.likes}</div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
