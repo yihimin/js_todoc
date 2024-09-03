@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import SearchNav from '../components/SearchNav';
 // import 'react-horizontal-scrolling-menu/dist/styles.css';
 import LikeIcon from "../assets/like_icon.svg";
+import LikeIconFull from "../assets/like_icon_full.svg";
 import BookSign from "../assets/book_sign.svg";
 import EditorsPick from "../assets/editors_pick.svg";
 import LeftButtonGray from "../assets/left_button_gray.svg";
@@ -113,6 +114,8 @@ const MainPage = () => {
     const itemsPerPage = 5;
     const [currentPage, setCurrentPage] = useState(1);
 
+    const [currentLike, setCurrentLike] = useState(articles.map(() => false));
+
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = writings.slice(indexOfFirstItem, indexOfLastItem);
@@ -129,6 +132,12 @@ const MainPage = () => {
         if (currentPage > 1) {
             setCurrentPage(currentPage - 1);
         }
+    };
+
+    const handleLike = (index) => {
+        const currentLikes = [...currentLike];
+        currentLikes[index] = !currentLikes[index];
+        setCurrentLike(currentLikes);
     };
 
     const prevButtonDisabled = currentPage === 1;
@@ -159,9 +168,12 @@ const MainPage = () => {
                                 </div>
                                     <div className="items-center text-[#8a8a8a] text-[15px] font-normal flex flex-row">
                                         <img
-                                            src={LikeIcon}
+                                            src={currentLike[index] ? LikeIconFull : LikeIcon}
                                             alt="LikeIcon"
-                                            className="mr-[1px] mt-[5px]"/>
+                                            className="mr-[1px] mt-[5px]"
+                                            key={index}
+                                            onClick={() => handleLike(index)}
+                                        />
                                         <div className="">{article.likes}</div>
                                     </div>
                                 </div>
