@@ -1,8 +1,8 @@
 import "./App.css";
+import 'react-toastify/dist/ReactToastify.css';
 import React, {useState} from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-// import { ToastContainer } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 import PilsaPage from "./pages/PilsaPage";
 import MainPage from "./pages/MainPage";
 import SearchPage from "./pages/SearchPage";
