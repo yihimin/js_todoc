@@ -7,6 +7,7 @@ import MemoIcon from "../../assets/memo_icon.svg";
 import PenIcon from "../../assets/pen_icon.svg";
 import ProfileImg from "../../assets/profile_img.svg";
 import SettingBG from "../../assets/setting_bg.svg";
+import { Link } from "react-router-dom";
 
 const MyPage = () => {
   const navigate = useNavigate();
@@ -34,42 +35,62 @@ const MyPage = () => {
           user1234
         </div>
         <div className="mt-[23.42px] flex text-[15px] text-[#9b9b9b]">
-          <div className="mr-[16px]">로그아웃</div>
+          <Link to="/login" className="mr-[16px]">
+            <p>
+              로그아웃
+            </p>
+          </Link>
           <div className="mr-[16px]">|</div>
-          <div className="">결제 내역 확인</div>
+          <Link to="/mypage/payment-info" >
+            <p>
+              결제 내역 확인
+            </p>
+          </Link>
         </div>
       </div>
       <div className="flex justify-center items-center mt-[82.48px]">
         <div className="p-[20px_18px]">
-          <div className="p-[0px_50px] flex flex-col justify-center items-center">
+          <div className="p-[0px_50px] flex flex-col justify-center items-center"
+               style={{ cursor: 'pointer' }}>
             <img src={PenIcon} alt="PenIcon" className="mb-[10px]" />
-            <div className="text-xl font-medium text-[#8a8a8a]">
-              필사 중인 글
-            </div>
+            <Link to="/mypage/writting">
+              <p className="text-xl font-medium text-[#8a8a8a] whitespace-nowrap">
+                필사 중인 글
+              </p>
+            </Link>
           </div>
         </div>
         <div className="p-[20px_18px]">
-          <div className="p-[0px_50px] flex flex-col justify-center items-center">
+          <div className="p-[0px_50px] flex flex-col justify-center items-center"
+               style={{ cursor: 'pointer' }}>
             <img src={CheckIcon} alt="CheckIcon" className="mb-[10px]" />
-            <div className="text-xl font-medium text-[#8a8a8a]">
-              필사 완료된 글
-            </div>
+            <Link to="/mypage/written">
+              <p className="text-xl font-medium text-[#8a8a8a] whitespace-nowrap">
+                필사 완료된 글
+              </p>
+            </Link>
           </div>
         </div>
         <div className="p-[20px_18px]">
-          <div className="p-[0px_50px] flex flex-col justify-center items-center">
+          <div className="p-[0px_50px] flex flex-col justify-center items-center"
+               style={{ cursor: 'pointer' }}>
             <img src={HeartIcon} alt="HeartIcon" className="mb-[10px]" />
-            <div className="text-xl font-medium text-[#8a8a8a]">
-              스크랩 한 글
-            </div>
+            <Link to="/mypage/scrap">
+              <p className="text-xl font-medium text-[#8a8a8a] whitespace-nowrap">
+                스크랩 한 글
+              </p>
+            </Link>
           </div>
         </div>
         <div className="p-[20px_18px]">
-          <div className="p-[0px_50px] flex flex-col justify-center items-center">
+          <div className="p-[0px_50px] flex flex-col justify-center items-center"
+               style={{ cursor: 'pointer' }}>
             <img src={MemoIcon} alt="MemoIcon" className="mb-[10px]" />
-            <div className="text-xl font-medium text-[#8a8a8a]">
-              메모 모아보기
-            </div>
+            <Link to="/mypage/notes">
+              <p className="text-xl font-medium text-[#8a8a8a] whitespace-nowrap">
+                메모 모아보기
+              </p>
+            </Link>
           </div>
         </div>
       </div>
