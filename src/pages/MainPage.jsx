@@ -138,7 +138,7 @@ const MainPage = () => {
         const currentLikes = [...currentLike];
         currentLikes[index] = !currentLikes[index];
         setCurrentLike(currentLikes);
-    };
+    }; //하트 개수 쌓이는 api 보내기
 
     const prevButtonDisabled = currentPage === 1;
     const nextButtonDisabled = currentPage === totalPages;
@@ -174,7 +174,7 @@ const MainPage = () => {
                                             key={index}
                                             onClick={() => handleLike(index)}
                                         />
-                                        <div className="">{article.likes}</div>
+                                        <div className="">{currentLike[index] ? article.likes+1 : article.likes}</div>
                                     </div>
                                 </div>
                             </div>
