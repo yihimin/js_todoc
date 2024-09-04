@@ -51,7 +51,7 @@ const UpdateInfoPage = () => {
         }
     }
 
-    const saveNotify = () => toast("모든 내용이 저장되었습니다.");
+    const saveNotify = () => toast.success("모든 내용이 저장되었습니다.");
 
     return (
         <div>

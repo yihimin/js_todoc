@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^6.0.2",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -18,8 +21,9 @@
     "react-horizontal-scrolling-menu": "^7.1.1",
     "react-router-dom": "^6.25.0",
     "react-scripts": "5.0.1",
-    "react-toastify": "^10.0.5",
+    "react-toastify": "^7.0.3",
     "stream-browserify": "^3.0.0",
+    "tailwind-scrollbar-hide": "^1.1.7",
     "vm-browserify": "^1.1.2",
     "web-vitals": "^2.1.4"
   },
