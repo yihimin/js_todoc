@@ -22,7 +22,7 @@ import MainLayout from "./layouts/MainLayout";
 import MyWritting from "./pages/MyPages/MyWritting";
 import MyWritten from "./pages/MyPages/MyWritten";
 import Scrap from "./pages/MyPages/Scrap";
-import Note from "./pages/MyPages/Note";
+import MemoGrid from "./pages/MyPages/MemoGrid";
 
 function App() {
   const contextClass = {
@@ -88,7 +88,7 @@ function App() {
             <Route path="mypage/writting" element={<MyWritting />} />
             <Route path="mypage/written" element={<MyWritten />} />
             <Route path="mypage/scrap" element={<Scrap />} />
-            <Route path="mypage/notes" element={<Note />} />
+            <Route path="mypage/notes" element={<MemoGrid />} />
           </Route>
         </Routes>
       </Router>
