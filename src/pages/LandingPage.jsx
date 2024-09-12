@@ -1,5 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import LandingBackground from "../assets/landing_background.svg";
+import LandingBackground from "../assets/landing_background.png";
+import LandingText from "../assets/landing_text.svg";
 import SignUpNav from "../components/SignupNav";
 import LeftArrow from '../assets/left_arrow.svg';
 import RightArrow from '../assets/right_arrow.svg';
@@ -113,18 +114,23 @@ const LandingPage = () => {
         <div>
             <SignUpNav/>
             <div className="min-h-screen flex flex-col">
-                        <div className="relative flex-grow" style={{paddingTop: '72.22%'}}>
-                            <img
-                                src={LandingBackground}
-                                alt="LandingBackground"
-                                className="absolute z-20 mt-[30.12px] top-0 left-0 w-full h-full"
-                            />
-                        </div>
-                        <div className="mt-[359.63px] flex justify-center items-center flex-col">
-                            <p className="text-[32px] font-black">
-                                한번 써볼까요?
-                            </p>
-                            <div className="w-full mt-[30.14px]">
+                <div className="relative flex-grow" style={{paddingTop: '72.22%'}}>
+                    <img
+                        src={LandingBackground}
+                        alt="LandingBackground"
+                        className="absolute z-20 mt-[30.12px] top-0 left-0 w-full h-full"
+                    />
+                    <img
+                        src={LandingText}
+                        alt="LandingText"
+                        className="absolute z-20 mt-[30.12px] top-0 left-0 w-full h-full"
+                    />
+                </div>
+                <div className="mt-[359.63px] flex justify-center items-center flex-col">
+                    <p className="text-[32px] font-black">
+                        한번 써볼까요?
+                    </p>
+                    <div className="w-full mt-[30.14px]">
                                 <div className="flex flex-col items-center p-5 box-border">
                                     <div
                                         className="flex flex-col md:flex-row justify-between items-center relative mb-8 w-full max-w-[85%]">
@@ -171,7 +177,7 @@ const LandingPage = () => {
                         </div>
                 <div className="mt-[214.14px]">
                     <div className="flex justify-center items-center flex-col">
-                        <p className="text-[#0f0f0f] text-[32px] font-bold">월 3,400원으로 시작</p>
+                        <p className="text-[#0f0f0f] text-[32px] font-black">월 3,400원으로 시작</p>
                         <p className="text-[#8a8a8a] text-xl font-normal">글로 만나는 새로운 자기계발</p>
                     </div>
                     <div className="flex justify-center items-center flex-col mt-[113.33px]">
