@@ -1,8 +1,14 @@
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import {
+    createBrowserRouter,
+    createRoutesFromElements,
+    RouterProvider,
+    Route,
+    Outlet
+} from 'react-router-dom';
+import {ToastContainer} from "react-toastify";
 import PilsaPage from "./pages/PilsaPage";
 import MainPage from "./pages/MainPage";
 import SearchPage from "./pages/SearchPage";
@@ -23,78 +29,126 @@ import MyWritting from "./pages/MyPages/MyWritting";
 import MyWritten from "./pages/MyPages/MyWritten";
 import Scrap from "./pages/MyPages/Scrap";
 import MemoGrid from "./pages/MyPages/MemoGrid";
+import NotFound from "./pages/NotFound";
 
-
-function App() {
-  const contextClass = {
+const contextClass = {
     success: "bg-[#869F58]",
     error: "bg-red-600",
     info: "bg-gray-600",
     warning: "bg-orange-400",
     default: "bg-indigo-600",
     dark: "bg-white-600 font-gray-300",
-  };
+};
 
-  return (
+const ToastProvider = () => (
     <>
-      <ToastContainer
-        toastClassName={(context) =>
-          contextClass[context?.type || "default"] +
-          " relative flex p-1 min-h-10 rounded-md justify-between overflow-hidden cursor-pointer"
-        }
-        bodyClassName={() => "text-sm font-white font-med block p-3"}
-        position="bottom-left"
-        autoClose={3000}
-      />
-      <Router>
-        <Routes>
-          <Route path="/" element={<MainLayout />}>
-            <Route index element={<LandingPage />} />
-            <Route path="pilsa" element={<PilsaPage />} />
-            <Route path="main" element={<MainPage />} />
-            <Route path="search" element={<SearchPage />} />
-            <Route
-              path="signup"
-              element={
-                <SignUpLayout>
-                  <SignUpPage />
-                </SignUpLayout>
-              }
-            />
-            <Route path="mypage" element={<MyPage />} />
-            <Route
-              path="login"
-              element={
-                <SignUpLayout>
-                  <LoginPage />
-                </SignUpLayout>
-              }
-            />
-            <Route path="payment" element={<PaymentPage />} />
-            <Route path="mypage/update-info" element={<UpdateInfoPage />} />
-            <Route path="mypage/payment-info" element={<PaymentInfoPage />} />
-            <Route
-              path="mypage/payment-history"
-              element={<PaymentHistoryPage />}
-            />
-            <Route
-              path="mypage/payment-method"
-              element={<PaymentMethodPage />}
-            />
-            <Route
-              path="mypage/membership-start"
-              element={<MembershipStartPage />}
-            />
-            <Route path="password-reset" element={<ForgotPasswordPage />} />
-            <Route path="mypage/writting" element={<MyWritting />} />
-            <Route path="mypage/written" element={<MyWritten />} />
-            <Route path="mypage/scrap" element={<Scrap />} />
-            <Route path="mypage/notes" element={<MemoGrid />} />
-          </Route>
-        </Routes>
-      </Router>
+        <Outlet/>
+        <ToastContainer
+            toastClassName={(context) =>
+                contextClass[context?.type || "default"] +
+                " relative flex p-1 min-h-10 rounded-md justify-between overflow-hidden cursor-pointer"
+            }
+            bodyClassName={() => "text-sm font-white font-med block p-3"}
+            position="bottom-left"
+            autoClose={3000}
+        />
     </>
-  );
+);
+
+const router = createBrowserRouter([
+        {
+            element: <ToastProvider/>,
+            children: [
+                {
+                    path: "/",
+                    element: <MainLayout/>,
+                    children: [
+                        {
+                            path: "/",
+                            element: <LandingPage/>,
+                        },
+                        {
+                            path: "pilsa",
+                            element: <PilsaPage/>,
+                        },
+                        {
+                            path: "main",
+                            element: <MainPage/>,
+                        },
+                        {
+                            path: "search",
+                            element: <SearchPage/>,
+                        },
+                        {
+                            path: "signup",
+                            element: <SignUpLayout>
+                                <SignUpPage/>
+                            </SignUpLayout>,
+                        },
+                        {
+                            path: "mypage",
+                            element: <MyPage/>,
+                        },
+                        {
+                            path: "login",
+                            element: <SignUpLayout>
+                                <LoginPage/>
+                            </SignUpLayout>,
+                        },
+                        {
+                            path: "payment",
+                            element: <PaymentPage/>,
+                        },
+                        {
+                            path: "mypage/update-info",
+                            element: <UpdateInfoPage/>,
+                        },
+                        {
+                            path: "mypage/payment-info",
+                            element: <PaymentInfoPage/>,
+                        },
+                        {
+                            path: "mypage/payment-history",
+                            element: <PaymentHistoryPage/>,
+                        },
+                        {
+                            path: "mypage/payment-method",
+                            element: <PaymentMethodPage/>,
+                        },
+                        {
+                            path: "mypage/membership-start",
+                            element: <MembershipStartPage/>,
+                        },
+                        {
+                            path: "password-reset",
+                            element: <ForgotPasswordPage/>,
+                        },
+                        {
+                            path: "mypage/writting",
+                            element: <MyWritting/>,
+                        },
+                        {
+                            path: "mypage/written",
+                            element: <MyWritten/>,
+                        },
+                        {
+                            path: "mypage/scrap",
+                            element: <Scrap/>,
+                        },
+                        {
+                            path: "mypage/notes",
+                            element: <MemoGrid/>,
+                        },
+                    ],
+                    errorElement: <NotFound/>,
+                }
+            ]
+        }
+    ]
+);
+
+function App() {
+    return <RouterProvider router={router}/>
 }
 
 export default App;
