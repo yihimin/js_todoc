@@ -62,6 +62,7 @@ const PaymentInfoPage = () => {
         <Modal
             isOpen={isModalOpen}
             onClose={closeModal}
+            onClose2={closeModal}
             title={modalContent.title}
             message={modalContent.message}
             button1={modalContent.button1}

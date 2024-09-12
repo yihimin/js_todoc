@@ -14,7 +14,7 @@ import UpdateInfoPage from "./pages/MyPages/UpdateInfoPage";
 import LoginPage from "./pages/LoginPages/LoginPage";
 import ForgotPasswordPage from "./pages/LoginPages/ForgotPasswordPage";
 import PaymentPage from "./pages/PaymentPages/PaymentPage";
-import MembershipCancelPage from "./pages/PaymentPages/MembershipCancelPage";
+import MembershipStartPage from "./pages/PaymentPages/MembershipStartPage";
 import PaymentHistoryPage from "./pages/PaymentPages/PaymentHistoryPage";
 import PaymentMethodPage from "./pages/PaymentPages/PaymentMethodPage";
 import LandingPage from "./pages/LandingPage";
@@ -82,8 +82,8 @@ function App() {
               element={<PaymentMethodPage />}
             />
             <Route
-              path="mypage/membership-cancel"
-              element={<MembershipCancelPage />}
+              path="mypage/membership-start"
+              element={<MembershipStartPage />}
             />
             <Route path="password-reset" element={<ForgotPasswordPage />} />
             <Route path="mypage/writting" element={<MyWritting />} />
