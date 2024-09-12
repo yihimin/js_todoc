@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import SearchNav from "../../components/SearchNav";
-import Modal from '../../components/Modal';
+import Modal from '../../modal/Modal';
 
 const PaymentInfoPage = () => {
   const navigate = useNavigate();
@@ -9,14 +9,19 @@ const PaymentInfoPage = () => {
   const [modalContent, setModalContent] = useState({
     title: '',
     message: '',
-    button1: '',
-    button2: ''
+    actionButton: '',
+    closeButton: ''
   });
 
-  const openModal = (title, message, button1, button2) => {
-    setModalContent({ title, message, button1, button2 });
+  const openModal = ({title = '멤버쉽을 해지할까요?', message = '해지해도 2024.00.00.까지 유지됩니다.', actionButton = '해지하기', closeButton = '유지하기'}) => {
+    setModalContent({ title, message, actionButton, closeButton });
     setIsModalOpen(true);
   };
+
+  const handleMemberShipCancle = () => {
+    navigate("/mypage/membership-start");
+    // 멤버쉽 취소 API 연결 필요
+  }
 
   const closeModal = () => setIsModalOpen(false);
 
@@ -54,7 +59,7 @@ const PaymentInfoPage = () => {
           <div className="flex justify-end">
             <button
               className="text-gray-500 hover:text-red-500 focus:outline-none underline"
-              onClick={() => openModal('멤버쉽을 해지할까요?', '해지해도 2024.00.00.까지 유지됩니다.','해지하기','유지하기')}>
+              onClick={openModal}>
               멤버쉽 해지하기
             </button>
           </div>
@@ -62,11 +67,11 @@ const PaymentInfoPage = () => {
         <Modal
             isOpen={isModalOpen}
             onClose={closeModal}
-            onClose2={closeModal}
+            onAction={handleMemberShipCancle}
             title={modalContent.title}
             message={modalContent.message}
-            button1={modalContent.button1}
-            button2={modalContent.button2}>
+            actionButton={modalContent.actionButton}
+            closeButton={modalContent.closeButton}>
         </Modal>
       </div>
     </>

@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37e85f13-3adc-4fce-b090-281f7cd48627" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/src/modal/useOutSideClick.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ModalPortal.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Modal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modal/Modal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/MyPages/PaymentInfoPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyPages/PaymentInfoPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/PaymentPages/MembershipCancelPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PaymentPages/MembershipStartPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,11 +63,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\github\Todoc_Pages\src\modal" />
       <recent name="E:\github\Todoc_Pages\todoc_pages\src\pages\PaymentPages" />
       <recent name="E:\github\Todoc_Pages\todoc_pages\src\assets\fonts" />
       <recent name="E:\github\Todoc_Pages\todoc_pages\src\assets" />
       <recent name="E:\github\Todoc_Pages\todoc_pages\src\pages\LoginPages" />
-      <recent name="E:\github\Todoc_Pages\todoc_pages\src\pages\MyPages" />
     </key>
   </component>
   <component name="RunManager">
@@ -119,7 +118,7 @@
       <workItem from="1725189316609" duration="1917000" />
       <workItem from="1725347139920" duration="19223000" />
       <workItem from="1725444351873" duration="12142000" />
-      <workItem from="1726122317049" duration="9748000" />
+      <workItem from="1726122317049" duration="15720000" />
     </task>
     <servers />
   </component>
