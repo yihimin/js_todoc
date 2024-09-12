@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import SearchNav from "../../components/SearchNav";
+import Modal from '../../components/Modal';
 
 const PaymentInfoPage = () => {
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState({
+    title: '',
+    message: '',
+    button1: '',
+    button2: ''
+  });
+
+  const openModal = (title, message, button1, button2) => {
+    setModalContent({ title, message, button1, button2 });
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => setIsModalOpen(false);
 
   const handlePaymentHistory = () => {
     navigate("/mypage/payment-history");
@@ -11,10 +26,6 @@ const PaymentInfoPage = () => {
 
   const handlePaymentMethod = () => {
     navigate("/mypage/payment-method");
-  };
-
-  const handleMembershipCancel = () => {
-    navigate("/mypage/membership-cancel");
   };
 
   return (
@@ -43,12 +54,19 @@ const PaymentInfoPage = () => {
           <div className="flex justify-end">
             <button
               className="text-gray-500 hover:text-red-500 focus:outline-none underline"
-              onClick={handleMembershipCancel}
-            >
+              onClick={() => openModal('멤버쉽을 해지할까요?', '해지해도 2024.00.00.까지 유지됩니다.','해지하기','유지하기')}>
               멤버쉽 해지하기
             </button>
           </div>
         </div>
+        <Modal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            title={modalContent.title}
+            message={modalContent.message}
+            button1={modalContent.button1}
+            button2={modalContent.button2}>
+        </Modal>
       </div>
     </>
   );

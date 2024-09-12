@@ -24,6 +24,7 @@ import MyWritten from "./pages/MyPages/MyWritten";
 import Scrap from "./pages/MyPages/Scrap";
 import MemoGrid from "./pages/MyPages/MemoGrid";
 
+
 function App() {
   const contextClass = {
     success: "bg-[#869F58]",
