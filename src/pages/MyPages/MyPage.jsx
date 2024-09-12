@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import SearchNav from "../../components/SearchNav";
 import CheckIcon from "../../assets/check_icon.svg";
 import HeartIcon from "../../assets/heart_icon.svg";
@@ -7,7 +8,6 @@ import MemoIcon from "../../assets/memo_icon.svg";
 import PenIcon from "../../assets/pen_icon.svg";
 import ProfileImg from "../../assets/profile_img.svg";
 import SettingBG from "../../assets/setting_bg.svg";
-import { Link } from "react-router-dom";
 
 const MyPage = () => {
   const navigate = useNavigate();

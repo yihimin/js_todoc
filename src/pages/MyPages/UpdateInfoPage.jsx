@@ -4,9 +4,11 @@ import { useNavigate } from "react-router-dom";
 import SearchNav from '../../components/SearchNav';
 import ProfileImg from "../../assets/profile_img2.svg";
 import ChangeImg from "../../assets/change_bg.svg";
+import Modal from '../../modal/Modal';
 
 const UpdateInfoPage = () => {
     const navigate = useNavigate();
+
     const nicknames = [
         "바다소년",
         "하늘여우",
@@ -22,6 +24,27 @@ const UpdateInfoPage = () => {
 
     const [nickname, setNickname] = useState("");
     const [error, setError] = useState("");
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalContent, setModalContent] = useState({
+        title: '',
+        message: '',
+        actionButton: '',
+        closeButton: ''
+    });
+
+    const openModal = ({title = '회원을 탈퇴하시겠습니까?', message = '탈퇴 시 모든 데이터가 삭제되며, 복구가 불가능합니다.', actionButton = '탈퇴하기', closeButton = '유지하기'}) => {
+        setModalContent({ title, message, actionButton, closeButton });
+        setIsModalOpen(true);
+    };
+
+    const handleMemberShipCancle = () => {
+        navigate("/");
+        // 회원 탈퇴 API 연결 필요
+    }
+
+    const closeModal = () => setIsModalOpen(false);
+
 
     const handleNicknameChange = (event) => {
         setNickname(event.target.value);
@@ -39,15 +62,6 @@ const UpdateInfoPage = () => {
         else {
             setError("사용 가능한 닉네임입니다.");
             return;
-        }
-    }
-
-    const withdrawalMembership = () => {
-        if(window.confirm("정말 탈퇴를 진행하시겠습니까?")){
-            alert("회원 탈퇴가 완료되었습니다.");
-            navigate("/");
-        } else{
-            alert("회원 탈퇴를 취소합니다.");
         }
     }
 
@@ -108,12 +122,21 @@ const UpdateInfoPage = () => {
                     </button>
                     <div className="flex justify-end">
                         <button className="text-sm text-[#b0b0b0] underline mt-[17.87px]"
-                                onClick={withdrawalMembership}>
+                                onClick={openModal}>
                             회원 탈퇴하기
                         </button>
                     </div>
                 </div>
             </div>
+            <Modal
+                isOpen={isModalOpen}
+                onClose={closeModal}
+                onAction={handleMemberShipCancle}
+                title={modalContent.title}
+                message={modalContent.message}
+                actionButton={modalContent.actionButton}
+                closeButton={modalContent.closeButton}>
+            </Modal>
         </div>
     );
 };

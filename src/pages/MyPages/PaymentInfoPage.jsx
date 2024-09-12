@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import SearchNav from "../../components/SearchNav";
 import Modal from '../../modal/Modal';
