@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import ReactDOM from 'react-dom';
 import useOutSideClick from './useOutSideClick';
 
-const Modal = ({ isOpen, onClose, onAction, title, message, actionName, closeName}) => {
+const MemoModal = ({ isOpen, onClose, date, title, author, message}) => {
     const modalRef = useRef(null);
 
     useOutSideClick(modalRef, onClose);
@@ -12,7 +12,7 @@ const Modal = ({ isOpen, onClose, onAction, title, message, actionName, closeNam
     return ReactDOM.createPortal(
         <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
             <div ref={modalRef}
-                className="w-[500px] h-[282px] bg-white rounded-lg pt-[77px] shadow-lg flex flex-col items-center">
+                 className="w-[500px] h-[282px] bg-white rounded-lg pt-[77px] shadow-lg flex flex-col items-center">
                 {title && <h2 className="text-[#0f0f0f] text-xl font-bold leading-9">{title}</h2>}
                 {message && <p className="mt-[8px] text-[#8a8a8a] text-lg font-normal leading-[32.98px]">{message}</p>}
                 <div className="mt-[42px]">
@@ -33,4 +33,4 @@ const Modal = ({ isOpen, onClose, onAction, title, message, actionName, closeNam
     );
 };
 
-export default Modal;
+export default MemoModal;

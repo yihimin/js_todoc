@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37e85f13-3adc-4fce-b090-281f7cd48627" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/src/modal/MemoModal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PilsaComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PilsaComponent.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modal/Modal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modal/Modal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyPages/UpdateInfoPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyPages/UpdateInfoPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/PilsaPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PilsaPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +119,7 @@
       <workItem from="1725444351873" duration="12142000" />
       <workItem from="1726122317049" duration="28217000" />
       <workItem from="1726202848378" duration="2760000" />
-      <workItem from="1726343433539" duration="2003000" />
+      <workItem from="1726343433539" duration="4355000" />
     </task>
     <servers />
   </component>
