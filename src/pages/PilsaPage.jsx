@@ -27,8 +27,8 @@ const PilsaPage = () => {
     const [modalContent, setModalContent] = useState({
         title: '',
         message: '',
-        actionButton: '',
-        closeButton: ''
+        actionName: '',
+        closeName: ''
     });
 
     const [value,setValue] = useState(''); // PilsaComponent의 상태를 여기서 관리해야하는 문제가 있음...
@@ -36,10 +36,10 @@ const PilsaPage = () => {
     const openModal = ({
                            title = '정말로 나갈까요?',
                            message = '저장하지 않은 내용은 사라집니다.',
-                           actionButton = '나가기',
-                           closeButton = '돌아가기'
+                           actionName = '나가기',
+                           closeName = '돌아가기'
                        }) => {
-        setModalContent({title, message, actionButton, closeButton});
+        setModalContent({title, message, actionName, closeName});
         setIsModalOpen(true);
     };
 
@@ -65,8 +65,8 @@ const PilsaPage = () => {
             openModal({
                 title: '정말로 나갈까요?',
                 message: '저장하지 않은 내용은 사라집니다.',
-                actionButton: '나가기',
-                closeButton: '돌아가기'
+                actionName: '나가기',
+                closeName: '돌아가기'
             });
         }
     }, [blocker.state]);
@@ -107,8 +107,8 @@ const PilsaPage = () => {
                 onAction={() => blocker.proceed()}
                 title={modalContent.title}
                 message={modalContent.message}
-                actionButton={modalContent.actionButton}
-                closeButton={modalContent.closeButton}>
+                actionName={modalContent.actionName}
+                closeName={modalContent.closeName}>
             </Modal>
         </div>
     );

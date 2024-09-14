@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { toast } from 'react-toastify';
 
 // 샘플 텍스트 데이터
 const sampleTexts = [
@@ -15,8 +16,8 @@ const PilsaComponent = () => {
   const [userInputs, setUserInputs] = useState(
     Array(sampleTexts.length).fill("")
   );
-  const [saveMessage, setSaveMessage] = useState("");
-  const [showToast, setShowToast] = useState(false); // 토스트 메시지 상태 추가
+  // const [saveMessage, setSaveMessage] = useState("");
+  // const [showToast, setShowToast] = useState(false); // 토스트 메시지 상태 추가
   const totalChars = sampleTexts.reduce((sum, text) => sum + text.length, 0);
 
   const updateProgressBar = useCallback(() => {
@@ -86,16 +87,18 @@ const PilsaComponent = () => {
     updateSampleText();
   }, [currentTextIndex, updateSampleText]);
 
-  const handleSave = () => {
-    console.log("저장된 내용:", userInputs[currentTextIndex]);
-    setSaveMessage("내용이 저장되었습니다.");
-    setShowToast(true); // 토스트 메시지 표시
+  const saveNotify = () => toast.success("모든 내용이 저장되었습니다.");
 
-    // 3초 후에 토스트 메시지 숨김
-    setTimeout(() => {
-      setShowToast(false);
-    }, 3000);
-  };
+  // const handleSave = () => {
+  //   console.log("저장된 내용:", userInputs[currentTextIndex]);
+  //   setSaveMessage("내용이 저장되었습니다.");
+  //   setShowToast(true); // 토스트 메시지 표시
+  //
+  //   // 3초 후에 토스트 메시지 숨김
+  //   setTimeout(() => {
+  //     setShowToast(false);
+  //   }, 3000);
+  // };
 
   const handlePrevious = () => {
     if (currentTextIndex > 0) {
@@ -174,17 +177,17 @@ const PilsaComponent = () => {
         <button
           id="saveButton"
           className="px-5 py-2 md:px-7 md:py-3 bg-gray-400 text-white rounded-md transition-colors duration-300 hover:bg-red-400"
-          onClick={handleSave}
+          onClick={saveNotify}
         >
           저장하기
         </button>
       </div>
-      {/* 토스트 메시지 */}
-      {showToast && (
-        <div className="fixed bottom-5 left-5 bg-green-500 text-white px-4 py-2 rounded-md shadow-md">
-          {saveMessage}
-        </div>
-      )}
+      {/*/!* 토스트 메시지 *!/*/}
+      {/*{showToast && (*/}
+      {/*  <div className="fixed bottom-5 left-5 bg-green-500 text-white px-4 py-2 rounded-md shadow-md">*/}
+      {/*    {saveMessage}*/}
+      {/*  </div>*/}
+      {/*)}*/}
     </div>
   );
 };

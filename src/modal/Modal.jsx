@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import ReactDOM from 'react-dom';
 import useOutSideClick from './useOutSideClick';
 
-const Modal = ({ isOpen, onClose, onAction, title, message, actionButton, closeButton, children }) => {
+const Modal = ({ isOpen, onClose, onAction, title, message, actionName, closeName, children }) => {
     const modalRef = useRef(null);
 
     useOutSideClick(modalRef, onClose);
@@ -20,12 +20,12 @@ const Modal = ({ isOpen, onClose, onAction, title, message, actionButton, closeB
                     <button
                         className="w-[171px] h-[55px] bg-[#B0B0B0] text-[#f9f9f9] text-xl font-semibold rounded-[10px]"
                         onClick={onAction}>
-                        {actionButton}
+                        {actionName}
                     </button>
                     <button
                         className="ml-[17px] w-[171px] h-[55px] bg-[#869F58] text-[#f9f9f9] text-xl font-semibold rounded-[10px]"
                         onClick={onClose}>
-                        {closeButton}
+                        {closeName}
                     </button>
                 </div>
             </div>

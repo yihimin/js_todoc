@@ -29,12 +29,12 @@ const UpdateInfoPage = () => {
     const [modalContent, setModalContent] = useState({
         title: '',
         message: '',
-        actionButton: '',
-        closeButton: ''
+        actionName: '',
+        closeName: ''
     });
 
-    const openModal = ({title = '회원을 탈퇴하시겠습니까?', message = '탈퇴 시 모든 데이터가 삭제되며, 복구가 불가능합니다.', actionButton = '탈퇴하기', closeButton = '유지하기'}) => {
-        setModalContent({ title, message, actionButton, closeButton });
+    const openModal = ({title = '회원을 탈퇴하시겠습니까?', message = '탈퇴 시 모든 데이터가 삭제되며, 복구가 불가능합니다.', actionName = '탈퇴하기', closeName = '유지하기'}) => {
+        setModalContent({ title, message, actionName, closeName });
         setIsModalOpen(true);
     };
 
@@ -134,9 +134,8 @@ const UpdateInfoPage = () => {
                 onAction={handleMemberShipCancle}
                 title={modalContent.title}
                 message={modalContent.message}
-                actionButton={modalContent.actionButton}
-                closeButton={modalContent.closeButton}>
-            </Modal>
+                actionName={modalContent.actionName}
+                closeName={modalContent.closeName}/>
         </div>
     );
 };
