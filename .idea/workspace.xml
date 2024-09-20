@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37e85f13-3adc-4fce-b090-281f7cd48627" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/modal/MemoModal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modal/Modal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modal/Modal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/memos.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/memos.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modal/MemoModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modal/MemoModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyPages/MemoGrid.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyPages/MemoGrid.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,8 +78,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
-        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.22855.74" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.22855.74" />
       </set>
     </attachedChunks>
   </component>
@@ -119,7 +120,8 @@
       <workItem from="1725444351873" duration="12142000" />
       <workItem from="1726122317049" duration="28217000" />
       <workItem from="1726202848378" duration="2760000" />
-      <workItem from="1726343433539" duration="4355000" />
+      <workItem from="1726343433539" duration="4487000" />
+      <workItem from="1726790383009" duration="9842000" />
     </task>
     <servers />
   </component>

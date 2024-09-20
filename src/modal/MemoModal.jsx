@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import ReactDOM from 'react-dom';
 import useOutSideClick from './useOutSideClick';
+import MemoModalPng from '../assets/memo_modal.png'
 
 const MemoModal = ({ isOpen, onClose, date, title, author, message}) => {
     const modalRef = useRef(null);
@@ -12,20 +13,14 @@ const MemoModal = ({ isOpen, onClose, date, title, author, message}) => {
     return ReactDOM.createPortal(
         <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
             <div ref={modalRef}
-                 className="w-[500px] h-[282px] bg-white rounded-lg pt-[77px] shadow-lg flex flex-col items-center">
-                {title && <h2 className="text-[#0f0f0f] text-xl font-bold leading-9">{title}</h2>}
-                {message && <p className="mt-[8px] text-[#8a8a8a] text-lg font-normal leading-[32.98px]">{message}</p>}
-                <div className="mt-[42px]">
-                    <button
-                        className="w-[171px] h-[55px] bg-[#B0B0B0] text-[#f9f9f9] text-xl font-semibold rounded-[10px]"
-                        onClick={onAction}>
-                        {actionName}
-                    </button>
-                    <button
-                        className="ml-[17px] w-[171px] h-[55px] bg-[#869F58] text-[#f9f9f9] text-xl font-semibold rounded-[10px]"
-                        onClick={onClose}>
-                        {closeName}
-                    </button>
+                 className="relative pt-[77px] flex flex-col items-center">
+            <img src={MemoModalPng}
+                 className="w-[347px] h-[600px]"/>
+                <div className="absolute w-full h-full flex flex-col">
+                {date && <h2 className="mt-[147.2px] ml-[70px]">{date}</h2>}
+                {title && <h2 className="ml-[70px]">{title}</h2>}
+                {author && <h2 className="ml-[85px]">{author}</h2>}
+                {message && <h2 className="mt-[30px] ml-[35px]">{message}</h2>}
                 </div>
             </div>
         </div>,

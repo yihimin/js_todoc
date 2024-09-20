@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import MemoCard from "../../components/MemoCard";
 import SearchNav from "../../components/SearchNav";
 import memoData from "../../data/memos.json";
+import MemoModal from "../../modal/MemoModal"
 
 const MemoGrid = () => {
   const [memos, setMemos] = useState([]);
@@ -9,6 +10,13 @@ const MemoGrid = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // 모달 열림 상태
   const [isEditing, setIsEditing] = useState(false); // 편집 모드 상태
   const [selectedCards, setSelectedCards] = useState([]); // 선택된 메모 카드 상태
+  const [modalContent, setModalContent] = useState({
+      date: '',
+      title: '',
+      author: '',
+      message: ''
+  });
+  const closeModal = () => setIsModalOpen(false);
 
   useEffect(() => {
     setMemos(memoData);
@@ -18,6 +26,14 @@ const MemoGrid = () => {
   const handleMemoClick = (memo) => {
     if (!isEditing) {
       setSelectedMemo(memo);
+
+      setModalContent({
+        date: memo.date,
+        title: memo.title,
+        author: memo.author,
+        message: memo.content,
+      });
+
       setIsModalOpen(true);
     }
   };
@@ -44,12 +60,6 @@ const MemoGrid = () => {
     setMemos(memos.filter((_, index) => !selectedCards.includes(index)));
     setSelectedCards([]);
     setIsEditing(false);
-  };
-
-  // 모달 닫기 핸들러
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelectedMemo(null);
   };
 
   return (
@@ -80,8 +90,14 @@ const MemoGrid = () => {
           onCardSelect={handleCardSelect}
         />
         {/* 모달 컴포넌트 */}
-        {isModalOpen && selectedMemo && (
-          <Modal memo={selectedMemo} onClose={handleCloseModal} />
+        {isModalOpen && (
+            <MemoModal
+                isOpen={isModalOpen}
+                onClose={closeModal}
+                date={modalContent.date}
+                title={modalContent.title}
+                author={modalContent.author}
+                message={modalContent.message}/>
         )}
       </div>
     </div>
@@ -108,30 +124,6 @@ const MemoList = ({
           onCheck={() => onCardSelect(index)}
         />
       ))}
-    </div>
-  );
-};
-
-// Modal 컴포넌트 (테이프 이미지 없이)
-const Modal = ({ memo, onClose }) => {
-  return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="relative bg-white p-8 rounded-lg shadow-lg w-80">
-        {/* 닫기 버튼 */}
-        <button
-          onClick={onClose}
-          className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
-        >
-          ✕
-        </button>
-        <div className="text-center mt-4">
-          <p className="text-sm text-gray-600">{memo.content}</p>
-          <h3 className="text-lg font-bold mt-4">{memo.title}</h3>
-          <p className="text-sm text-gray-500">
-            {memo.author} · {memo.genre}
-          </p>
-        </div>
-      </div>
     </div>
   );
 };
