@@ -5,125 +5,28 @@ import SearchNav from '../components/SearchNav';
 import LikeIcon from "../assets/like_icon.svg";
 import LikeIconFull from "../assets/like_icon_full.svg";
 import BookSign from "../assets/book_sign.svg";
-import EditorsPick from "../assets/editors_pick.svg";
 import LeftButtonGray from "../assets/left_button_gray.svg";
 import LeftButtonGreen from "../assets/left_button_green.svg";
 import RightButtonGray from "../assets/right_button_gray.svg";
 import RightButtonGreen from "../assets/right_button_green.svg";
+import RecommendedArticles from "../data/recommended_articles.json"
+import BooksInfo from "../data/books_info.json"
+import EditorsPick from "../data/editors_pick.json"
 
 const MainPage = () => {
-    const articles = [
-        {
-            category: "소설",
-            title: "피프티 피플",
-            content: "담당 교수 위에 업지도 없이 서 있던 젊은 실사가 뒤를 올리다며 고객의 제도를 조금씩 계속 바꾸었다. 수상을 받아바...",
-            likes: 189
-        },
-        {
-            category: "소설",
-            title: "구의 증명",
-            content: "담당 교수 위에 업지도 없이 서 있던 젊은 실사가 뒤를 올리다며 고객의 제도를 조금씩 계속 바꾸었다. 수상을 받아바...",
-            likes: 566
-        },
-        {
-            category: "과학",
-            title: "물고기는 존재하지 않는다",
-            content: "담당 교수 위에 업지도 없이 서 있던 젊은 실사가 뒤를 올리다며 고객의 제도를 조금씩 계속 바꾸었다. 수상을 받아바...",
-            likes: 230
-        },
-    ];
-
-    const writings = [
-        {
-            category: "소설",
-            title: "피프티 피플",
-            author: "정세랑",
-            img: BookSign
-        },
-        {
-            category: "소설",
-            title: "피프티 피플",
-            author: "정세랑",
-            img: BookSign
-        },
-        {
-            category: "소설",
-            title: "피프티 피플",
-            author: "정세랑",
-            img: BookSign
-        },
-        {
-            category: "소설",
-            title: "피프티 피플",
-            author: "정세랑",
-            img: BookSign
-        },
-        {
-            category: "소설",
-            title: "피프티 피플",
-            author: "정세랑",
-            img: BookSign
-        },
-        {
-            category: "소설",
-            title: "구의 증명",
-            author: "정세랑",
-            img: BookSign
-        },
-        {
-            category: "소설",
-            title: "구의 증명",
-            author: "정세랑",
-            img: BookSign
-        },
-        {
-            category: "소설",
-            title: "구의 증명",
-            author: "정세랑",
-            img: BookSign
-        },
-        {
-            category: "소설",
-            title: "구의 증명",
-            author: "정세랑",
-            img: BookSign
-        },
-        {
-            category: "소설",
-            title: "구의 증명",
-            author: "정세랑",
-            img: BookSign
-        },
-    ];
-
-    const picks = [
-        {
-            category: "소설",
-            title: "피프티 피플",
-            author: "정세랑",
-            img: EditorsPick
-        },
-        {
-            category: "소설",
-            title: "피프티 피플",
-            author: "정세랑",
-            img: EditorsPick
-        },
-    ];
-
     const itemsPerPage = 5;
     const [currentPage, setCurrentPage] = useState(1);
 
-    const [currentLike, setCurrentLike] = useState(articles.map(() => false));
+    const [currentLike, setCurrentLike] = useState(RecommendedArticles.map(() => false));
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = writings.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = BooksInfo.slice(indexOfFirstItem, indexOfLastItem);
 
-    const totalPages = Math.ceil(writings.length / itemsPerPage);
+    const totalPages = Math.ceil(BooksInfo.length / itemsPerPage);
 
     const handleNextPage = () => {
-        if (currentPage < Math.ceil(writings.length / itemsPerPage)) {
+        if (currentPage < Math.ceil(BooksInfo.length / itemsPerPage)) {
             setCurrentPage(currentPage + 1);
         }
     };
@@ -150,7 +53,7 @@ const MainPage = () => {
             <section className="flex flex-col space-y-9">
             <div className="text-[32px] font-bold mt-20">이런 글은 어때요?</div>
                     <div className="flex flex-col space-y-7">
-                        {articles.map((article, index) => (
+                        {RecommendedArticles.map((article, index) => (
                             <div
                                 className="h-[132px] relative rounded-[10px] border border-[#8a8a8a] p-[25px_60px]"
                                 key={index}>
@@ -198,7 +101,7 @@ const MainPage = () => {
                                 alt="Next"
                                 style={{ cursor: 'pointer' }}
                                 onClick={handleNextPage}
-                                disabled={currentPage === Math.ceil(writings.length / itemsPerPage)}
+                                disabled={currentPage === Math.ceil(BooksInfo.length / itemsPerPage)}
                                 className=""/>
                         </div>
                     </div>
@@ -209,7 +112,7 @@ const MainPage = () => {
                                  key={index}>
                                 <div className="w-[212.74px] h-[386.87px] relative">
                                     <img
-                                        src={writing.img}
+                                        src={writing.image}
                                         alt="BookSign"
                                         className=""/>
                                     <div
@@ -218,7 +121,7 @@ const MainPage = () => {
                                     </div>
                                     <div
                                         className="left-0 top-[358.87px] absolute text-zinc-500 text-[19px] font-normal">
-                                        {writing.author} · {writing.category}
+                                        {writing.author} · {writing.genre}
                                     </div>
                                 </div>
                             </div>
@@ -229,7 +132,7 @@ const MainPage = () => {
                 <section className="flex flex-col">
                     <div className="text-[32px] font-bold mt-20">에디터의 PICK</div>
                     <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-2 place-items-center">
-                        {picks.map((pick, index) => (
+                        {EditorsPick.map((pick, index) => (
                             <img
                                 src={pick.img}
                                 alt="BookSign"

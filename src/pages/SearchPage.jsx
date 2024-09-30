@@ -4,6 +4,7 @@ import SearchIcon from "../assets/search_icon2.svg";
 import DownIcon from "../assets/down_icon.svg";
 import LikeIcon from "../assets/like_icon.svg";
 import LikeIconFull from "../assets/like_icon_full.svg";
+import BooksInfo from "../data/books_info.json"
 
 const SearchPage = () => {
   const [isDownClicked, setIsDownClicked] = useState(false);
@@ -41,60 +42,17 @@ const SearchPage = () => {
     },
   ];
 
-  const articles = [
-    {
-      id: 1,
-      categoryId: 2,
-      title: "피프티 피플",
-      content:
-        "담당 교수 위에 업지도 없이 서 있던 젊은 실사가 뒤를 올리다며 고객의 제도를 조금씩 계속 바꾸었다. 수상을 받아바...",
-      likes: 100,
-    },
-    {
-      id: 2,
-      categoryId: 2,
-      title: "피프티 피플",
-      content:
-        "담당 교수 위에 업지도 없이 서 있던 젊은 실사가 뒤를 올리다며 고객의 제도를 조금씩 계속 바꾸었다. 수상을 받아바...",
-      likes: 100,
-    },
-    {
-      id: 3,
-      categoryId: 3,
-      title: "피프티 피플",
-      content:
-        "담당 교수 위에 업지도 없이 서 있던 젊은 실사가 뒤를 올리다며 고객의 제도를 조금씩 계속 바꾸었다. 수상을 받아바...",
-      likes: 100,
-    },
-    {
-      id: 4,
-      categoryId: 4,
-      title: "피프티 피플",
-      content:
-        "담당 교수 위에 업지도 없이 서 있던 젊은 실사가 뒤를 올리다며 고객의 제도를 조금씩 계속 바꾸었다. 수상을 받아바...",
-      likes: 100,
-    },
-    {
-      id: 5,
-      categoryId: 2,
-      title: "피프티 피플",
-      content:
-        "담당 교수 위에 업지도 없이 서 있던 젊은 실사가 뒤를 올리다며 고객의 제도를 조금씩 계속 바꾸었다. 수상을 받아바...",
-      likes: 100,
-    },
-  ];
-
   const categoryMap = categoryList.reduce((map, category) => {
     map[category.id] = category.name;
     return map;
   }, {});
 
-  const mergedMenu = articles.map((menuItem) => ({
+  const mergedMenu = BooksInfo.map((menuItem) => ({
     ...menuItem,
     categoryName: categoryMap[menuItem.categoryId] || null,
   }));
 
-  const [currentLike, setCurrentLike] = useState(articles.map(() => false));
+  const [currentLike, setCurrentLike] = useState(BooksInfo.map(() => false));
 
   const handleLike = (index) => {
     const currentLikes = [...currentLike];

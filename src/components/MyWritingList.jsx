@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import MyWritingCard from "./MyWritingCard";
-import WrittingData from "../data/writting.json";
+import BooksInfo from "../data/books_info.json";
 
 const MyWritingList = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [selectedCards, setSelectedCards] = useState([]);
-  const [cards, setCards] = useState(WrittingData);
+  const [cards, setCards] = useState(BooksInfo);
 
   const handleEditClick = () => {
     setIsEditing(!isEditing);

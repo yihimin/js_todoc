@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { toast } from 'react-toastify';
 import SearchNav from "../components/SearchNav";
-import bookInfo from "../data/bookInfo.json";
 import Modal from '../modal/Modal';
+import IMG from "../assets/book.jpg";
 
 // HeartButton 컴포넌트: 하트 버튼과 좋아요 수 표시
 const HeartButton = ({isLiked, likeCount, onHeartClick}) => {
@@ -23,6 +23,15 @@ const sampleTexts = [
     "이것은 샘플 텍스트입니다. 첫 번째 텍스트입니다.",
     "여기 또 다른 샘플 텍스트가 있습니다. 두 번째 텍스트입니다.",
     "이 텍스트는 세 번째 샘플 텍스트입니다.",
+];
+
+const bookInfo = [
+    {
+        category: "소설",
+        title: "피프티 피플",
+        author: "정세랑",
+        img: IMG
+    },
 ];
 
 const PilsaPage = () => {

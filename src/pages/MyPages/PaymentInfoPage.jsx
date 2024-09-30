@@ -9,12 +9,12 @@ const PaymentInfoPage = () => {
   const [modalContent, setModalContent] = useState({
     title: '',
     message: '',
-    actionButton: '',
-    closeButton: ''
+    actionName: '',
+    closeName: ''
   });
 
-  const openModal = ({title = '멤버쉽을 해지할까요?', message = '해지해도 2024.00.00.까지 유지됩니다.', actionButton = '해지하기', closeButton = '유지하기'}) => {
-    setModalContent({ title, message, actionButton, closeButton });
+  const openModal = ({title = '멤버쉽을 해지할까요?', message = '해지해도 2024.00.00.까지 유지됩니다.', actionName = '해지하기', closeName = '유지하기'}) => {
+    setModalContent({ title, message, actionName, closeName });
     setIsModalOpen(true);
   };
 
@@ -70,8 +70,8 @@ const PaymentInfoPage = () => {
             onAction={handleMemberShipCancle}
             title={modalContent.title}
             message={modalContent.message}
-            actionButton={modalContent.actionButton}
-            closeButton={modalContent.closeButton}>
+            actionName={modalContent.actionName}
+            closeName={modalContent.closeName}>
         </Modal>
       </div>
     </>
