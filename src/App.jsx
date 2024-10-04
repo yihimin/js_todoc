@@ -61,12 +61,12 @@ const router = createBrowserRouter([
             children: [
                 {
                     path: "/",
+                    element: <LandingPage/>,
+                },
+                {
+                    path: "/",
                     element: <MainLayout/>,
                     children: [
-                        {
-                            path: "/",
-                            element: <LandingPage/>,
-                        },
                         {
                             path: "pilsa",
                             element: <PilsaPage/>,

@@ -114,16 +114,18 @@ const LandingPage = () => {
         <div>
             <SignUpNav/>
             <div className="min-h-screen flex flex-col">
-                <div className="relative flex-grow" style={{paddingTop: '72.22%'}}>
+                <div className="relative flex-grow" style={{paddingTop: '55%'}}>
                     <img
                         src={LandingBackground}
                         alt="LandingBackground"
-                        className="absolute z-20 mt-[30.12px] top-0 left-0 w-full h-full"
+                        className="absolute z-20 mt-[30.12px] w-[86.8%] top-0 left-0 w-full h-full"
+                        style={{ marginRight: '13.2%' }}
                     />
                     <img
                         src={LandingText}
                         alt="LandingText"
-                        className="absolute z-20 mt-[30.12px] top-0 left-0 w-full h-full"
+                        className="absolute z-20 mt-[30.12px] w-[86.8%] top-0 left-0 w-full h-full"
+                        style={{ marginRight: '13.2%' }}
                     />
                 </div>
                 <div className="mt-[359.63px] flex justify-center items-center flex-col">
@@ -189,7 +191,10 @@ const LandingPage = () => {
                             <p className="mt-[35.05px] text-center">100여개 도서<br/>타이핑 기능 제공</p>
                             <p className="ml-[204.37px] mt-[38.09px]">오피스 테마 제공</p>
                         </div>
-                        <button className="w-[374px] h-[55px] rounded-[10px] mt-[284.04px] mb-[25px] bg-[#869F58] shadow-[0_0_20px_rgba(0,0,0,0.25)]"
+                        <div className="mb-[364.05px]">
+
+                        </div>
+                        <button className="z-30 fixed bottom-5 w-[374px] h-[55px] rounded-[10px] bg-[#869F58] shadow-[0_0_20px_rgba(0,0,0,0.25)]"
                                 onClick={handleClick}>
                             <p className="text-[#f9f9f9] text-xl font-bold ">1달 무료체험 시작하기</p>
                         </button>
