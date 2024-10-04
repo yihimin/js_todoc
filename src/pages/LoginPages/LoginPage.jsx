@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import users from "../../data/users.json"; // 사용자 데이터를 가져옵니다.
 import bcrypt from "bcryptjs"; // bcryptjs 라이브러리를 사용합니다.
@@ -7,7 +7,23 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [users, setUsers] = useState([]); // 2024.10.04 이준우 - API로부터 사용자 데이터를 저장할 상태
   const navigate = useNavigate();
+
+  // 2024.10.04 이준우 - 사용자 데이터를 가져오는 API
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/auth/users");
+        const data = await response.json();
+        setUsers(data);
+      } catch (err) {
+        console.error("Failed to fetch users:", err);
+      }
+    };
+
+    fetchUsers();
+  }, []); // 페이지 로드 시 한 번만 호출
 
   const handleLogin = (e) => {
     e.preventDefault();
