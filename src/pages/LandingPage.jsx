@@ -9,7 +9,7 @@ import LandingOffice from '../assets/landing_office.png';
 import { useNavigate } from 'react-router-dom';
 
 const sampleTexts = [
-    "이것은 샘플 텍스트입니다. 첫 번째 텍스트입니다.",
+    "그곳에 새로운 건물이 들어서는 데는 몇년이 채 걸리지 않았다. 약국과 체인 음식점, 학원과 렌털 회사들, 헬스 클럽과 요가 강습소, 치과와 보험 회사가 입주했다. 지하에는 그전 계획처럼 슈퍼마켓이 들어왔다. 중소도시에 흔하디흔한 정글 같은 대형 상가였다. 1층 엘리베이터 옆의 층별 안내도가 복잡하기 그지없었다. 그 앞에 서서 이 건물에 극장이 있었던가, 헷갈려 하는 이들이 종종 있었다. 극장은 그곳에 새로운 건물이 들어서는 데는 몇년이 채 걸리지 않았다. 약국과 체인 음식점, 학원과 렌털 회사들, 헬스 클럽과 요가 강습소, 치과와 보험 회사가 입주했다. 지하에는 그전 계획처럼 슈퍼마켓이 들어왔다. 중소도시에 흔하디흔한 정글 같은 대형 상가였다. 1층 엘리베이터 옆의 층별 안내도가 복잡하기 그지없었다. 그 앞에 서서 이 건물에 극장이 있었던가, 헷갈려 하는 이들이 종종 있었다. 극장.",
     "여기 또 다른 샘플 텍스트가 있습니다. 두 번째 텍스트입니다.",
     "이 텍스트는 세 번째 샘플 텍스트입니다."
 ];
@@ -114,18 +114,18 @@ const LandingPage = () => {
         <div>
             <SignUpNav/>
             <div className="min-h-screen flex flex-col">
-                <div className="relative flex-grow" style={{paddingTop: '55%'}}>
+                <div className="relative flex-grow mt-[70px]" style={{paddingTop: '55%'}}>
                     <img
                         src={LandingBackground}
                         alt="LandingBackground"
                         className="absolute z-20 mt-[30.12px] w-[86.8%] top-0 left-0 w-full h-full"
-                        style={{ marginRight: '13.2%' }}
+                        style={{ paddingRight: '13%' }}
                     />
                     <img
                         src={LandingText}
                         alt="LandingText"
                         className="absolute z-20 mt-[30.12px] w-[86.8%] top-0 left-0 w-full h-full"
-                        style={{ marginRight: '13.2%' }}
+                        style={{ paddingRight: '13%' }}
                     />
                 </div>
                 <div className="mt-[359.63px] flex justify-center items-center flex-col">
@@ -147,7 +147,7 @@ const LandingPage = () => {
                                         <div
                                             className="flex flex-1 p-4 bg-white shadow-md rounded-lg box-border h-[420px]">
                                             <div id="sampleText"
-                                                 className="flex-1 text-gray-500 whitespace-pre-wrap break-words"></div>
+                                                 className="flex-1 text-gray-500 whitespace-pre-wrap break-words leading-[38px]"></div>
                                         </div>
                                         <div
                                             className="flex flex-1 p-4 bg-white shadow-md rounded-lg box-border h-[420px]">
