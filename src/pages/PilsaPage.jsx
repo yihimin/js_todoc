@@ -35,6 +35,12 @@ const PilsaPage = () => {
     pilsaData ? Array(pilsaData.texts.length).fill("") : []
   );
 
+  const [currentLike, setCurrentLike] = useState(false);
+
+  const handleLike = () => {
+    setCurrentLike((currentLike) => !currentLike);
+  };
+
   useEffect(() => {
     if (pilsaData && pilsaData.texts.length > 0) {
       setUserInputs(Array(pilsaData.texts.length).fill(""));
@@ -268,9 +274,9 @@ const PilsaPage = () => {
                     <p className="text-[#8a8a8a] text-base font-normal">{book.author} · {book.genre}</p>
                     <p className="text-[#8a8a8a] text-base font-normal">창비</p>
                     <HeartButton
-                        isLiked={isLiked}
-                        likeCount={likeCount}
-                        onHeartClick={handleHeartClick}/>
+                        currentLike={currentLike}
+                        handleLike={handleLike}
+                        article={book}/>
                   </div>
                 </div>
               </div>
