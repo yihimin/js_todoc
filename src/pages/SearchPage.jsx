@@ -113,24 +113,23 @@ const SearchPage = () => {
         {mergedMenu.map((article, index) => (
           <div
             className="w-[984px] h-[132px] mb-[30px] relative"
-            key={article.id}
-          >
-            <div className="h-full pl-12 flex flex-col items-start justify-center">
-              <div className="pr-[140px]">
-                <div className="inline-block px-[13px] bg-[#8A8A8A] py-px rounded-[45px] text-stone-50 text-[15px] font-normal">
+            key={article.id}>
+            <div className="h-full pl-12 flex flex-row items-center justify-center">
+              <div className="pr-[140px] w-4/5">
+                <div className="inline-block px-[13px] py-px bg-[#8A8A8A] rounded-[45px] text-stone-50 text-[15px] font-normal">
                   {article.categoryName}
                 </div>
                 <div className="text-stone-950 text-xl font-semibold">
                   {article.title}
                 </div>
-                <div className="text-zinc-500 text-[15px]">
+                <div className="text-zinc-500 text-[15px] overflow-hidden whitespace-nowrap text-ellipsis">
                   {article.content}
                 </div>
               </div>
-              <div className="flex flex-row absolute right-14 top-1/2 transform -translate-y-1/2 text-right text-zinc-500 text-xl font-medium">
+              <div className="flex flex-row items-center text-[#8a8a8a] text-[15px] font-normal">
                 <img
-                  src={currentLike[index] ? LikeIconFull : LikeIcon}
-                  alt="LikeIcon"
+                    src={currentLike[index] ? LikeIconFull : LikeIcon}
+                    alt="LikeIcon"
                   className="mr-[1px] mt-[5px]"
                   key={index}
                   onClick={() => handleLike(index)}

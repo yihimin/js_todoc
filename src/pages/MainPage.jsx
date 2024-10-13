@@ -60,8 +60,7 @@ const MainPage = () => {
             {RecommendedArticles.map((article, index) => (
               <div
                 className="h-[132px] relative rounded-[10px] border border-[#8a8a8a] p-[25px_60px]"
-                key={index}
-              >
+                key={index}>
                 <div className="flex flex-row justify-between">
                   <div className="w-4/5">
                     <div className="inline-block px-[13px] py-px bg-[#8A8A8A] rounded-[45px] text-stone-50 text-[15px] font-normal">
