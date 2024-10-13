@@ -1,5 +1,15 @@
 import React, { useState } from "react";
+import TodocLogo from "../../assets/todoc_logo.svg"
+import { Link } from "react-router-dom";
 import users from "../../data/users.json"; // 목데이터 파일을 가져옵니다.
+
+const NavButton = ({ to, text, className }) => (
+    <Link to={to}>
+      <button className={className}>
+        {text}
+      </button>
+    </Link>
+);
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
@@ -37,44 +47,59 @@ const ForgotPasswordPage = () => {
   };
 
   return (
-    <>
-      <div className="flex justify-center items-center h-screen">
-        <div className="bg-white p-10 rounded-lg shadow w-full max-w-md text-center">
-          <h2 className="text-2xl font-bold mb-6">비밀번호 재설정</h2>
-          <p className="mb-4">
-            가입하신 이메일 주소를 입력해주세요.
-            <br />
-            이메일 주소로 비밀번호 재설정 메일이 발송됩니다.
-          </p>
-          <form onSubmit={handlePasswordReset}>
-            <div className="mb-4">
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="email"
-                type="email"
-                placeholder="이메일"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
-            </div>
-            <div className="flex items-center justify-center">
-              <button
-                className="bg-customGray hover:bg-customGreen text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="submit"
-              >
-                이메일 전송하기
-              </button>
-            </div>
-            {message && (
-              <p className="text-green-500 text-sm mt-4 text-center">
-                {message}
-              </p>
-            )}
-          </form>
+      <>
+        <header
+            className="w-full h-[72px] px-8 py-4 shadow flex justify-between items-center bg-white z-50 fixed"> {/* 수정: fixed와 z-index 추가 - 랜딩페이지에서 이상하게 보여서 fixed 삭제했어요!*/}
+          <Link to="/main" className="flex items-center">
+            <img src={TodocLogo} alt="Todoc Logo" className="h-8"/>
+          </Link>
+          <nav className="flex justify-center items-center">
+            {/* NavButton 컴포넌트를 사용하여 버튼을 렌더링 */}
+            <NavButton
+                to="/login"
+                text="로그인"
+                className="w-20 h-10 bg-white font-bold text-[#b0b0b0] border border-[#e0e0e0] rounded leading-normal"
+            />
+          </nav>
+        </header>
+        <div className="flex justify-center items-center h-screen">
+          <div className="bg-white p-10 rounded-lg w-full max-w-md text-center">
+            <h2 className="text-[32px] font-bold mb-6">비밀번호 재설정</h2>
+            <p className="mb-[42.5px] text-[15px] font-normal">
+              가입하신 이메일 주소를 입력해주세요.
+              <br/>
+              이메일 주소로 비밀번호 재설정 메일이 발송됩니다.
+            </p>
+            <form onSubmit={handlePasswordReset}>
+              <div className="">
+                <input
+                    className="w-[375px] h-[55px] border border-[#8a8a8a] rounded rounded-[10px] px-4 pb-4 pt-[15px] text-gray-700 placeholder:text-[#8a8a8a] placeholder:text-sm leading-tight focus:outline-none focus:ring-2 focus:ring-customGreen"
+                    id="email"
+                    type="email"
+                    placeholder="이메일"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <div className="text-sm my-[5.25px] min-h-[20px] text-[#e52222]">
+                  <p>{error}</p>
+                </div>
+              </div>
+              <div className="flex items-center justify-center">
+                <button
+                    className="w-[374px] h-[55px] bg-customGray hover:bg-customGreen text-white text-xl font-bold py-2 px-4 rounded rounded-[10px] focus:outline-none focus:shadow-outline"
+                    type="submit">
+                  이메일 전송하기
+                </button>
+              </div>
+              {message && (
+                  <p className="text-green-500 text-sm mt-4 text-center">
+                    {message}
+                  </p>
+              )}
+            </form>
+          </div>
         </div>
-      </div>
-    </>
+      </>
   );
 };
 
