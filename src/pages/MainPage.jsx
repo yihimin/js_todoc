@@ -10,6 +10,7 @@ import RightButtonGreen from "../assets/right_button_green.svg";
 import RecommendedArticles from "../data/recommended_articles.json";
 import BooksInfo from "../data/books_info.json";
 import EditorsPick from "../data/editors_pick.json";
+import HeartButton from "../components/HeartButton";
 
 const MainPage = () => {
   const itemsPerPage = 5;
@@ -73,19 +74,10 @@ const MainPage = () => {
                       {article.content}
                     </div>
                   </div>
-                  <div className="items-center text-[#8a8a8a] text-[15px] font-normal flex flex-row">
-                    <img
-                      src={currentLike[index] ? LikeIconFull : LikeIcon}
-                      alt="LikeIcon"
-                      className="mr-[1px] mt-[5px]"
-                      key={index}
-                      onClick={() => handleLike(index)}
-                      style={{ cursor: "pointer" }}
-                    />
-                    <div className="">
-                      {currentLike[index] ? article.likes + 1 : article.likes}
-                    </div>
-                  </div>
+                  <HeartButton
+                      currentLike={currentLike[index]}
+                      handleLike={() => handleLike(index)}
+                      article={article}/>
                 </div>
               </div>
             ))}

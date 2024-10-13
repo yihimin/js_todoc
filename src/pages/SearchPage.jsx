@@ -5,6 +5,7 @@ import DownIcon from "../assets/down_icon.svg";
 import LikeIcon from "../assets/like_icon.svg";
 import LikeIconFull from "../assets/like_icon_full.svg";
 import BooksInfo from "../data/books_info.json"
+import HeartButton from "../components/HeartButton";
 
 const SearchPage = () => {
   const [isDownClicked, setIsDownClicked] = useState(false);
@@ -126,19 +127,10 @@ const SearchPage = () => {
                   {article.content}
                 </div>
               </div>
-              <div className="flex flex-row items-center text-[#8a8a8a] text-[15px] font-normal">
-                <img
-                    src={currentLike[index] ? LikeIconFull : LikeIcon}
-                    alt="LikeIcon"
-                  className="mr-[1px] mt-[5px]"
-                  key={index}
-                  onClick={() => handleLike(index)}
-                  style={{ cursor: "pointer" }}
-                />
-                <div className="text-[#8a8a8a] text-xl font-medium">
-                  {currentLike[index] ? article.likes + 1 : article.likes}
-                </div>
-              </div>
+              <HeartButton
+                  currentLike={currentLike[index]}
+                  handleLike={() => handleLike(index)}
+                  article={article}/>
             </div>
           </div>
         ))}

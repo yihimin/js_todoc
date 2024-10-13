@@ -13,7 +13,7 @@ const HeartButton = ({ currentLike, handleLike, article }) => {
               onClick={() => handleLike()}
               style={{cursor: "pointer"}}
           />
-          <div className="">
+          <div className="text-[#8a8a8a] text-xl font-medium min-w-[40px]">
               {currentLike ? article.likes + 1 : article.likes}
           </div>
       </div>
