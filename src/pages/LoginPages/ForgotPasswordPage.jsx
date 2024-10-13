@@ -1,15 +1,8 @@
 import React, { useState } from "react";
 import TodocLogo from "../../assets/todoc_logo.svg"
 import { Link } from "react-router-dom";
+import LoginNav from "../../components/LoginNav"
 import users from "../../data/users.json"; // 목데이터 파일을 가져옵니다.
-
-const NavButton = ({ to, text, className }) => (
-    <Link to={to}>
-      <button className={className}>
-        {text}
-      </button>
-    </Link>
-);
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
@@ -48,20 +41,7 @@ const ForgotPasswordPage = () => {
 
   return (
       <>
-        <header
-            className="w-full h-[72px] px-8 py-4 shadow flex justify-between items-center bg-white z-50 fixed"> {/* 수정: fixed와 z-index 추가 - 랜딩페이지에서 이상하게 보여서 fixed 삭제했어요!*/}
-          <Link to="/main" className="flex items-center">
-            <img src={TodocLogo} alt="Todoc Logo" className="h-8"/>
-          </Link>
-          <nav className="flex justify-center items-center">
-            {/* NavButton 컴포넌트를 사용하여 버튼을 렌더링 */}
-            <NavButton
-                to="/login"
-                text="로그인"
-                className="w-20 h-10 bg-white font-bold text-[#b0b0b0] border border-[#e0e0e0] rounded leading-normal"
-            />
-          </nav>
-        </header>
+        <LoginNav/>
         <div className="flex justify-center items-center h-screen">
           <div className="bg-white p-10 rounded-lg w-full max-w-md text-center">
             <h2 className="text-[32px] font-bold mb-6">비밀번호 재설정</h2>
