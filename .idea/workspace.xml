@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="37e85f13-3adc-4fce-b090-281f7cd48627" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SignupNav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignupNav.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchNav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchNav.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +27,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
@@ -133,7 +138,10 @@
       <workItem from="1728644786880" duration="2282000" />
       <workItem from="1728701265565" duration="5822000" />
       <workItem from="1728818182144" duration="771000" />
-      <workItem from="1728819056546" duration="66000" />
+      <workItem from="1728819056546" duration="615000" />
+      <workItem from="1728819718361" duration="61000" />
+      <workItem from="1728819791879" duration="44000" />
+      <workItem from="1728820045245" duration="718000" />
     </task>
     <servers />
   </component>

@@ -25,17 +25,17 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="relative w-full mx-4">
+    <div className="relative w-[360px] h-11 mx-[24px]">
       <input
         type="text"
         value={searchTerm}
         onChange={handleInputChange}
         onKeyPress={handleKeyPress}
-        className="w-full py-2 px-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-customGreen"
+        className="w-full py-2 px-4 pl-5 rounded-[28px] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-customGreen bg-[#e0e0e0] placeholder:text-[#8a8a8a]"
         placeholder="검색어를 입력하세요"
       />
       <span
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer"
+        className="absolute top-1/2 right-2 transform -translate-y-1/2 cursor-pointer"
         onClick={handleSearch}
       >
         <img src={SearchIcon} alt="Search" />

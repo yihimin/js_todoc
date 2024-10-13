@@ -31,9 +31,9 @@ const SearchNav = () => {
       <Link to="/main" className="flex items-center">
         <img src={TodocLogo} alt="Todoc Logo" className="h-8" />
       </Link>
-      <div className="flex items-center flex-grow"> {/* flex-grow 추가 */}
+      <div className="flex flex-end">
         <SearchBar /> {/* 검색창 컴포넌트 */}
-        <div className="relative ml-4"> {/* 추가 스타일 조정 */}
+        <div className="relative"> {/* 추가 스타일 조정 */}
           <img
             src={ProfileIcon}
             alt="Profile"
