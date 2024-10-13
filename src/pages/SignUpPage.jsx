@@ -22,7 +22,7 @@ const SignUpPage = () => {
 
   const navigate = useNavigate();
 
-  const handleSignUp = () => {
+  const handleSignUp = async (e) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email) {
       setEmailError("이메일을 입력하세요.");
@@ -75,6 +75,34 @@ const SignUpPage = () => {
       return;
     }
 
+    // 2024.10.04 이준우 추가  - api
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: nickname,
+          email,
+          password,
+          phone,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("회원가입이 완료되었습니다.");
+        navigate("/login");
+      } else {
+        setError(data.msg || "회원가입 중 문제가 발생했습니다.");
+      }
+    } catch (error) {
+      console.error(error);
+      setError("서버와의 통신에 실패했습니다.");
+    }
+    /* 
     users.push({
       email,
       nickname,
@@ -85,8 +113,9 @@ const SignUpPage = () => {
     setError("");
     alert("가입이 완료되었습니다.");
     navigate("/login");
+    */
   };
-
+  
   const handleNicknameCheck = () => {
     if (users.some((user) => user.nickname === nickname)) {
       setNicknameMessage("이미 사용 중인 닉네임입니다.");
@@ -95,6 +124,7 @@ const SignUpPage = () => {
       setNicknameMessage("사용 가능한 닉네임입니다.");
       setIsNicknameAvailable(true);
     }
+      
   };
 
   const handlePasswordChange = (e) => {
@@ -122,6 +152,7 @@ const SignUpPage = () => {
       setPasswordMessage("비밀번호가 일치하지 않습니다.");
     }
   };
+
 
   return (
     <>
