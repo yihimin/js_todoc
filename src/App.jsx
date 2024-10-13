@@ -82,9 +82,7 @@ const router = createBrowserRouter([
           {
             path: "signup",
             element: (
-              <SignUpLayout>
                 <SignUpPage />
-              </SignUpLayout>
             ),
           },
           {

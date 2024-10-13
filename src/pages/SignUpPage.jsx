@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import users from "../data/users.json";
 import bcrypt from "bcryptjs";
+import LoginNav from "../components/LoginNav"
 
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
@@ -105,7 +106,7 @@ const SignUpPage = () => {
       )
     ) {
       setPasswordError(
-        "비밀번호는 영문, 숫자, 특수문자 중 2개 조합 8자 이상이어야 합니다."
+        "영문, 숫자, 특수문자 중 2개 조합 8자 이상으로 입력하세요."
       );
     } else {
       setPasswordError("");
@@ -123,181 +124,138 @@ const SignUpPage = () => {
   };
 
   return (
-    <div>
+    <>
+      <LoginNav/>
       <div className="flex justify-center items-center h-screen">
-        <div className="bg-white p-10 rounded-lg shadow w-full max-w-md">
-          <h2 className="text-2xl font-bold mb-6 text-center">회원가입</h2>
+        <div className="bg-white p-10 rounded-lg w-full max-w-md">
+          <h2 className="text-[32px] font-bold mb-[34px] text-center">회원가입</h2>
           <form onSubmit={(e) => e.preventDefault()}>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="email"
-              >
-                이메일
-              </label>
+            <div className="">
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="email"
-                type="email"
-                placeholder="이메일"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                  className="w-[375px] h-[55px] border border-[#8a8a8a] rounded rounded-[10px] px-4 pb-4 pt-[15px] text-gray-700 placeholder:text-[#8a8a8a] placeholder:text-sm leading-tight focus:outline-none focus:ring-2 focus:ring-customGreen"
+                  id="email"
+                  type="email"
+                  placeholder="이메일"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
               />
-              {emailError && (
-                <p className="text-red-500 text-sm mt-1">{emailError}</p>
-              )}
+              <div className="text-sm ml-[5px] my-[4px] min-h-[20px] text-[#e52222]">
+                <p>{emailError}</p>
+              </div>
             </div>
-            <div className="mb-4 flex items-end">
-              <div className="flex-1">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="nickname"
-                >
-                  닉네임(2자 이상)
-                </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            <div className="">
+              <input
+                  className="w-[375px] h-[55px] border border-[#8a8a8a] rounded rounded-[10px] px-4 pb-4 pt-[15px] text-gray-700 placeholder:text-[#8a8a8a] placeholder:text-sm leading-tight focus:outline-none focus:ring-2 focus:ring-customGreen"
+                  id="password"
+                  type="password"
+                  placeholder="비밀번호 (영문, 숫자, 특수문자 중 2개 조합 8자 이상)"
+                  value={password}
+                  onChange={handlePasswordChange}
+              />
+              <div className="text-sm ml-[5px] my-[4px] min-h-[20px] text-[#e52222]">
+                <p>{passwordError}</p>
+              </div>
+            </div>
+            <div className="">
+              <input
+                  className="w-[375px] h-[55px] border border-[#8a8a8a] rounded rounded-[10px] px-4 pb-4 pt-[15px] text-gray-700 placeholder:text-[#8a8a8a] placeholder:text-sm leading-tight focus:outline-none focus:ring-2 focus:ring-customGreen"
+                  id="passwordConfirm"
+                  type="password"
+                  placeholder="비밀번호 확인"
+                  value={passwordConfirm}
+                  onChange={handlePasswordConfirmChange}
+              />
+              <div className="ml-[5px] my-[4px] min-h-[20px]">
+                {passwordMessage && (
+                    <p className={`text-sm ${passwordMessage === '비밀번호가 일치합니다.' ? 'text-green-500' : 'text-red-500'}`}>
+                      {passwordMessage}
+                    </p>
+                )}
+              </div>
+            </div>
+            <div className="flex items-end">
+              <input
+                  className="w-[256px] h-[55px] border border-[#8a8a8a] rounded rounded-[10px] px-4 pb-4 pt-[15px] text-gray-700 placeholder:text-[#8a8a8a] placeholder:text-sm leading-tight focus:outline-none focus:ring-2 focus:ring-customGreen"
                   id="nickname"
                   type="text"
                   placeholder="닉네임"
                   value={nickname}
-                  onChange={(e) => setNickname(e.target.value)}
-                />
-                {nicknameMessage && (
-                  <p className={`text-sm mt-1 ${isNicknameAvailable ? 'text-green-500' : 'text-red-500'}`}>
-                    {nicknameMessage}
-                  </p>
-                )}
-              </div>
+                  onChange={(e) => setNickname(e.target.value)}/>
               <button
-                className="ml-4 bg-customGreen text-white font-bold px-4 rounded focus:outline-none focus:shadow-outline h-[40px] flex items-center"
-                type="button"
-                onClick={handleNicknameCheck}
-              >
+                  className="ml-[17px] w-[102px] h-[55px] bg-customGreen text-white text-[15px] font-semibold py-2 px-4 rounded rounded-[10px] focus:outline-none focus:shadow-outline"
+                  type="button"
+                  onClick={handleNicknameCheck}>
                 중복 확인
               </button>
             </div>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="password"
-              >
-                비밀번호
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="password"
-                type="password"
-                placeholder="비밀번호 (영문, 숫자, 특수문자 중 2개 조합 8자 이상)"
-                value={password}
-                onChange={handlePasswordChange}
-              />
-              {passwordError && (
-                <p className="text-red-500 text-sm mt-1">{passwordError}</p>
-              )}
-            </div>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="passwordConfirm"
-              >
-                비밀번호 확인
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="passwordConfirm"
-                type="password"
-                placeholder="비밀번호 확인"
-                value={passwordConfirm}
-                onChange={handlePasswordConfirmChange}
-              />
-              {passwordMessage && (
-                <p className={`text-sm mt-1 ${passwordMessage === '비밀번호가 일치합니다.' ? 'text-green-500' : 'text-red-500'}`}>
-                  {passwordMessage}
-                </p>
+            <div className="ml-[5px] my-[4px] min-h-[20px]">
+              {nicknameMessage && (
+                  <p className={`text-sm mt-1 ${isNicknameAvailable ? 'text-green-500' : 'text-red-500'}`}>
+                    {nicknameMessage}
+                  </p>
               )}
             </div>
             <div className="mb-4 flex items-end">
-              <div className="flex-1">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="phone"
-                >
-                  휴대폰 번호
-                </label>
                 <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="phone"
-                  type="text"
-                  placeholder="휴대폰 번호"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                    className="w-[256px] h-[55px] border border-[#8a8a8a] rounded rounded-[10px] px-4 pb-4 pt-[15px] text-gray-700 placeholder:text-[#8a8a8a] placeholder:text-sm leading-tight focus:outline-none focus:ring-2 focus:ring-customGreen"
+                    id="phone"
+                    type="text"
+                    placeholder="휴대폰 번호"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
                 />
-              </div>
               <button
-                className="ml-4 bg-customGreen text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="button"
-              >
+                  className="ml-[17px] w-[102px] h-[55px] bg-customGreen text-white text-[15px] font-semibold py-2 px-4 rounded rounded-[10px] focus:outline-none focus:shadow-outline"
+                  type="button">
                 인증 받기
               </button>
             </div>
             <div className="mb-4 flex items-end">
-              <div className="flex-1">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="verificationCode"
-                >
-                  인증 번호
-                </label>
                 <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="verificationCode"
-                  type="text"
-                  placeholder="인증 번호"
-                  value={verificationCode}
-                  onChange={(e) => setVerificationCode(e.target.value)}
-                />
-              </div>
+                    className="w-[256px] h-[55px] border border-[#8a8a8a] rounded rounded-[10px] px-4 pb-4 pt-[15px] text-gray-700 placeholder:text-[#8a8a8a] placeholder:text-sm leading-tight focus:outline-none focus:ring-2 focus:ring-customGreen"
+                    id="verificationCode"
+                    type="text"
+                    placeholder="인증 번호"
+                    value={verificationCode}
+                    onChange={(e) => setVerificationCode(e.target.value)}/>
               <button
-                className="ml-4 bg-customGreen text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="button"
-              >
+                  className="ml-[17px] w-[102px] h-[55px] bg-customGreen text-white text-[15px] font-semibold py-2 px-4 rounded rounded-[10px] focus:outline-none focus:shadow-outline"
+                  type="button">
                 확인
               </button>
             </div>
             <div className="mb-4">
               <label className="flex items-center">
                 <input
-                  className="mr-2 leading-tight"
-                  type="checkbox"
-                  checked={termsAccepted}
-                  onChange={(e) => setTermsAccepted(e.target.checked)}
+                    className="mr-2 leading-tight"
+                    type="checkbox"
+                    checked={termsAccepted}
+                    onChange={(e) => setTermsAccepted(e.target.checked)}
                 />
-                <span className="text-sm">(필수) 이용약관 동의</span>
+                <span className="text-sm text-[#8a8a8a]">(필수) 이용약관 동의</span>
               </label>
               <label className="flex items-center mt-2">
                 <input
-                  className="mr-2 leading-tight"
-                  type="checkbox"
-                  checked={newsletterAccepted}
-                  onChange={(e) => setNewsletterAccepted(e.target.checked)}
+                    className="mr-2 leading-tight"
+                    type="checkbox"
+                    checked={newsletterAccepted}
+                    onChange={(e) => setNewsletterAccepted(e.target.checked)}
                 />
-                <span className="text-sm">(선택) 뉴스레터 수신 동의</span>
+                <span className="text-sm text-[#8a8a8a]">(선택) 뉴스레터 수신 동의</span>
               </label>
             </div>
             <div className="flex items-center justify-center">
               <button
-                className="bg-customGray hover:bg-customGreen text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="button"
-                onClick={handleSignUp}
-              >
-                가입 하기
+                  className="w-[374px] h-[55px] bg-customGray hover:bg-customGreen text-white text-xl font-bold py-2 px-4 rounded rounded-[10px] focus:outline-none focus:shadow-outline"
+                  type="button"
+                  onClick={handleSignUp}>
+                가입하기
               </button>
             </div>
           </form>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
