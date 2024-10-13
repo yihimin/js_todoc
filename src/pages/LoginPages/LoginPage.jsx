@@ -36,18 +36,12 @@ const LoginPage = () => {
   return (
     <div>
       <div className="flex justify-center items-center h-screen">
-        <div className="bg-white p-10 rounded-lg shadow w-full max-w-md">
-          <h2 className="text-2xl font-bold mb-6 text-center">로그인</h2>
+        <div className="bg-white p-10 rounded-lg w-full max-w-md">
+          <h2 className="text-[32px] text-[#0f0f0f] font-bold text-center">로그인</h2>
           <form onSubmit={handleLogin}>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="email"
-              >
-                이메일
-              </label>
+            <div className="mt-[34px] mb-[20.5px]">
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="w-[375px] h-[55px] border border-[#8a8a8a] rounded rounded-[10px] px-4 pb-4 pt-[15px] text-gray-700 placeholder:text-[#8a8a8a] placeholder:text-sm leading-tight focus:outline-none focus:ring-2 focus:ring-customGreen"
                 id="email"
                 type="email"
                 placeholder="이메일"
@@ -55,38 +49,33 @@ const LoginPage = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div className="mb-6">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="password"
-              >
-                비밀번호
-              </label>
+            <div className="">
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="password"
+                  className="w-[375px] h-[55px] border border-[#8a8a8a] rounded rounded-[10px] px-4 pb-4 pt-[15px] text-gray-700 placeholder:text-[#8a8a8a] placeholder:text-sm leading-tight focus:outline-none focus:ring-2 focus:ring-customGreen"
+                  id="password"
                 type="password"
                 placeholder="비밀번호"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+            <div className="text-sm my-[10px] min-h-[20px] text-[#e52222]">
+              <p>{error}</p>
+            </div>
             <div className="flex items-center justify-between mb-6">
               <label className="flex items-center">
                 <input className="mr-2 leading-tight" type="checkbox" />
                 <span className="text-sm">자동 로그인</span>
               </label>
               <a
-                className="inline-block align-baseline font-bold text-sm text-customGray hover:text-customGreen"
-                href="/password-reset"
-              >
+                className="inline-block align-baseline font-normal text-sm text-customGray hover:text-customGreen underline"
+                href="/password-reset">
                 비밀번호를 잊어버리셨나요?
               </a>
             </div>
             <div className="flex items-center justify-center">
               <button
-                className="bg-customGray hover:bg-customGreen text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="w-[374px] h-[55px] bg-customGray hover:bg-customGreen text-white text-xl font-bold py-2 px-4 rounded rounded-[10px] focus:outline-none focus:shadow-outline"
                 type="submit"
               >
                 로그인
