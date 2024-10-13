@@ -17,17 +17,17 @@ const SignUpNav = () => {
       <Link to="/main" className="flex items-center">
         <img src={TodocLogo} alt="Todoc Logo" className="h-8" />
       </Link>
-      <nav className="flex items-center">
+      <nav className="flex justify-center items-center">
         {/* NavButton 컴포넌트를 사용하여 버튼을 렌더링 */}
         <NavButton
           to="/login"
           text="로그인"
-          className="w-24 h-10 px-4 py-2 bg-white text-stone-500 border border-stone-500 rounded mr-2"
+          className="w-20 h-10 px-4 py-2 bg-white font-bold text-[#b0b0b0] border border-[#e0e0e0] rounded mr-[10px] leading-normal"
         />
         <NavButton
           to="/signup"
           text="회원가입"
-          className="w-24 h-10 px-4 py-2 bg-customGreen text-white rounded"
+          className="w-[91px] h-10 px-4 py-2 bg-customGreen text-white rounded font-bold text-[#f9f9f9] leading-normal"
         />
       </nav>
     </header>

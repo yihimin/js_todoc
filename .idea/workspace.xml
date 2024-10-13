@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="37e85f13-3adc-4fce-b090-281f7cd48627" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HeartButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HeartButton.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/PilsaPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PilsaPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SignupNav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignupNav.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +131,9 @@
       <workItem from="1728046709663" duration="13399000" />
       <workItem from="1728215255712" duration="1581000" />
       <workItem from="1728644786880" duration="2282000" />
-      <workItem from="1728701265565" duration="4139000" />
+      <workItem from="1728701265565" duration="5822000" />
+      <workItem from="1728818182144" duration="771000" />
+      <workItem from="1728819056546" duration="66000" />
     </task>
     <servers />
   </component>
