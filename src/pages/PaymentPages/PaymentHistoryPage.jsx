@@ -8,8 +8,8 @@ const PaymentHistoryPage = () => {
       <SearchNav />
       <div className="flex justify-center items-center h-screen">
         <div className="bg-white p-10 rounded-lg shadow w-full max-w-4xl">
-          <h2 className="text-2xl font-bold mb-6 text-center">
-            결제 내역 확인하기
+          <h2 className="text-[32px] font-bold mb-6">
+            결제 내역 확인
           </h2>
           <table className="min-w-full bg-white">
             <thead>
