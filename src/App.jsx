@@ -9,7 +9,7 @@ import {
   Outlet
 } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { UserProvider } from "./context/UserContext"; // UserProvider 추가
+import { UserProvider } from "./services/UserContext"; // UserProvider 추가
 import PilsaPage from "./pages/PilsaPage";
 import MainPage from "./pages/MainPage";
 import SearchPage from "./pages/SearchPage";
