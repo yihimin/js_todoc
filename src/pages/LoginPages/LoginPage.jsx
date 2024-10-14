@@ -1,32 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
-import users from "../../data/users.json"; // 사용자 데이터를 가져옵니다.
+//import users from "../../data/users.json"; // 목데이터 사용
 import bcrypt from "bcryptjs"; // bcryptjs 라이브러리를 사용합니다.
+import { useUserContext } from "../../services/UserContext";// UserContext에서 사용자 데이터를 가져옵니다.
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [users, setUsers] = useState([]); // 2024.10.04 이준우 - API로부터 사용자 데이터를 저장할 상태
   const navigate = useNavigate();
-
-  // 2024.10.04 이준우 - 사용자 데이터를 가져오는 API
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/api/auth/users");
-        const data = await response.json();
-        setUsers(data);
-      } catch (err) {
-        console.error("Failed to fetch users:", err);
-      }
-    };
-
-    fetchUsers();
-  }, []); // 페이지 로드 시 한 번만 호출
+  
+  // UserContext에서 전역적으로 관리하는 users 데이터 가져오기
+  const { users, loading, error: contextError } = useUserContext();
 
   const handleLogin = (e) => {
     e.preventDefault();
+
+    if (loading) {
+      setError("사용자 데이터를 불러오는 중입니다. 잠시만 기다려주세요.");
+      return;
+    }
+
+    if (contextError) {
+      setError("데이터를 불러오는 중 오류가 발생했습니다. 다시 시도해주세요.");
+      return;
+    }
 
     // 사용자가 입력한 이메일과 일치하는 사용자 데이터 찾기
     const user = users.find((user) => user.email === email);

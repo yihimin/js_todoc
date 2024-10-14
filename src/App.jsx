@@ -1,14 +1,15 @@
+// src/App.js
+
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 import React from "react";
 import {
   createBrowserRouter,
-  createRoutesFromElements,
   RouterProvider,
-  Route,
-  Outlet,
+  Outlet
 } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { UserProvider } from "./context/UserContext"; // UserProvider 추가
 import PilsaPage from "./pages/PilsaPage";
 import MainPage from "./pages/MainPage";
 import SearchPage from "./pages/SearchPage";
@@ -81,9 +82,7 @@ const router = createBrowserRouter([
           },
           {
             path: "signup",
-            element: (
-                <SignUpPage />
-            ),
+            element: <SignUpPage />,
           },
           {
             path: "mypage",
@@ -149,7 +148,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <UserProvider> {/* UserProvider로 애플리케이션을 감쌈 */}
+      <RouterProvider router={router} />
+    </UserProvider>
+  );
 }
 
 export default App;
