@@ -19,8 +19,8 @@ const MemoModal = ({ isOpen, onClose, date, title, author, message}) => {
                 <div className="absolute w-full h-full flex flex-col">
                 {date && <h2 className="mt-[147.2px] ml-[70px]">{date}</h2>}
                 {title && <h2 className="ml-[70px]">{title}</h2>}
-                {author && <h2 className="ml-[85px]">{author}</h2>}
-                {message && <h2 className="mt-[30px] ml-[35px]">{message}</h2>}
+                {author && <h2 className="ml-[82px]">{author}</h2>}
+                {message && <h2 className="mt-[30px] ml-[35px] w-[282px] h-[270px]">{message}</h2>}
                 </div>
             </div>
         </div>,

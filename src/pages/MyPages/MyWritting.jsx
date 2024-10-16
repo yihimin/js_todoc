@@ -4,14 +4,12 @@ import MyWritingList from "../../components/MyWritingList";
 
 const MyWritting = () => {
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center">
       <SearchNav />
-      <div className="flex justify-between items-center mb-8">
-        <h2 className="pl-12 py-12 mt-8 text-2xl font-bold">필사 중인 글</h2>
-      </div>
-      <div className="px-8">
-        <MyWritingList />
-      </div>
+        <div className="mt-[108px] mb-[270px] w-[1040px]">
+                <h2 className="mb-[12px] text-[32px] font-bold">필사 중인 글</h2>
+                <MyWritingList/>
+        </div>
     </div>
   );
 };

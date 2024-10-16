@@ -63,57 +63,59 @@ const MemoGrid = () => {
   };
 
   return (
-    <div>
-      <SearchNav />
-      <div className="container mx-auto pb-8">
-        {" "}
-        {/* 아래 여백 추가 */}
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="pl-12 py-12 mt-8 text-2xl font-bold">메모 모아보기</h2>
-          {/* 편집 및 삭제 버튼 */}
-          <div className="flex space-x-4 pr-8">
-            <button className="text-gray-600" onClick={handleEditClick}>
-              {isEditing ? "편집완료" : "편집"}
-            </button>
+      <div className="flex flex-col justify-center items-center">
+        <SearchNav/>
+        <div className="mt-[108px] mb-[270px] w-[1040px]">
+          {" "}
+          {/* 아래 여백 추가 */}
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="mb-[12px] text-[32px] font-bold">메모 모아보기</h2>
+            <div className="flex flex-row">
             {isEditing && (
-              <button className="text-red-600" onClick={handleDeleteSelected}>
-                삭제
-              </button>
+                <button className="text-red-600 font-bold underline pr-[16px]" onClick={handleDeleteSelected}>
+                  삭제
+                </button>
             )}
+            {/* 편집 및 삭제 버튼 */}
+            <div className="flex space-x-4">
+              <button className="text-[#b0b0b0] font-bold underline" onClick={handleEditClick}>
+                {isEditing ? "편집완료" : "편집"}
+              </button>
+            </div>
+            </div>
           </div>
+          <MemoList
+              memos={memos}
+              onMemoClick={handleMemoClick}
+              isEditing={isEditing}
+              selectedCards={selectedCards}
+              onCardSelect={handleCardSelect}
+          />
+          {/* 모달 컴포넌트 */}
+          {isModalOpen && (
+              <MemoModal
+                  isOpen={isModalOpen}
+                  onClose={closeModal}
+                  date={modalContent.date}
+                  title={modalContent.title}
+                  author={modalContent.author}
+                  message={modalContent.message}/>
+          )}
         </div>
-        <MemoList
-          memos={memos}
-          onMemoClick={handleMemoClick}
-          isEditing={isEditing}
-          selectedCards={selectedCards}
-          onCardSelect={handleCardSelect}
-        />
-        {/* 모달 컴포넌트 */}
-        {isModalOpen && (
-            <MemoModal
-                isOpen={isModalOpen}
-                onClose={closeModal}
-                date={modalContent.date}
-                title={modalContent.title}
-                author={modalContent.author}
-                message={modalContent.message}/>
-        )}
       </div>
-    </div>
   );
 };
 
 // MemoList 컴포넌트
 const MemoList = ({
-  memos,
-  onMemoClick,
+                    memos,
+                    onMemoClick,
   isEditing,
   selectedCards,
   onCardSelect,
 }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-8">
+    <div className="mt-[60px] grid grid-cols-5 gap-[60px]">
       {memos.map((memo, index) => (
         <MemoCard
           key={index}

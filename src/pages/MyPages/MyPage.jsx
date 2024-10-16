@@ -21,13 +21,13 @@ const MyPage = () => {
       <SearchNav />
       <div className="h-screen">
       <div className="flex flex-col justify-center items-center relative">
-        <img src={ProfileImg} alt="ProfileImg" className="mt-[140.38px]" />
+        <img src={ProfileImg} alt="ProfileImg" className="mt-[200.38px]" />
         <img
           src={SettingBG}
           alt="SettingImg"
           style={{ cursor: 'pointer' }}
           onClick={handleUpdateInfo}
-          className="absolute mt-[266.87px] ml-[140.75px]"
+          className="absolute mt-[326.87px] ml-[140.75px]"
         />
       </div>
       <div className="flex flex-col justify-center items-center">
@@ -50,48 +50,48 @@ const MyPage = () => {
       </div>
       <div className="flex justify-center items-center mt-[82.48px]">
         <div className="p-[20px_18px]">
+          <Link to="/mypage/writting">
           <div className="p-[0px_50px] flex flex-col justify-center items-center"
                style={{ cursor: 'pointer' }}>
             <img src={PenIcon} alt="PenIcon" className="mb-[10px]" />
-            <Link to="/mypage/writting">
               <p className="text-xl font-medium text-[#8a8a8a] whitespace-nowrap">
                 필사 중인 글
               </p>
-            </Link>
           </div>
+          </Link>
         </div>
         <div className="p-[20px_18px]">
+          <Link to="/mypage/written">
           <div className="p-[0px_50px] flex flex-col justify-center items-center"
                style={{ cursor: 'pointer' }}>
             <img src={CheckIcon} alt="CheckIcon" className="mb-[10px]" />
-            <Link to="/mypage/written">
               <p className="text-xl font-medium text-[#8a8a8a] whitespace-nowrap">
                 필사 완료된 글
               </p>
-            </Link>
           </div>
+          </Link>
         </div>
         <div className="p-[20px_18px]">
+          <Link to="/mypage/scrap">
           <div className="p-[0px_50px] flex flex-col justify-center items-center"
                style={{ cursor: 'pointer' }}>
             <img src={HeartIcon} alt="HeartIcon" className="mb-[10px]" />
-            <Link to="/mypage/scrap">
               <p className="text-xl font-medium text-[#8a8a8a] whitespace-nowrap">
                 스크랩 한 글
               </p>
-            </Link>
           </div>
+          </Link>
         </div>
         <div className="p-[20px_18px]">
+          <Link to="/mypage/notes">
           <div className="p-[0px_50px] flex flex-col justify-center items-center"
                style={{ cursor: 'pointer' }}>
             <img src={MemoIcon} alt="MemoIcon" className="mb-[10px]" />
-            <Link to="/mypage/notes">
               <p className="text-xl font-medium text-[#8a8a8a] whitespace-nowrap">
                 메모 모아보기
               </p>
-            </Link>
           </div>
+          </Link>
         </div>
       </div>
       </div>

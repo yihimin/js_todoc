@@ -4,15 +4,13 @@ import MyWritingList from "../../components/MyWritingList";
 
 const MyWritten = () => {
   return (
-    <div>
-      <SearchNav />
-      <div className="flex justify-between items-center mb-8">
-        <h2 className="pl-12 py-12 mt-8 text-2xl font-bold">필사 완료한 글</h2>
+      <div className="flex flex-col justify-center items-center">
+          <SearchNav/>
+          <div className="mt-[108px] mb-[270px] w-[1040px]">
+                  <h2 className="mb-[12px] text-[32px] font-bold">필사 완료한 글</h2>
+                  <MyWritingList/> {/* 작성중이랑 DB분리 필요 */}
+          </div>
       </div>
-      <div className="px-8">
-        <MyWritingList />
-      </div>
-    </div>
   );
 };
 

@@ -6,7 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="37e85f13-3adc-4fce-b090-281f7cd48627" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/PilsaPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PilsaPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MemoCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MemoCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MyWritingCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MyWritingCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MyWritingList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MyWritingList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/memos.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/memos.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modal/MemoModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modal/MemoModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyPages/MemoGrid.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyPages/MemoGrid.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyPages/MyPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyPages/MyPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyPages/MyWritten.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyPages/MyWritten.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyPages/MyWritting.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyPages/MyWritting.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +152,7 @@
       <workItem from="1728819718361" duration="61000" />
       <workItem from="1728819791879" duration="44000" />
       <workItem from="1728820045245" duration="13672000" />
-      <workItem from="1729080431955" duration="4083000" />
+      <workItem from="1729080431955" duration="8264000" />
     </task>
     <servers />
   </component>

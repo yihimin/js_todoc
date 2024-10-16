@@ -15,11 +15,11 @@ const MyWritingCard = ({
         <img
           src={image}
           alt={title}
-          className="w-24 h-24 rounded-full bg-pink-200 object-cover"
+          className="w-[160px] h-[160px] rounded-full bg-pink-200 object-cover"
         />
         {isEditing && (
           <div
-            className={`absolute top-2 right-2 w-4 h-4 rounded-full border-2 border-customGreen flex items-center justify-center cursor-pointer ${
+            className={`absolute top-2 right-0 w-8 h-8 rounded-full border-2 border-customGreen flex items-center justify-center cursor-pointer ${
               isChecked ? "bg-customGreen" : "bg-white"
             }`}
             onClick={onCheck}
@@ -43,8 +43,8 @@ const MyWritingCard = ({
           </div>
         )}
       </div>
-      <h3 className="mt-4 text-center font-semibold">{title}</h3>
-      <p className="text-center text-gray-600">
+      <h3 className="mt-[25px] text-center text-xl font-semibold">{title}</h3>
+      <p className="mt-[10px] text-center text-[#8a8a8a]">
         {author} ・ {genre}
       </p>
     </div>
