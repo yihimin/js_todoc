@@ -6,20 +6,21 @@ const PaymentHistoryPage = () => {
   return (
     <>
       <SearchNav />
-      <div className="flex justify-center items-center h-screen">
-        <div className="bg-white p-10 rounded-lg shadow w-full max-w-4xl">
+      <div className="flex flex-col items-center justify-center">
+        <div className="w-[1040px] mt-[108px] mb-[270px]">
           <h2 className="text-[32px] font-bold mb-6">
             결제 내역 확인
           </h2>
-          <table className="min-w-full bg-white">
+        <div className="flex items-center justify-center">
+          <table className="w-[1032px] mt-[36px] bg-white">
             <thead>
               <tr>
-                <th className="py-2 px-4 border-b-2 border-gray-300">날짜</th>
-                <th className="py-2 px-4 border-b-2 border-gray-300">상품명</th>
-                <th className="py-2 px-4 border-b-2 border-gray-300">
+                <th className="py-2 px-4 border-b-2 border-[#0f0f0f] text-xl">날짜</th>
+                <th className="py-2 px-4 border-b-2 border-[#0f0f0f] text-xl">상품명</th>
+                <th className="py-2 px-4 border-b-2 border-[#0f0f0f] text-xl">
                   결제 수단
                 </th>
-                <th className="py-2 px-4 border-b-2 border-gray-300">
+                <th className="py-2 px-4 border-b-2 border-[#0f0f0f] text-xl">
                   결제 금액
                 </th>
               </tr>
@@ -27,22 +28,23 @@ const PaymentHistoryPage = () => {
             <tbody>
               {paymentsData.map((payment, index) => (
                 <tr key={index}>
-                  <td className="py-2 px-4 border-b border-gray-300 text-center">
+                  <td className="py-3 px-4 border-b border-white text-center text-[#8a8a8a]">
                     {payment.date}
                   </td>
-                  <td className="py-2 px-4 border-b border-gray-300 text-center">
+                  <td className="py-3 px-4 border-b border-white text-center text-[#8a8a8a]">
                     {payment.productName}
                   </td>
-                  <td className="py-2 px-4 border-b border-gray-300 text-center">
+                  <td className="py-3 px-4 border-b border-white text-center text-[#8a8a8a]">
                     {payment.paymentMethod}
                   </td>
-                  <td className="py-2 px-4 border-b border-gray-300 text-center">
+                  <td className="py-3 px-4 border-b border-white text-center text-[#8a8a8a]">
                     {payment.amount}
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+        </div>
         </div>
       </div>
     </>

@@ -38,7 +38,7 @@ const PaymentInfoPage = () => {
     <>
       <SearchNav />
       <div className="flex justify-center h-screen">
-        <div className="bg-white rounded-lg flex flex-col justify-center">
+        <div className="rounded-lg flex flex-col justify-center">
           <div className="flex flex-col items-center">
           <h2 className="text-2xl font-bold mb-[37px] whitespace-nowrap">
             다음 결제일은{" "}
