@@ -170,6 +170,17 @@ const PilsaPage = () => {
     }
   };
 
+  useEffect(() => {
+    if (blocker.state === 'blocked') {
+      openModal({
+        title: '정말로 나갈까요?',
+        message: '저장하지 않은 내용은 사라집니다.',
+        actionName: '나가기',
+        closeName: '돌아가기'
+      });
+    }
+  }, [blocker.state]);
+
   return (
       <div className="mb-6">
         <SearchNav/>
