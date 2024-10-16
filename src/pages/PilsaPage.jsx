@@ -204,7 +204,7 @@ const PilsaPage = () => {
                   className="w-[568px] h-[420px] flex flex-1 m-4 mb-4">
                 <div
                     id="sampleText"
-                    className="flex-1 text-gray-500 whitespace-pre-wrap break-words overflow-auto"
+                    className="flex-1 text-gray-500 leading-[30px] whitespace-pre-wrap break-words overflow-auto"
                 ></div>
               </div>
               <div className='w-px h-[416px] bg-[#e0e0e0]'>
@@ -213,7 +213,7 @@ const PilsaPage = () => {
                   className="w-[568px] h-[420px] flex flex-1 m-4 h-[200px]">
             <textarea
                 id="userInput"
-                className="w-full h-full resize-none border-none outline-none text-lg text-gray-800 whitespace-pre-wrap break-words"
+                className="w-full h-full resize-none border-none outline-none text-gray-800 leading-[30px] whitespace-pre-wrap break-words"
                 rows="10"
                 value={userInputs[currentTextIndex]}
                 onChange={checkTextMatch}
