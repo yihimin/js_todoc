@@ -31,6 +31,7 @@ import MyWritten from "./pages/MyPages/MyWritten";
 import Scrap from "./pages/MyPages/Scrap";
 import MemoGrid from "./pages/MyPages/MemoGrid";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 
 const contextClass = {
   success: "bg-[#869F58]",
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
   {
     element: <ToastProvider />,
     children: [
+      {
+        path: "/",
+        element: <ScrollToTop />,
+      },
       {
         path: "/",
         element: <LandingPage />,
