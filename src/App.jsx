@@ -59,12 +59,11 @@ const ToastProvider = () => (
 
 const router = createBrowserRouter([
   {
-    element: <ToastProvider />,
+    element:(<>
+      <ScrollToTop/>
+        <ToastProvider />
+    </>),
     children: [
-      {
-        path: "/",
-        element: <ScrollToTop />,
-      },
       {
         path: "/",
         element: <LandingPage />,
