@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom"; // useNavigate 훅 가져오기
 import SearchNav from "../components/SearchNav";
 import LikeIcon from "../assets/like_icon.svg";
@@ -7,24 +7,45 @@ import LeftButtonGray from "../assets/left_button_gray.svg";
 import LeftButtonGreen from "../assets/left_button_green.svg";
 import RightButtonGray from "../assets/right_button_gray.svg";
 import RightButtonGreen from "../assets/right_button_green.svg";
-import RecommendedArticles from "../data/recommended_articles.json";
-import BooksInfo from "../data/books_info.json";
-import EditorsPick from "../data/editors_pick.json";
 import HeartButton from "../components/HeartButton";
+import { DataApiContext } from "../services/DataApiContext"; // DataApiContext import
 
 const MainPage = () => {
   const itemsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
-  const [currentLike, setCurrentLike] = useState(
-    RecommendedArticles.map(() => false)
-  );
+  const [currentLike, setCurrentLike] = useState([]);
+  const [booksInfo, setBooksInfo] = useState([]);
+  const [recommendedArticles, setRecommendedArticles] = useState([]);
+  const [editorsPick, setEditorsPick] = useState([]);
+
+  const navigate = useNavigate(); // useNavigate 훅 사용
+  const dataApi = useContext(DataApiContext); // DataApiContext 사용
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // 목데이터 또는 진데이터에서 필요한 데이터들을 가져옵니다.
+        const books = await dataApi.getBooks();
+        const articles = await dataApi.getRecommendedArticles();
+        const picks = await dataApi.getEditorsPick();
+
+        setBooksInfo(books);
+        setRecommendedArticles(articles);
+        setEditorsPick(picks);
+        setCurrentLike(articles.map(() => false)); // 초기 좋아요 상태 설정
+      } catch (error) {
+        console.error("데이터를 불러오는 중 오류가 발생했습니다.", error);
+      }
+    };
+
+    fetchData();
+  }, [dataApi]);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = BooksInfo.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = booksInfo.slice(indexOfFirstItem, indexOfLastItem);
 
-  const totalPages = Math.ceil(BooksInfo.length / itemsPerPage);
-  const navigate = useNavigate(); // useNavigate 훅 사용
+  const totalPages = Math.ceil(booksInfo.length / itemsPerPage);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -51,6 +72,11 @@ const MainPage = () => {
   const prevButtonDisabled = currentPage === 1;
   const nextButtonDisabled = currentPage === totalPages;
 
+  // 로딩 상태를 표시
+  if (!booksInfo.length || !recommendedArticles.length || !editorsPick.length) {
+    return <div>데이터를 불러오는 중입니다...</div>;
+  }
+
   return (
     <div>
       <SearchNav />
@@ -58,7 +84,7 @@ const MainPage = () => {
         <section className="flex flex-col space-y-9">
           <div className="text-[32px] font-bold mt-20">이런 글은 어때요?</div>
           <div className="flex flex-col space-y-7">
-            {RecommendedArticles.map((article, index) => (
+            {recommendedArticles.map((article, index) => (
               <div
                 className="h-[132px] relative rounded-[10px] border border-[#8a8a8a] p-[25px_60px]"
                 key={index}>
@@ -75,9 +101,10 @@ const MainPage = () => {
                     </div>
                   </div>
                   <HeartButton
-                      currentLike={currentLike[index]}
-                      handleLike={() => handleLike(index)}
-                      article={article}/>
+                    currentLike={currentLike[index]}
+                    handleLike={() => handleLike(index)}
+                    article={article}
+                  />
                 </div>
               </div>
             ))}
@@ -129,7 +156,7 @@ const MainPage = () => {
         <section className="flex flex-col">
           <div className="text-[32px] font-bold mt-20">에디터의 PICK</div>
           <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-2 place-items-center">
-            {EditorsPick.map((pick, index) => (
+            {editorsPick.map((pick, index) => (
               <img
                 src={pick.img}
                 alt="BookSign"

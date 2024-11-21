@@ -7,12 +7,12 @@ import SearchNav from "../components/SearchNav";
 import Modal from "../modal/Modal";
 import HeartButton from "../components/HeartButton";
 import ArrowDropDown from "../assets/arrow_drop_down.svg";
-import { DataApiContext } from "../services/DataApiContext"; // DataApiContext import
+import { DataApiContext } from "../services/DataApiContext";
 
 const PilsaPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const dataApi = useContext(DataApiContext); // DataApiContext에서 데이터 API 가져오기
+  const dataApi = useContext(DataApiContext);
 
   const [book, setBook] = useState(null);
   const [pilsaData, setPilsaData] = useState(null);
@@ -32,27 +32,28 @@ const PilsaPage = () => {
   const [currentLike, setCurrentLike] = useState(false);
 
   useEffect(() => {
-    // 책 정보 및 필사 데이터 가져오기
     const fetchData = async () => {
       try {
-        const books = await dataApi.getBooks(); // 책 데이터를 가져오는 메소드
-        const pilsaTexts = await dataApi.getSentences(); // 필사 데이터를 가져오는 메소드
+        const books = await dataApi.getBooks();
         const bookData = books.find((b) => b.id === parseInt(id)) || books[0];
-        const pilsa = pilsaTexts.find((text) => text.bookId === parseInt(id));
-
+        
+        // getSentencesByBookId 메서드를 사용하여 특정 책 ID에 해당하는 필사 데이터를 가져옵니다.
+        const pilsa = await dataApi.getSentencesByBookId(parseInt(id));
+  
         setBook(bookData);
         setLikeCount(bookData.likes);
         setPilsaData(pilsa);
-        if (pilsa) {
+        if (pilsa && pilsa.texts) {
           setUserInputs(Array(pilsa.texts.length).fill(""));
         }
       } catch (error) {
         console.error("데이터를 불러오는 중 오류가 발생했습니다.", error);
+        toast.error("데이터를 불러오는 중 오류가 발생했습니다. 다시 시도해주세요.");
       }
     };
-
+  
     fetchData();
-  }, [id, dataApi]);
+  }, [id, dataApi]);  
 
   const handleLike = () => {
     setCurrentLike((currentLike) => !currentLike);
@@ -109,7 +110,9 @@ const PilsaPage = () => {
   }, [currentChars, updateProgressBar]);
 
   const checkTextMatch = (e) => {
-    const sampleText = pilsaData ? pilsaData.texts[currentTextIndex] : "";
+    if (!pilsaData) return;
+
+    const sampleText = pilsaData.texts[currentTextIndex] || "";
     const userInput = e.target.value;
     let updatedInputs = [...userInputs];
     updatedInputs[currentTextIndex] = userInput;
@@ -132,7 +135,10 @@ const PilsaPage = () => {
       }
     }
 
-    document.getElementById("sampleText").innerHTML = matchedText;
+    const sampleTextElement = document.getElementById("sampleText");
+    if (sampleTextElement) {
+      sampleTextElement.innerHTML = matchedText;
+    }
 
     if (userInput.length <= sampleText.length) {
       setCurrentChars(
@@ -152,8 +158,10 @@ const PilsaPage = () => {
   };
 
   const updateSampleText = useCallback(() => {
+    if (!pilsaData) return;
+
     const sampleTextElement = document.getElementById("sampleText");
-    if (sampleTextElement && pilsaData) {
+    if (sampleTextElement) {
       sampleTextElement.innerHTML = pilsaData.texts[currentTextIndex]
         .split("")
         .map((char, i) => `<span>${char}</span>`)
@@ -174,7 +182,7 @@ const PilsaPage = () => {
   };
 
   const handleNext = () => {
-    if (currentTextIndex < pilsaData.texts.length - 1) {
+    if (pilsaData && currentTextIndex < pilsaData.texts.length - 1) {
       setCurrentTextIndex(currentTextIndex + 1);
     }
   };
@@ -189,6 +197,11 @@ const PilsaPage = () => {
       });
     }
   }, [blocker.state]);
+
+  // 데이터가 로드되지 않았을 때 로딩 상태 표시
+  if (!book || !pilsaData) {
+    return <div>데이터를 불러오는 중입니다...</div>;
+  }
 
   return (
       <div className="mb-6">

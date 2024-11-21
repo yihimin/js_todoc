@@ -1,4 +1,4 @@
-// 진데이터를 가져오는 ApiClient 클래스
+// ApiClient 클래스
 import axios from 'axios';
 
 export default class ApiClient {
@@ -9,7 +9,7 @@ export default class ApiClient {
       headers: {
         Accept: '*/*', // 모든 응답 타입을 허용
       },
-    });    
+    });
   }
 
   // /users 엔드포인트에서 사용자 데이터를 가져옵니다.
@@ -34,5 +34,23 @@ export default class ApiClient {
   async getSentences() {
     console.log('ApiClient > getSentences');
     return this.httpClient.get('/sentences').then((res) => res.data);
+  }
+
+  // 특정 책 ID에 해당하는 문장 데이터를 가져옵니다.
+  async getSentencesByBookId(bookId) {
+    console.log(`ApiClient > getSentencesByBookId(${bookId})`);
+    return this.httpClient.get(`/sentences?bookId=${bookId}`).then((res) => res.data);
+  }
+
+  // /recommended-articles 엔드포인트에서 추천 글 데이터를 가져옵니다.
+  async getRecommendedArticles() {
+    console.log('ApiClient > getRecommendedArticles');
+    return this.httpClient.get('/recommended-articles').then((res) => res.data);
+  }
+
+  // /editors-pick 엔드포인트에서 에디터 추천 데이터를 가져옵니다.
+  async getEditorsPick() {
+    console.log('ApiClient > getEditorsPick');
+    return this.httpClient.get('/editors-pick').then((res) => res.data);
   }
 }

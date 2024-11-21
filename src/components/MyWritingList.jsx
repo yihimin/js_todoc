@@ -1,16 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import MyWritingCard from "./MyWritingCard";
-import BooksInfo from "../data/books_info.json";
+import { DataApiContext } from "../services/DataApiContext";
 
 const MyWritingList = () => {
+  const dataApi = useContext(DataApiContext);
   const [isEditing, setIsEditing] = useState(false);
   const [selectedCards, setSelectedCards] = useState([]);
-  const [cards, setCards] = useState(BooksInfo);
+  const [cards, setCards] = useState([]);
+
+  // 데이터 가져오기
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        const books = await dataApi.getBooks();
+        setCards(books);
+      } catch (error) {
+        console.error("데이터를 불러오는 중 오류가 발생했습니다.", error);
+      }
+    };
+
+    fetchBooks();
+  }, [dataApi]);
 
   const handleEditClick = () => {
     setIsEditing(!isEditing);
     if (isEditing) {
-      setSelectedCards([]); //실제로 데베에서 삭제하는 API 추가
+      setSelectedCards([]); // 실제로 데이터베이스에서 삭제하는 API 추가
     }
   };
 
@@ -33,9 +48,9 @@ const MyWritingList = () => {
       <div className="absolute right-0 top-[-80px] flex">
         {/* 삭제 버튼 */}
         {isEditing && (
-            <button className="text-red-600 font-bold underline pr-[16px]" onClick={handleDeleteSelected}>
-              삭제
-            </button>
+          <button className="text-red-600 font-bold underline pr-[16px]" onClick={handleDeleteSelected}>
+            삭제
+          </button>
         )}
         {/* 편집 버튼 */}
         <button className="text-[#b0b0b0] font-bold underline" onClick={handleEditClick}>
