@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { useNavigate, useParams, useBlocker } from "react-router-dom"; // useParams 추가
+import React, { useState, useEffect, useCallback, useContext } from "react";
+import { useNavigate, useParams, useBlocker } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
@@ -7,20 +7,17 @@ import SearchNav from "../components/SearchNav";
 import Modal from "../modal/Modal";
 import HeartButton from "../components/HeartButton";
 import ArrowDropDown from "../assets/arrow_drop_down.svg";
-import booksInfo from "../data/books_info.json"; // books_info.json 파일에서 가져오기
-import pilsaText from "../data/pilsa.json"; // pilsa.json 파일에서 가져오기
+import { DataApiContext } from "../services/DataApiContext"; // DataApiContext import
 
 const PilsaPage = () => {
-  const { id } = useParams(); // URL 파라미터에서 id 값 가져오기
+  const { id } = useParams();
   const navigate = useNavigate();
+  const dataApi = useContext(DataApiContext); // DataApiContext에서 데이터 API 가져오기
 
-  // 책 정보 찾기 (id가 없으면 첫 번째 책을 기본으로 사용)
-  const book = booksInfo.find((b) => b.id === parseInt(id)) || booksInfo[0];
-  const pilsaData = pilsaText.find((text) => text.bookId === parseInt(id));
-
-  // 상태 관리 (훅은 조건 없이 항상 호출)
+  const [book, setBook] = useState(null);
+  const [pilsaData, setPilsaData] = useState(null);
   const [isLiked, setIsLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(book.likes); // 책의 좋아요 수로 초기화
+  const [likeCount, setLikeCount] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState({
     title: "",
@@ -31,21 +28,35 @@ const PilsaPage = () => {
 
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [currentChars, setCurrentChars] = useState(0);
-  const [userInputs, setUserInputs] = useState(
-    pilsaData ? Array(pilsaData.texts.length).fill("") : []
-  );
-
+  const [userInputs, setUserInputs] = useState([]);
   const [currentLike, setCurrentLike] = useState(false);
+
+  useEffect(() => {
+    // 책 정보 및 필사 데이터 가져오기
+    const fetchData = async () => {
+      try {
+        const books = await dataApi.getBooks(); // 책 데이터를 가져오는 메소드
+        const pilsaTexts = await dataApi.getSentences(); // 필사 데이터를 가져오는 메소드
+        const bookData = books.find((b) => b.id === parseInt(id)) || books[0];
+        const pilsa = pilsaTexts.find((text) => text.bookId === parseInt(id));
+
+        setBook(bookData);
+        setLikeCount(bookData.likes);
+        setPilsaData(pilsa);
+        if (pilsa) {
+          setUserInputs(Array(pilsa.texts.length).fill(""));
+        }
+      } catch (error) {
+        console.error("데이터를 불러오는 중 오류가 발생했습니다.", error);
+      }
+    };
+
+    fetchData();
+  }, [id, dataApi]);
 
   const handleLike = () => {
     setCurrentLike((currentLike) => !currentLike);
   };
-
-  useEffect(() => {
-    if (pilsaData && pilsaData.texts.length > 0) {
-      setUserInputs(Array(pilsaData.texts.length).fill(""));
-    }
-  }, [pilsaData]);
 
   const totalChars = pilsaData
     ? pilsaData.texts.reduce((sum, text) => sum + text.length, 0)
@@ -74,16 +85,14 @@ const PilsaPage = () => {
   };
 
   const blocker = useBlocker(({ currentLocation, nextLocation }) => {
-    // 사용자 입력을 검사
     for (let i = 0; i < userInputs.length; i++) {
-      if (userInputs[i] !== '') {
-        // 만약 입력된 내용이 있으면 경로가 다를 때 차단
+      if (userInputs[i] !== "") {
         if (currentLocation.pathname !== nextLocation.pathname) {
           return true;
         }
       }
     }
-    return false; // 기본적으로 차단하지 않음
+    return false;
   });
 
   const updateProgressBar = useCallback(() => {
@@ -171,12 +180,12 @@ const PilsaPage = () => {
   };
 
   useEffect(() => {
-    if (blocker.state === 'blocked') {
+    if (blocker.state === "blocked") {
       openModal({
-        title: '정말로 나갈까요?',
-        message: '저장하지 않은 내용은 사라집니다.',
-        actionName: '나가기',
-        closeName: '돌아가기'
+        title: "정말로 나갈까요?",
+        message: "저장하지 않은 내용은 사라집니다.",
+        actionName: "나가기",
+        closeName: "돌아가기",
       });
     }
   }, [blocker.state]);

@@ -1,15 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import SearchNav from "../components/SearchNav";
 import SearchIcon from "../assets/search_icon2.svg";
 import DownIcon from "../assets/down_icon.svg";
-import LikeIcon from "../assets/like_icon.svg";
-import LikeIconFull from "../assets/like_icon_full.svg";
-import BooksInfo from "../data/books_info.json"
 import HeartButton from "../components/HeartButton";
+import { DataApiContext } from "../services/DataApiContext"; // DataApiContext import
 
 const SearchPage = () => {
   const [isDownClicked, setIsDownClicked] = useState(false);
   const [selectType, setSelectType] = useState(1);
+  const [booksInfo, setBooksInfo] = useState([]);
+  const [currentLike, setCurrentLike] = useState([]);
+  
+  // DataApiContext에서 데이터를 가져옵니다.
+  const dataApi = useContext(DataApiContext);
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        const booksData = await dataApi.getBooks();
+        setBooksInfo(booksData);
+        setCurrentLike(booksData.map(() => false)); // 각 책에 대해 초기 좋아요 상태 설정
+      } catch (error) {
+        console.error("데이터를 불러오는 중 오류가 발생했습니다.", error);
+      }
+    };
+
+    fetchBooks();
+  }, [dataApi]);
 
   const handleDownClick = () => {
     setIsDownClicked(!isDownClicked);
@@ -48,18 +65,16 @@ const SearchPage = () => {
     return map;
   }, {});
 
-  const mergedMenu = BooksInfo.map((menuItem) => ({
+  const mergedMenu = booksInfo.map((menuItem) => ({
     ...menuItem,
     categoryName: categoryMap[menuItem.categoryId] || null,
   }));
-
-  const [currentLike, setCurrentLike] = useState(BooksInfo.map(() => false));
 
   const handleLike = (index) => {
     const currentLikes = [...currentLike];
     currentLikes[index] = !currentLikes[index];
     setCurrentLike(currentLikes);
-  }; //하트 개수 처리하는 api 보내기
+  };
 
   return (
     <div>

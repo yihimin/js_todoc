@@ -1,49 +1,41 @@
-import React, { useState} from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-//import users from "../../data/users.json"; // 목데이터 사용
-import bcrypt from "bcryptjs"; // bcryptjs 라이브러리를 사용합니다.
-import { useUserContext } from "../../services/UserContext";// UserContext에서 사용자 데이터를 가져옵니다.
+import bcrypt from "bcryptjs";
+import { DataApiContext } from "../../services/DataApiContext"; // DataApiContext를 import
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  
-  // UserContext에서 전역적으로 관리하는 users 데이터 가져오기
-  const { users, loading, error: contextError } = useUserContext();
 
-  const handleLogin = (e) => {
+  // DataApiContext에서 데이터 가져오기
+  const dataApi = useContext(DataApiContext);
+
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (loading) {
-      setError("사용자 데이터를 불러오는 중입니다. 잠시만 기다려주세요.");
-      return;
-    }
+    try {
+      // 사용자 데이터를 불러옵니다.
+      const users = await dataApi.getUsers();
 
-    if (contextError) {
-      setError("데이터를 불러오는 중 오류가 발생했습니다. 다시 시도해주세요.");
-      return;
-    }
+      // 사용자가 입력한 이메일과 일치하는 사용자 데이터 찾기
+      const user = users.find((user) => user.email === email);
 
-    // 사용자가 입력한 이메일과 일치하는 사용자 데이터 찾기
-    const user = users.find((user) => user.email === email);
-
-    if (user) {
-      // 비밀번호 비교
-      bcrypt.compare(password, user.password, (err, isMatch) => {
-        if (err) {
-          setError("로그인 중 오류가 발생했습니다.");
-        } else if (isMatch) {
+      if (user) {
+        // 비밀번호 비교
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (isMatch) {
           alert("로그인 성공");
-          // 로그인 성공 후 리디렉션 등 원하는 동작을 추가할 수 있습니다.
-          navigate("/"); // 예시: 메인 페이지로 리디렉션
+          navigate("/"); // 메인 페이지로 리디렉션
         } else {
           setError("이메일 또는 비밀번호가 잘못되었습니다.");
         }
-      });
-    } else {
-      setError("이메일 또는 비밀번호가 잘못되었습니다.");
+      } else {
+        setError("이메일 또는 비밀번호가 잘못되었습니다.");
+      }
+    } catch (err) {
+      setError("로그인 중 오류가 발생했습니다.");
     }
   };
 
@@ -65,8 +57,8 @@ const LoginPage = () => {
             </div>
             <div className="">
               <input
-                  className="w-[375px] h-[55px] border border-[#8a8a8a] rounded rounded-[10px] px-4 pb-4 pt-[15px] text-gray-700 placeholder:text-[#8a8a8a] placeholder:text-sm leading-tight focus:outline-none focus:ring-2 focus:ring-customGreen"
-                  id="password"
+                className="w-[375px] h-[55px] border border-[#8a8a8a] rounded rounded-[10px] px-4 pb-4 pt-[15px] text-gray-700 placeholder:text-[#8a8a8a] placeholder:text-sm leading-tight focus:outline-none focus:ring-2 focus:ring-customGreen"
+                id="password"
                 type="password"
                 placeholder="비밀번호"
                 value={password}
@@ -83,7 +75,8 @@ const LoginPage = () => {
               </label>
               <a
                 className="inline-block align-baseline font-normal text-sm text-customGray hover:text-customGreen underline"
-                href="/password-reset">
+                href="/password-reset"
+              >
                 비밀번호를 잊어버리셨나요?
               </a>
             </div>

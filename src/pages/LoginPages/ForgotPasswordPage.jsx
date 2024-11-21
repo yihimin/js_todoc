@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import LoginNav from "../../components/LoginNav"
-//import users from "../../data/users.json"; // 목데이터 파일을 가져옵니다.
-import { useUserContext } from "../../services/UserContext";// UserContext에서 사용자 데이터를 가져옵니다.
+import React, { useState, useContext } from "react";
+import LoginNav from "../../components/LoginNav";
+import { DataApiContext } from "../../services/DataApiContext"; // DataApiContext를 import
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
@@ -9,8 +8,8 @@ const ForgotPasswordPage = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false); // 로딩 상태 추가
   
-  // UserContext에서 전역적으로 관리하는 users 데이터 가져오기
-  const { users } = useUserContext();
+  // DataApiContext에서 전역적으로 관리하는 데이터 API 가져오기
+  const dataApi = useContext(DataApiContext);
 
   const handlePasswordReset = async (e) => {
     e.preventDefault();
@@ -26,25 +25,25 @@ const ForgotPasswordPage = () => {
       return;
     }
 
-    // 예시 사용자 데이터에서 이메일 찾기
-    const existingEmails = users.map((user) => user.email);
-
-    if (!existingEmails.includes(email)) {
-      setError("가입한 적 없는 이메일입니다.");
-      return;
-    }
-
-    // 로딩 상태 시작
-    setLoading(true);
-
-    // 에러 메시지 초기화 및 비밀번호 재설정 로직
-    setError("");
-    
-    // 실제 비밀번호 재설정 이메일을 보내는 API 요청을 추가 (비동기 처리)
     try {
-      // API 호출을 가정한 비동기 요청
+      // 사용자가 입력한 이메일과 일치하는 사용자 데이터 찾기
+      const users = await dataApi.getUsers(); // DataApiContext를 통해 사용자 데이터를 가져옴
+      const existingEmails = users.map((user) => user.email);
+
+      if (!existingEmails.includes(email)) {
+        setError("가입한 적 없는 이메일입니다.");
+        return;
+      }
+
+      // 로딩 상태 시작
+      setLoading(true);
+
+      // 에러 메시지 초기화 및 비밀번호 재설정 로직
+      setError("");
+
+      // 실제 비밀번호 재설정 이메일을 보내는 API 요청을 추가 (비동기 처리)
       // 예시: await sendPasswordResetEmail(email);
-      
+
       // 성공 메시지 출력
       setMessage("비밀번호 재설정 이메일이 전송되었습니다.");
     } catch (err) {

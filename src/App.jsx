@@ -2,6 +2,7 @@
 
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
+import { DataApiProvider } from './services/DataApiContext';  // DataApiProvider 추가
 import React from "react";
 import {
   createBrowserRouter,
@@ -153,9 +154,11 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <UserProvider> {/* UserProvider로 애플리케이션을 감쌈 */}
-      <RouterProvider router={router} />
-    </UserProvider>
+    <DataApiProvider> {/* DataApiProvider로 애플리케이션을 감쌈 */}
+      <UserProvider> {/* UserProvider로 애플리케이션을 감쌈 */}
+        <RouterProvider router={router} />
+      </UserProvider>
+    </DataApiProvider>
   );
 }
 

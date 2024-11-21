@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import MemoCard from "../../components/MemoCard";
 import SearchNav from "../../components/SearchNav";
-import memoData from "../../data/memos.json";
-import MemoModal from "../../modal/MemoModal"
+import MemoModal from "../../modal/MemoModal";
+import { DataApiContext } from "../../services/DataApiContext"; // DataApiContext를 import
 
 const MemoGrid = () => {
   const [memos, setMemos] = useState([]);
@@ -11,16 +11,25 @@ const MemoGrid = () => {
   const [isEditing, setIsEditing] = useState(false); // 편집 모드 상태
   const [selectedCards, setSelectedCards] = useState([]); // 선택된 메모 카드 상태
   const [modalContent, setModalContent] = useState({
-      date: '',
-      title: '',
-      author: '',
-      message: ''
+    date: '',
+    title: '',
+    author: '',
+    message: ''
   });
   const closeModal = () => setIsModalOpen(false);
 
+  // DataApiContext에서 데이터 API를 가져옴
+  const dataApi = useContext(DataApiContext);
+
+  // useEffect를 사용하여 데이터 가져오기
   useEffect(() => {
-    setMemos(memoData);
-  }, []);
+    // DataApi를 사용하여 메모 데이터를 가져옵니다.
+    const fetchMemos = async () => {
+      const memoData = await dataApi.getSentences(); // 문장 데이터를 가져옴
+      setMemos(memoData);
+    };
+    fetchMemos();
+  }, [dataApi]);
 
   // 메모 카드 클릭 핸들러
   const handleMemoClick = (memo) => {
@@ -63,18 +72,18 @@ const MemoGrid = () => {
   };
 
   return (
-      <div className="flex flex-col justify-center items-center">
-        <SearchNav/>
-        <div className="mt-[108px] mb-[270px] w-[1040px]">
-          {" "}
-          {/* 아래 여백 추가 */}
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="mb-[12px] text-[32px] font-bold">메모 모아보기</h2>
-            <div className="flex flex-row">
+    <div className="flex flex-col justify-center items-center">
+      <SearchNav />
+      <div className="mt-[108px] mb-[270px] w-[1040px]">
+        {" "}
+        {/* 아래 여백 추가 */}
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="mb-[12px] text-[32px] font-bold">메모 모아보기</h2>
+          <div className="flex flex-row">
             {isEditing && (
-                <button className="text-red-600 font-bold underline pr-[16px]" onClick={handleDeleteSelected}>
-                  삭제
-                </button>
+              <button className="text-red-600 font-bold underline pr-[16px]" onClick={handleDeleteSelected}>
+                삭제
+              </button>
             )}
             {/* 편집 및 삭제 버튼 */}
             <div className="flex space-x-4">
@@ -82,34 +91,35 @@ const MemoGrid = () => {
                 {isEditing ? "편집완료" : "편집"}
               </button>
             </div>
-            </div>
           </div>
-          <MemoList
-              memos={memos}
-              onMemoClick={handleMemoClick}
-              isEditing={isEditing}
-              selectedCards={selectedCards}
-              onCardSelect={handleCardSelect}
-          />
-          {/* 모달 컴포넌트 */}
-          {isModalOpen && (
-              <MemoModal
-                  isOpen={isModalOpen}
-                  onClose={closeModal}
-                  date={modalContent.date}
-                  title={modalContent.title}
-                  author={modalContent.author}
-                  message={modalContent.message}/>
-          )}
         </div>
+        <MemoList
+          memos={memos}
+          onMemoClick={handleMemoClick}
+          isEditing={isEditing}
+          selectedCards={selectedCards}
+          onCardSelect={handleCardSelect}
+        />
+        {/* 모달 컴포넌트 */}
+        {isModalOpen && (
+          <MemoModal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            date={modalContent.date}
+            title={modalContent.title}
+            author={modalContent.author}
+            message={modalContent.message}
+          />
+        )}
       </div>
+    </div>
   );
 };
 
 // MemoList 컴포넌트
 const MemoList = ({
-                    memos,
-                    onMemoClick,
+  memos,
+  onMemoClick,
   isEditing,
   selectedCards,
   onCardSelect,
