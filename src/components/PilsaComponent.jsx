@@ -1,72 +1,75 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { toast } from 'react-toastify';
 
-// 샘플 텍스트 데이터
-const sampleTexts = [
-  "이것은 샘플 텍스트입니다. 첫 번째 텍스트입니다.",
-  "여기 또 다른 샘플 텍스트가 있습니다. 두 번째 텍스트입니다.",
-  "이 텍스트는 세 번째 샘플 텍스트입니다.",
-];
-
-const PilsaComponent = () => {
+const PilsaComponent = ({ pilsaData, userInputs, setUserInputs }) => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
-  const [currentChars, setCurrentChars] = useState(0);
-  const [userInputs, setUserInputs] = useState(
-    Array(sampleTexts.length).fill("")
-  );
-  // const [saveMessage, setSaveMessage] = useState("");
-  // const [showToast, setShowToast] = useState(false); // 토스트 메시지 상태 추가
-  const totalChars = sampleTexts.reduce((sum, text) => sum + text.length, 0);
+  const [currentChars, setCurrentChars] = useState(0); // 현재 입력한 문자 수
+  const [progressPercent, setProgressPercent] = useState(0); // 프로그레스 상태
+
+  const currentTextLength = pilsaData?.texts[currentTextIndex]?.length || 0; // 현재 텍스트의 총 문자 수
 
   const updateProgressBar = useCallback(() => {
-    const progressBar = document.getElementById("progressBar");
-    const progressPercent = Math.floor((currentChars / totalChars) * 100);
-    progressBar.style.width = progressPercent + "%";
-  }, [currentChars, totalChars]);
+    const percent =
+      currentTextLength > 0
+        ? Math.floor((currentChars / currentTextLength) * 100)
+        : 0;
+
+    setProgressPercent(percent); // 프로그레스 상태 업데이트
+
+    // 프로그레스 바가 100%가 되면 다음 페이지로 이동
+    if (percent === 100 && currentTextIndex < pilsaData.texts.length - 1) {
+      setTimeout(() => {
+        setCurrentTextIndex(currentTextIndex + 1);
+        setCurrentChars(0);
+        setProgressPercent(0); // 다음 페이지로 넘어가면 프로그레스 초기화
+      }, 300); // 0.3초 대기 후 다음 페이지로 이동
+    }
+  }, [currentChars, currentTextLength, currentTextIndex]);
 
   useEffect(() => {
     updateProgressBar();
   }, [currentChars, updateProgressBar]);
 
   const checkTextMatch = (e) => {
-    const sampleText = sampleTexts[currentTextIndex];
+    if (!pilsaData) return;
+
+    const sampleText = pilsaData.texts[currentTextIndex] || "";
     const userInput = e.target.value;
     let updatedInputs = [...userInputs];
     updatedInputs[currentTextIndex] = userInput;
     setUserInputs(updatedInputs);
 
     let matchedText = "";
-    let isMatching = true;
 
     for (let i = 0; i < sampleText.length; i++) {
       if (i < userInput.length) {
         if (sampleText[i] === userInput[i]) {
-          matchedText += '<span class="correct">' + sampleText[i] + "</span>";
+          matchedText += `<span class="text-green-500">${sampleText[i]}</span>`;
         } else {
-          matchedText += '<span class="incorrect">' + sampleText[i] + "</span>";
-          isMatching = false;
+          matchedText += `<span class="text-red-500">${sampleText[i]}</span>`;
         }
       } else {
-        matchedText += sampleText[i];
-        isMatching = false;
+        matchedText += `<span class="text-gray-500">${sampleText[i]}</span>`;
       }
     }
 
-    document.getElementById("sampleText").innerHTML = matchedText;
-
-    if (userInput.length <= sampleText.length) {
-      setCurrentChars(
-        sampleTexts
-          .slice(0, currentTextIndex)
-          .reduce((sum, text) => sum + text.length, 0) + userInput.length
-      );
+    const sampleTextElement = document.getElementById("sampleText");
+    if (sampleTextElement) {
+      sampleTextElement.innerHTML = matchedText;
     }
 
-    if (isMatching && userInput.length === sampleText.length) {
-      if (currentTextIndex < sampleTexts.length - 1) {
-        setCurrentTextIndex(currentTextIndex + 1);
+    // 현재 입력한 문자 수 업데이트
+    setCurrentChars(userInput.length);
+
+    // 현재 텍스트가 완료된 경우
+    if (userInput.length === sampleText.length) {
+      if (currentTextIndex < pilsaData.texts.length - 1) {
+        setTimeout(() => {
+          setCurrentTextIndex(currentTextIndex + 1);
+          setCurrentChars(0);
+          setProgressPercent(0); // 다음 페이지로 넘어가면 프로그레스 초기화
+        }, 300); // 0.3초 대기 후 다음 페이지로 이동
       } else {
         alert("모든 텍스트를 완료했습니다!");
       }
@@ -74,55 +77,32 @@ const PilsaComponent = () => {
   };
 
   const updateSampleText = useCallback(() => {
+    if (!pilsaData) return;
+
     const sampleTextElement = document.getElementById("sampleText");
     if (sampleTextElement) {
-      sampleTextElement.innerHTML = sampleTexts[currentTextIndex]
+      sampleTextElement.innerHTML = pilsaData.texts[currentTextIndex]
         .split("")
-        .map((char, i) => `<span>${char}</span>`)
+        .map((char) => `<span>${char}</span>`)
         .join("");
     }
-  }, [currentTextIndex]);
+  }, [currentTextIndex, pilsaData]);
 
   useEffect(() => {
     updateSampleText();
   }, [currentTextIndex, updateSampleText]);
 
-  const saveNotify = () => toast.success("모든 내용이 저장되었습니다.");
-
-  // const handleSave = () => {
-  //   console.log("저장된 내용:", userInputs[currentTextIndex]);
-  //   setSaveMessage("내용이 저장되었습니다.");
-  //   setShowToast(true); // 토스트 메시지 표시
-  //
-  //   // 3초 후에 토스트 메시지 숨김
-  //   setTimeout(() => {
-  //     setShowToast(false);
-  //   }, 3000);
-  // };
-
   const handlePrevious = () => {
     if (currentTextIndex > 0) {
       setCurrentTextIndex(currentTextIndex - 1);
+      setCurrentChars(0);
+      setProgressPercent(0); // 이전 페이지로 가면 프로그레스 초기화
     }
-  };
-
-  const handleNext = () => {
-    if (currentTextIndex < sampleTexts.length - 1) {
-      setCurrentTextIndex(currentTextIndex + 1);
-    }
-  };
-
-  const handleCompositionStart = (e) => {
-    e.target.classList.add("ime-mode-on");
-  };
-
-  const handleCompositionEnd = (e) => {
-    e.target.classList.remove("ime-mode-on");
   };
 
   return (
-    <div className="flex flex-col items-center p-5 box-border w-full max-w-screen-lg mx-auto">
-      <div className="flex flex-col md:flex-row justify-between items-center relative mb-8 w-full">
+    <div className="flex flex-col items-center relative mb-8">
+      <div className="flex flex-row justify-between items-center relative">
         {currentTextIndex > 0 && (
           <div
             className="absolute left-0 md:left-[-80px] top-1/2 transform -translate-y-1/2 flex items-center justify-center w-[40px] h-[40px] md:w-[60px] md:h-[60px] text-white bg-gray-800 rounded-full cursor-pointer opacity-70 transition-opacity duration-300 hover:opacity-100 z-10 ml-2"
@@ -135,59 +115,30 @@ const PilsaComponent = () => {
             />
           </div>
         )}
-        <div className="flex flex-1 p-4 bg-white shadow-md rounded-lg box-border mb-4 md:mb-0 h-[200px] md:h-[420px] md:w-[50%] lg:w-[40%]">
-          {/* md 사이즈부터 너비가 줄어듦 */}
+        <div className="w-[568px] h-[420px] flex flex-1 m-4 mb-4">
           <div
             id="sampleText"
-            className="flex-1 text-gray-500 whitespace-pre-wrap break-words overflow-auto"
+            className="flex-1 text-gray-500 leading-[30px] whitespace-pre-wrap break-words overflow-auto"
           ></div>
         </div>
-        <div className="flex flex-1 p-4 bg-white shadow-md rounded-lg box-border h-[200px] md:h-[420px] md:w-[50%] lg:w-[40%]">
-          {/* md 사이즈부터 너비가 줄어듦 */}
+        <div className="w-px h-[416px] bg-[#e0e0e0]"></div>
+        <div className="w-[568px] h-[420px] flex flex-1 m-4 h-[200px]">
           <textarea
             id="userInput"
-            className="w-full h-full resize-none border-none outline-none text-lg text-gray-800 whitespace-pre-wrap break-words"
+            className="w-full h-full resize-none border-none outline-none text-gray-800 leading-[30px] whitespace-pre-wrap break-words"
             rows="10"
             value={userInputs[currentTextIndex]}
             onChange={checkTextMatch}
-            onCompositionStart={handleCompositionStart}
-            onCompositionEnd={handleCompositionEnd}
           ></textarea>
         </div>
-        {currentTextIndex < sampleTexts.length - 1 && (
-          <div
-            className="absolute right-0 md:right-[-80px] top-1/2 transform -translate-y-1/2 flex items-center justify-center w-[40px] h-[40px] md:w-[60px] md:h-[60px] text-white bg-gray-800 rounded-full cursor-pointer opacity-70 transition-opacity duration-300 hover:opacity-100 z-10 mr-2"
-            onClick={handleNext}
-          >
-            <FontAwesomeIcon
-              icon={faArrowRight}
-              alt="Right Arrow"
-              className="w-4 md:w-6"
-            />
-          </div>
-        )}
       </div>
-      <div className="w-full bg-gray-300 rounded-full overflow-hidden mb-4">
+      {/* 프로그레스 바 */}
+      <div className="w-[90%] bg-gray-300 rounded-full h-2 my-4 mx-auto">
         <div
-          id="progressBar"
-          className="h-2 bg-red-500 transition-width duration-500"
+          className="bg-red-500 h-2 rounded-full transition-all duration-300"
+          style={{ width: `${progressPercent}%` }}
         ></div>
       </div>
-      <div className="flex justify-end mb-5 w-full">
-        <button
-          id="saveButton"
-          className="px-5 py-2 md:px-7 md:py-3 bg-gray-400 text-white rounded-md transition-colors duration-300 hover:bg-red-400"
-          onClick={saveNotify}
-        >
-          저장하기
-        </button>
-      </div>
-      {/*/!* 토스트 메시지 *!/*/}
-      {/*{showToast && (*/}
-      {/*  <div className="fixed bottom-5 left-5 bg-green-500 text-white px-4 py-2 rounded-md shadow-md">*/}
-      {/*    {saveMessage}*/}
-      {/*  </div>*/}
-      {/*)}*/}
     </div>
   );
 };
