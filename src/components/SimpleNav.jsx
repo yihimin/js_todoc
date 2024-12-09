@@ -20,7 +20,7 @@ const SimpleNav = () => {
 
   return (
     <header className="w-full h-[72px] px-8 py-4 shadow flex justify-between items-center">
-      <Link to="/main" className="flex items-center">
+      <Link to="/" className="flex items-center">
         <img src={TodocLogo} alt="Todoc Logo" className="h-8" />
       </Link>
     </header>
