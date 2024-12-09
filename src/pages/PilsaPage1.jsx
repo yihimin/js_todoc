@@ -1,17 +1,29 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import SimpleNav from "../components/SimpleNav";
+import SearchNav from "../components/SearchNav";
+import Modal from "../modal/Modal";
 import { DataApiContext } from "../services/DataApiContext";
 import PilsaComponent from "../components/PilsaComponent";
+import MemoComponent from "../components/MemoComponent"; // 메모 컴포넌트 임포트
+import BookInfoComponent from "../components/BookInfoComponent"; // 책 정보 컴포넌트 임포트
 
 const PilsaPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const dataApi = useContext(DataApiContext);
 
   const [book, setBook] = useState(null);
   const [pilsaData, setPilsaData] = useState(null);
   const [userInputs, setUserInputs] = useState([]);
+  const [currentLike, setCurrentLike] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState({
+    title: "",
+    message: "",
+    actionName: "",
+    closeName: "",
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,13 +50,20 @@ const PilsaPage = () => {
 
   const saveNotify = () => toast.success("모든 내용이 저장되었습니다.");
 
+  const handleLike = () => {
+    setCurrentLike(!currentLike);
+    // 좋아요 상태 업데이트 로직 추가 가능
+  };
+
+  const closeModal = () => setIsModalOpen(false);
+
   if (!book || !pilsaData) {
     return <div>데이터를 불러오는 중입니다...</div>;
   }
 
   return (
     <div className="mb-6">
-      <SimpleNav />
+      <SearchNav />
       <PilsaComponent
         pilsaData={pilsaData}
         userInputs={userInputs}
@@ -59,6 +78,23 @@ const PilsaPage = () => {
           저장하기
         </button>
       </div>
+      {/* 메모 컴포넌트 */}
+      <MemoComponent />
+      {/* 책 정보 컴포넌트 */}
+      <BookInfoComponent
+        book={book}
+        currentLike={currentLike}
+        handleLike={handleLike}
+      />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onAction={() => navigate("/main")}
+        title={modalContent.title}
+        message={modalContent.message}
+        actionName={modalContent.actionName}
+        closeName={modalContent.closeName}
+      />
     </div>
   );
 };
