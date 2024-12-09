@@ -45,7 +45,12 @@ const PilsaComponent = ({ pilsaData, userInputs, setUserInputs }) => {
     for (let i = 0; i < sampleText.length; i++) {
       if (i < userInput.length) {
         if (sampleText[i] === userInput[i]) {
-          matchedText += `<span class="text-green-500">${sampleText[i]}</span>`;
+          // 현재 입력 중인 글자에 스케일 효과 추가
+          if (i === userInput.length - 1) {
+            matchedText += `<span class="text-black text-2xl transform scale-125 transition-transform duration-300">${sampleText[i]}</span>`;
+          } else {
+            matchedText += `<span class="text-black">${sampleText[i]}</span>`;
+          }
         } else {
           matchedText += `<span class="text-red-500">${sampleText[i]}</span>`;
         }
@@ -101,7 +106,8 @@ const PilsaComponent = ({ pilsaData, userInputs, setUserInputs }) => {
   };
 
   return (
-    <div className="flex flex-col items-center relative mb-8">
+    <div className="flex flex-col items-center relative mb-8 px-4 md:px-8 lg:px-16">
+      {/* 양옆 마진 추가 */}
       <div className="flex flex-row justify-between items-center relative">
         {currentTextIndex > 0 && (
           <div
@@ -118,14 +124,14 @@ const PilsaComponent = ({ pilsaData, userInputs, setUserInputs }) => {
         <div className="w-[568px] h-[420px] flex flex-1 m-4 mb-4">
           <div
             id="sampleText"
-            className="flex-1 text-gray-500 leading-[30px] whitespace-pre-wrap break-words overflow-auto"
+            className="flex-1 text-gray-500 text-xl leading-[40px] whitespace-pre-wrap break-words overflow-auto"
           ></div>
         </div>
         <div className="w-px h-[416px] bg-[#e0e0e0]"></div>
         <div className="w-[568px] h-[420px] flex flex-1 m-4 h-[200px]">
           <textarea
             id="userInput"
-            className="w-full h-full resize-none border-none outline-none text-gray-800 leading-[30px] whitespace-pre-wrap break-words"
+            className="w-full h-full resize-none border-none outline-none text-gray-800 text-xl leading-[40px] whitespace-pre-wrap break-words"
             rows="10"
             value={userInputs[currentTextIndex]}
             onChange={checkTextMatch}

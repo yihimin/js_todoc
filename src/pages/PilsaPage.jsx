@@ -36,8 +36,6 @@ const PilsaPage = () => {
     fetchData();
   }, [id, dataApi]);
 
-  const saveNotify = () => toast.success("모든 내용이 저장되었습니다.");
-
   if (!book || !pilsaData) {
     return <div>데이터를 불러오는 중입니다...</div>;
   }
@@ -50,15 +48,6 @@ const PilsaPage = () => {
         userInputs={userInputs}
         setUserInputs={setUserInputs}
       />
-      <div className="w-[1216px] flex justify-end mb-5">
-        <button
-          id="saveButton"
-          className="px-5 py-2 md:px-7 md:py-3 bg-gray-400 text-white rounded-md transition-colors duration-300 hover:bg-[#869F58]"
-          onClick={saveNotify}
-        >
-          저장하기
-        </button>
-      </div>
     </div>
   );
 };

@@ -2,13 +2,9 @@
 
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
-import { DataApiProvider } from './services/DataApiContext';  // DataApiProvider 추가
+import { DataApiProvider } from "./services/DataApiContext"; // DataApiProvider 추가
 import React from "react";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Outlet
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { UserProvider } from "./services/UserContext"; // UserProvider 추가
 import PilsaPage from "./pages/PilsaPage";
@@ -60,10 +56,12 @@ const ToastProvider = () => (
 
 const router = createBrowserRouter([
   {
-    element:(<>
-      <ScrollToTop/>
+    element: (
+      <>
+        <ScrollToTop />
         <ToastProvider />
-    </>),
+      </>
+    ),
     children: [
       {
         path: "/",
@@ -154,8 +152,12 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <DataApiProvider> {/* DataApiProvider로 애플리케이션을 감쌈 */}
-      <UserProvider> {/* UserProvider로 애플리케이션을 감쌈 */}
+    <DataApiProvider>
+      {" "}
+      {/* DataApiProvider로 애플리케이션을 감쌈 */}
+      <UserProvider>
+        {" "}
+        {/* UserProvider로 애플리케이션을 감쌈 */}
         <RouterProvider router={router} />
       </UserProvider>
     </DataApiProvider>

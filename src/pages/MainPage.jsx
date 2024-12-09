@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import SimpleNav from "../components/SimpleNav";
 import { DataApiContext } from "../services/DataApiContext";
-import PaginationButtons from "../components/PaginationButtons"; // 페이지 버튼 컴포넌트
 import BookItem from "../components/BookItem"; // 책 아이템 컴포넌트
 
 const MainPage = () => {
@@ -65,14 +64,8 @@ const MainPage = () => {
           aria-label="현재 필사 중인 글"
         >
           {/* 섹션 헤더 */}
-          <div className="flex justify-between mt-20">
+          <div className="flex mt-20">
             <h2 className="text-2xl font-bold">오늘은 이런 글 어때요?</h2>
-            <PaginationButtons
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onNext={handleNextPage}
-              onPrev={handlePrevPage}
-            />
           </div>
 
           {/* 책 리스트 */}
