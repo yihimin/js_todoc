@@ -87,7 +87,7 @@ const PilsaComponent = ({ pilsaData, userInputs, setUserInputs }) => {
     const sampleTextElement = document.getElementById("sampleText");
     if (sampleTextElement) {
       sampleTextElement.innerHTML = pilsaData.texts[currentTextIndex]
-        .split("")
+        .split(" ")
         .map((char) => `<span>${char}</span>`)
         .join("");
     }
@@ -102,6 +102,14 @@ const PilsaComponent = ({ pilsaData, userInputs, setUserInputs }) => {
       setCurrentTextIndex(currentTextIndex - 1);
       setCurrentChars(0);
       setProgressPercent(0); // 이전 페이지로 가면 프로그레스 초기화
+    }
+  };
+
+  const handleNext = () => {
+    if (currentTextIndex < pilsaData.texts.length - 1) {
+      setCurrentTextIndex(currentTextIndex + 1);
+      setCurrentChars(0);
+      setProgressPercent(0); // 다음 페이지로 가면 프로그레스 초기화
     }
   };
 
@@ -137,6 +145,18 @@ const PilsaComponent = ({ pilsaData, userInputs, setUserInputs }) => {
             onChange={checkTextMatch}
           ></textarea>
         </div>
+        {currentTextIndex < pilsaData.texts.length - 1 && (
+          <div
+            className="absolute right-0 md:right-[-80px] top-1/2 transform -translate-y-1/2 flex items-center justify-center w-[40px] h-[40px] md:w-[60px] md:h-[60px] text-white bg-gray-800 rounded-full cursor-pointer opacity-70 transition-opacity duration-300 hover:opacity-100 z-10 mr-2"
+            onClick={handleNext}
+          >
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              alt="Right Arrow"
+              className="w-4 md:w-6"
+            />
+          </div>
+        )}
       </div>
       {/* 프로그레스 바 */}
       <div className="w-[90%] bg-gray-300 rounded-full h-2 my-4 mx-auto">
