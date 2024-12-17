@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const fs = require("fs");
 
 // 예시 사용자 데이터

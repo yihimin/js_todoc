@@ -87,8 +87,13 @@ const PilsaComponent = ({ pilsaData, userInputs, setUserInputs }) => {
     const sampleTextElement = document.getElementById("sampleText");
     if (sampleTextElement) {
       sampleTextElement.innerHTML = pilsaData.texts[currentTextIndex]
-        .split(" ")
-        .map((char) => `<span>${char}</span>`)
+        .split("")
+        .map((char) => {
+          if (char === " ") {
+            return `<span>&nbsp;</span>`; // 띄어쓰기 유지
+          }
+          return `<span>${char}</span>`;
+        })
         .join("");
     }
   }, [currentTextIndex, pilsaData]);
