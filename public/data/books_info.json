@@ -2,41 +2,41 @@
   {
     "id": 1,
     "categoryId": 2,
-    "image": "/book1.jpg",
+    "image": "/book1.png",
     "title": "영원처럼",
-    "author": "demona",
-    "genre": "소설",
-    "content": "툭 솟은 광대뼈 위에 검은빛이 돌도록 움쑥 패인 눈이 슬그머니 외과실을 살피다가 환자가 없음을 알았던지 얼굴을 푹 숙이고 지팡이에 힘을 주어 붕대한 다리를 철철 끌고 문안으로 들어선다.",
+    "author": "유을",
+    "genre": "칼럼",
+    "content": "",
     "likes": 189
   },
   {
     "id": 2,
     "categoryId": 2,
-    "image": "/book2.jpg",
+    "image": "/book2.png",
     "title": "직장생활",
-    "author": "키위",
-    "genre": "소설",
-    "content": "친애하는 동생 K야. 간번 너의 편지는 반갑게 받아 읽었다.",
+    "author": "유을",
+    "genre": "칼럼",
+    "content": "",
     "likes": 566
   },
   {
     "id": 3,
     "categoryId": 2,
-    "image": "/book3.jpg",
+    "image": "/book3.png",
     "title": "청춘",
-    "author": "지약",
-    "genre": "소설",
-    "content": "'박제가 되어 버린 천재'를 아시오? 나는 유쾌하오. 이런 때 연애까지가 유쾌하오.",
+    "author": "유을",
+    "genre": "칼럼",
+    "content": "",
     "likes": 230
   },
   {
     "id": 4,
     "categoryId": 2,
-    "image": "/book4.jpg",
+    "image": "/book4.png",
     "title": "덧없음의 귀결",
-    "author": "nabi24",
-    "genre": "소설",
-    "content": "스물세 살이요 - 삼월이요 - 각혈이다. 여섯 달 잘 기른 수염을 하루 면도칼로 다듬어 코밑에 다만 나비만큼 남겨 가지고 약 한 제 지어 들고 B라는 신개지 한적한 온천으로 갔다. 게서 나는 죽어도 좋았다.",
+    "author": "유을",
+    "genre": "칼럼",
+    "content": "",
     "likes": 78
   },
   {
@@ -44,9 +44,9 @@
     "categoryId": 2,
     "image": "/book5.jpg",
     "title": "금단의 화단",
-    "author": "고무나무",
-    "genre": "소설",
-    "content": "담당 교수 위에 업지도 없이 서 있던 젊은 실사가 뒤를 올리다며 고객의 제도를 조금씩 계속 바꾸었다. 수상을 받아바...",
+    "author": "유을",
+    "genre": "칼럼",
+    "content": "",
     "likes": 5
   }
 ]

@@ -47,7 +47,7 @@ const PilsaComponent = ({ pilsaData, userInputs, setUserInputs }) => {
         if (sampleText[i] === userInput[i]) {
           // 현재 입력 중인 글자에 스케일 효과 추가
           if (i === userInput.length - 1) {
-            matchedText += `<span class="text-black text-2xl transform scale-125 transition-transform duration-300">${sampleText[i]}</span>`;
+            matchedText += `<span class="text-black font-bold">${sampleText[i]}</span>`;
           } else {
             matchedText += `<span class="text-black">${sampleText[i]}</span>`;
           }
