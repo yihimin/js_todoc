@@ -120,7 +120,7 @@ const PilsaComponent = ({ pilsaData, userInputs, setUserInputs }) => {
 
   return (
     <div className="flex flex-col items-center relative mb-8 px-4 md:px-8 lg:px-16">
-      {/* 양옆 마진 추가 */}
+      {/* 왼쪽 화살표 */}
       <div className="flex flex-row justify-between items-center relative">
         {currentTextIndex > 0 && (
           <div
@@ -134,22 +134,24 @@ const PilsaComponent = ({ pilsaData, userInputs, setUserInputs }) => {
             />
           </div>
         )}
-        <div className="w-[568px] h-[420px] flex flex-1 m-4 mb-4">
+        {/* 텍스트 영역 */}
+        <div className="w-full max-w-[568px] aspect-[4/3] flex flex-1 m-4 mb-4">
           <div
             id="sampleText"
-            className="flex-1 text-gray-500 text-xl leading-[40px] whitespace-pre-wrap break-words overflow-auto"
+            className="flex-1 text-gray-500 text-sm md:text-base lg:text-lg leading-6 md:leading-7 lg:leading-9 whitespace-pre-wrap break-words overflow-auto"
           ></div>
         </div>
         <div className="w-px h-[416px] bg-[#e0e0e0]"></div>
         <div className="w-[568px] h-[420px] flex flex-1 m-4 h-[200px]">
           <textarea
             id="userInput"
-            className="w-full h-full resize-none border-none outline-none text-gray-800 text-xl leading-[40px] whitespace-pre-wrap break-words"
+            className="w-full h-full resize-none border-none outline-none text-gray-800 text-sm md:text-base lg:text-lg leading-6 md:leading-7 lg:leading-9 whitespace-pre-wrap break-words"
             rows="10"
             value={userInputs[currentTextIndex]}
             onChange={checkTextMatch}
           ></textarea>
         </div>
+        {/* 오른쪽 화살표 */}
         {currentTextIndex < pilsaData.texts.length - 1 && (
           <div
             className="absolute right-0 md:right-[-80px] top-1/2 transform -translate-y-1/2 flex items-center justify-center w-[40px] h-[40px] md:w-[60px] md:h-[60px] text-white bg-gray-800 rounded-full cursor-pointer opacity-70 transition-opacity duration-300 hover:opacity-100 z-10 mr-2"
