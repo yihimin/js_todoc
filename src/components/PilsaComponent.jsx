@@ -166,8 +166,11 @@ const PilsaComponent = ({ pilsaData, userInputs, setUserInputs }) => {
       {/* 프로그레스 바 */}
       <div className="w-[90%] bg-gray-300 rounded-full h-2 my-4 mx-auto">
         <div
-          className="bg-red-500 h-2 rounded-full transition-all duration-300"
-          style={{ width: `${progressPercent}%` }}
+          className="h-2 rounded-full transition-all duration-300"
+          style={{
+            width: `${progressPercent}%`,
+            backgroundColor: "#8A9A64", // 올리브색
+          }}
         ></div>
       </div>
     </div>
