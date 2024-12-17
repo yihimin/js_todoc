@@ -124,7 +124,7 @@ const PilsaComponent = ({ pilsaData, userInputs, setUserInputs }) => {
       <div className="flex flex-row justify-between items-center relative">
         {currentTextIndex > 0 && (
           <div
-            className="absolute left-0 md:left-[-80px] top-1/2 transform -translate-y-1/2 flex items-center justify-center w-[40px] h-[40px] md:w-[60px] md:h-[60px] text-white bg-gray-800 rounded-full cursor-pointer opacity-70 transition-opacity duration-300 hover:opacity-100 z-10 ml-2"
+            className="flex items-center justify-center w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white bg-gray-800 rounded-full cursor-pointer opacity-70 transition-opacity duration-300 hover:opacity-100"
             onClick={handlePrevious}
           >
             <FontAwesomeIcon
@@ -154,7 +154,7 @@ const PilsaComponent = ({ pilsaData, userInputs, setUserInputs }) => {
         {/* 오른쪽 화살표 */}
         {currentTextIndex < pilsaData.texts.length - 1 && (
           <div
-            className="absolute right-0 md:right-[-80px] top-1/2 transform -translate-y-1/2 flex items-center justify-center w-[40px] h-[40px] md:w-[60px] md:h-[60px] text-white bg-gray-800 rounded-full cursor-pointer opacity-70 transition-opacity duration-300 hover:opacity-100 z-10 mr-2"
+            className="flex items-center justify-center w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white bg-gray-800 rounded-full cursor-pointer opacity-70 transition-opacity duration-300 hover:opacity-100"
             onClick={handleNext}
           >
             <FontAwesomeIcon
